@@ -1,0 +1,6 @@
+*.idea
+du-map.zip
+*.backup
+*.DS_Store
+config.php
+*.bak
