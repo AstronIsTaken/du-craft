@@ -477,12 +477,7 @@
           }
         ]
       },
-      {
-        "name": "Warp Cell",
-        "data": [
-          "Warp Cell"
-        ]
-      }
+      "Warp Cell"
     ]
   },
   {
@@ -920,18 +915,8 @@
                   "Barrier M"
                 ]
               },
-              {
-                "name": "Bathroom Elements",
-                "data": [
-                  "Sink Unit"
-                ]
-              },
-              {
-                "name": "Board",
-                "data": [
-                  "Keyboard Unit"
-                ]
-              },
+              "Sink Unit",
+              "Keyboard Unit",
               {
                 "name": "Decorative Cables",
                 "data": [
@@ -1070,12 +1055,7 @@
               {
                 "name": "Displays",
                 "data": [
-                  {
-                    "name": "Info Buttons",
-                    "data": [
-                      "Info Button S"
-                    ]
-                  },
+                  "Info Button S",
                   {
                     "name": "Screens",
                     "data": [
@@ -1141,18 +1121,8 @@
                       "Emitter M"
                     ]
                   },
-                  {
-                    "name": "Databanks",
-                    "data": [
-                      "Databank"
-                    ]
-                  },
-                  {
-                    "name": "Delay Lines",
-                    "data": [
-                      "Delay Line"
-                    ]
-                  },
+                  "Databank",
+                  "Delay Line",
                   {
                     "name": "Laser Emitters",
                     "data": [
@@ -1163,42 +1133,12 @@
                   {
                     "name": "Logic Operators",
                     "data": [
-                      {
-                        "name": "AND Operators",
-                        "data": [
-                          "AND Operator"
-                        ]
-                      },
-                      {
-                        "name": "NAND Operators",
-                        "data": [
-                          "NAND Operator"
-                        ]
-                      },
-                      {
-                        "name": "NOR Operators",
-                        "data": [
-                          "NOR Operator"
-                        ]
-                      },
-                      {
-                        "name": "NOT Operators",
-                        "data": [
-                          "NOT Operator"
-                        ]
-                      },
-                      {
-                        "name": "OR Operators",
-                        "data": [
-                          "OR Operator"
-                        ]
-                      },
-                      {
-                        "name": "XOR Operators",
-                        "data": [
-                          "XOR Operator"
-                        ]
-                      }
+                      "AND Operator",
+                      "NAND Operator",
+                      "NOR Operator",
+                      "NOT Operator",
+                      "OR Operator",
+                      "XOR Operator"
                     ]
                   },
                   {
@@ -1209,12 +1149,7 @@
                       "Receiver M"
                     ]
                   },
-                  {
-                    "name": "Relays",
-                    "data": [
-                      "Relay"
-                    ]
-                  },
+                  "Relay",
                   {
                     "name": "Sensors",
                     "data": [
@@ -1225,12 +1160,7 @@
                           "Laser Receiver"
                         ]
                       },
-                      {
-                        "name": "Telemeters",
-                        "data": [
-                          "Telemeter"
-                        ]
-                      },
+                      "Telemeter",
                       {
                         "name": "Zone Detectors",
                         "data": [
@@ -1252,28 +1182,13 @@
                           "Manual Button S"
                         ]
                       },
-                      {
-                        "name": "Manual Switches",
-                        "data": [
-                          "Manual Switch"
-                        ]
-                      },
-                      {
-                        "name": "Pressure Tiles",
-                        "data": [
-                          "Pressure Tile"
-                        ]
-                      }
+                      "Manual Switch",
+                      "Pressure Tile"
                     ]
                   }
                 ]
               },
-              {
-                "name": "Elevators",
-                "data": [
-                  "Elevator XS"
-                ]
-              },
+              "Elevator XS",
               {
                 "name": "High-Tech Furniture",
                 "data": [
@@ -1286,12 +1201,7 @@
                       "Force Field L"
                     ]
                   },
-                  {
-                    "name": "Virtual Projectors",
-                    "data": [
-                      "Virtual Scaffolding Projector"
-                    ]
-                  }
+                  "Virtual Scaffolding Projector"
                 ]
               },
               {
@@ -1513,12 +1423,7 @@
               }
             ]
           },
-          {
-            "name": "Territory Units",
-            "data": [
-              "Territory Unit"
-            ]
-          }
+          "Territory Unit"
         ]
       },
       {
@@ -1527,18 +1432,8 @@
           {
             "name": "Control Units",
             "data": [
-              {
-                "name": "Emergency Controllers",
-                "data": [
-                  "Emergency Controller"
-                ]
-              },
-              {
-                "name": "Generic Control Units",
-                "data": [
-                  "Programming Board"
-                ]
-              },
+              "Emergency Controller",
+              "Programming Board",
               {
                 "name": "Gunner Module",
                 "data": [
@@ -1550,40 +1445,15 @@
               {
                 "name": "Piloting Control Units",
                 "data": [
-                  {
-                    "name": "Closed Cockpits",
-                    "data": [
-                      "Cockpit Controller"
-                    ]
-                  },
-                  {
-                    "name": "Command Seat",
-                    "data": [
-                      "Command Seat Controller"
-                    ]
-                  },
-                  {
-                    "name": "Hovercraft Cockpits",
-                    "data": [
-                      "Hovercraft Seat Controller"
-                    ]
-                  },
-                  {
-                    "name": "Remote Controllers",
-                    "data": [
-                      "Remote Controller"
-                    ]
-                  }
+                  "Cockpit Controller",
+                  "Command Seat Controller",
+                  "Hovercraft Seat Controller",
+                  "Remote Controller"
                 ]
               }
             ]
           },
-          {
-            "name": "Resurrection Nodes",
-            "data": [
-              "Resurrection Node"
-            ]
-          },
+          "Resurrection Node",
           {
             "name": "Surrogate Station Equipment",
             "data": [
@@ -1591,12 +1461,7 @@
               "Surrogate VR Station"
             ]
           },
-          {
-            "name": "Territory Scanners",
-            "data": [
-              "Territory Scanner"
-            ]
-          }
+          "Territory Scanner"
         ]
       },
       {
@@ -1885,35 +1750,15 @@
                   "Anti-Gravity Generator L"
                 ]
               },
-              {
-                "name": "Anti-Gravity Pulsor",
-                "data": [
-                  "Anti-Gravity Pulsor"
-                ]
-              },
-              {
-                "name": "Warp Beacon Units",
-                "data": [
-                  "Warp Beacon XL"
-                ]
-              },
-              {
-                "name": "Warp Drive Units",
-                "data": [
-                  "Warp Drive L"
-                ]
-              }
+              "Anti-Gravity Pulsor",
+              "Warp Beacon XL",
+              "Warp Drive L"
             ]
           },
           {
             "name": "Support Tech",
             "data": [
-              {
-                "name": "Gyroscopes",
-                "data": [
-                  "Gyroscope"
-                ]
-              },
+              "Gyroscope",
               {
                 "name": "Landing Gears",
                 "data": [
@@ -1935,18 +1780,8 @@
       {
         "name": "Fuels",
         "data": [
-          {
-            "name": "Atmospheric Fuels",
-            "data": [
-              "Nitron Fuel"
-            ]
-          },
-          {
-            "name": "Rocket Fuels",
-            "data": [
-              "Xeron Fuel"
-            ]
-          },
+          "Nitron Fuel",
+          "Xeron Fuel",
           {
             "name": "Space Fuels",
             "data": [
@@ -2332,12 +2167,7 @@
               "Exotic Anti-Gravity Core"
             ]
           },
-          {
-            "name": "Antimatter Cores",
-            "data": [
-              "Advanced Antimatter Core"
-            ]
-          },
+          "Advanced Antimatter Core",
           {
             "name": "Quantum Alignment Units",
             "data": [
@@ -2345,12 +2175,7 @@
               "Exotic Quantum Alignment Unit"
             ]
           },
-          {
-            "name": "Quantum Barriers",
-            "data": [
-              "Advanced Quantum Barrier"
-            ]
-          }
+          "Advanced Quantum Barrier"
         ]
       },
       {
@@ -2589,18 +2414,8 @@
               "Rare Mobile Panel XL"
             ]
           },
-          {
-            "name": "Motherboards",
-            "data": [
-              "Advanced Motherboard M"
-            ]
-          },
-          {
-            "name": "Ore Scanners",
-            "data": [
-              "Uncommon Ore Scanner XL"
-            ]
-          },
+          "Advanced Motherboard M",
+          "Uncommon Ore Scanner XL",
           {
             "name": "Power Transformer",
             "data": [

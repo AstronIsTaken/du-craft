@@ -290,7 +290,7 @@ overflow:auto;
 .modal-content {
   position: relative;
   background-color: #001926;
-  margin: auto;
+  margin: 50px;
   padding: 0;
   border: 5px solid #fff;
   border-radius:20px;
