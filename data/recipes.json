@@ -2180,8 +2180,8 @@
     ],
     "input": {
       "Polycarbonate Plastic": 2,
-      "Polycalcite Plastic": 4,
-      "Basic Screw": 4
+      "Basic Screw": 4,
+      "Polycalcite Plastic": 4
     }
   },
   "Advanced Injector": {
@@ -2200,7 +2200,7 @@
       "Polycarbonate Plastic": 2,
       "Basic Screw": 2,
       "Polycalcite Plastic": 2,
-      "Uncommon Screw": 4,
+      "Uncommon Screw": 2,
       "Polysulfide Plastic": 2
     }
   },
@@ -3599,8 +3599,8 @@
       "Basic Pipe": 1,
       "Basic Burner": 1,
       "Stainless Steel": 1,
-      "Uncommon Burner": 1,
-      "Uncommon Pipe": 1
+      "Uncommon Pipe": 1,
+      "Uncommon Burner": 1
     }
   },
   "Uncommon Combustion Chamber S": {
@@ -3619,8 +3619,8 @@
       "Basic Pipe": 2,
       "Basic Burner": 2,
       "Stainless Steel": 7,
-      "Uncommon Burner": 4,
-      "Uncommon Pipe": 4
+      "Uncommon Pipe": 4,
+      "Uncommon Burner": 4
     }
   },
   "Uncommon Combustion Chamber M": {
@@ -3639,8 +3639,8 @@
       "Basic Pipe": 8,
       "Basic Burner": 8,
       "Stainless Steel": 49,
-      "Uncommon Burner": 18,
-      "Uncommon Pipe": 18
+      "Uncommon Pipe": 18,
+      "Uncommon Burner": 18
     }
   },
   "Uncommon Combustion Chamber L": {
@@ -3659,8 +3659,8 @@
       "Basic Pipe": 38,
       "Basic Burner": 38,
       "Stainless Steel": 343,
-      "Uncommon Burner": 88,
-      "Uncommon Pipe": 88
+      "Uncommon Pipe": 88,
+      "Uncommon Burner": 88
     }
   },
   "Advanced Combustion Chamber XS": {
@@ -4906,6 +4906,7 @@
     "skill": "",
     "byproducts": {},
     "industries": [
+      "Nanopack",
       "Glass Furnace M"
     ],
     "input": {
@@ -5057,7 +5058,7 @@
     "input": {
       "Uncommon LED": 2,
       "Uncommon Optics": 2,
-      "Advanced LED": 2,
+      "Advanced LED": 4,
       "Advanced Optics": 2,
       "Gold-Coated Glass": 7,
       "Rare Optics": 2
@@ -6373,7 +6374,7 @@
       "Uncommon Magnet": 188,
       "Advanced Component": 438,
       "Advanced Magnet": 188,
-      "Maraging Steel": 343,
+      "Maraging Steel": 2401,
       "Rare Magnet": 250
     }
   },
@@ -8119,7 +8120,7 @@
   },
   "Dispenser": {
     "tier": 1,
-    "type": "Container",
+    "type": "Dispenser",
     "mass": 2060,
     "volume": 479.2,
     "outputQuantity": 1,
@@ -8138,7 +8139,7 @@
   },
   "Deprecated Dispenser": {
     "tier": 1,
-    "type": "Container",
+    "type": "Dispenser",
     "mass": 2060,
     "volume": 479.2,
     "outputQuantity": 1,
@@ -8670,8 +8671,8 @@
       "Assembly Line M"
     ],
     "input": {
-      "Uncommon Screw": 36,
-      "Advanced Screw": 36,
+      "Uncommon Screw": 18,
+      "Advanced Screw": 18,
       "Rare Power System": 25,
       "Rare Mobile Panel M": 1,
       "Rare Reinforced Frame M": 1
@@ -9924,7 +9925,7 @@
     ],
     "input": {
       "Basic Screw": 36,
-      "Basic Hydraulics": 35,
+      "Basic Hydraulics": 25,
       "Basic Mobile Panel M": 1,
       "Basic Standard Frame M": 1
     }
@@ -12631,7 +12632,7 @@
     }
   },
   "Force Field XS": {
-    "tier": 1,
+    "tier": 3,
     "type": "Force Field",
     "mass": 207.86,
     "volume": 57.56,
@@ -15088,6 +15089,7 @@
     "skill": "Furniture/Appliance",
     "byproducts": {},
     "industries": [
+      "Nanopack",
       "Assembly Line S"
     ],
     "input": {
@@ -15223,8 +15225,8 @@
       "Assembly Line XS"
     ],
     "input": {
-      "Basic Injector": 1,
       "Basic Fixation": 1,
+      "Basic Injector": 1,
       "Basic Standard Frame XS": 1
     }
   },
@@ -15569,7 +15571,7 @@
       "Basic Standard Frame M": 1
     }
   },
-  "Trash": {
+  "Trash Can": {
     "tier": 1,
     "type": "Furniture",
     "mass": 6.72,
@@ -15608,25 +15610,6 @@
     }
   },
   "Nightstand": {
-    "tier": 1,
-    "type": "Furniture",
-    "mass": 6.72,
-    "volume": 4,
-    "outputQuantity": 1,
-    "time": 75,
-    "skill": "Furniture/Appliance",
-    "byproducts": {},
-    "industries": [
-      "Nanopack",
-      "Assembly Line XS"
-    ],
-    "input": {
-      "Polycarbonate Plastic": 1,
-      "Basic Fixation": 1,
-      "Basic Standard Frame XS": 1
-    }
-  },
-  "Trash Can": {
     "tier": 1,
     "type": "Furniture",
     "mass": 6.72,
@@ -18339,6 +18322,7 @@
     "skill": "Systems",
     "byproducts": {},
     "industries": [
+      "Nanopack",
       "Assembly Line S"
     ],
     "input": {
@@ -18348,8 +18332,9 @@
       "Basic Casing S": 1
     }
   },
+
   "Cannon XS": {
-    "tier": 3,
+    "tier": 2,
     "type": "Cannon",
     "mass": 190.1,
     "volume": 34.2,
@@ -18600,7 +18585,7 @@
     }
   },
   "Cannon S": {
-    "tier": 3,
+    "tier": 2,
     "type": "Cannon",
     "mass": 517.52,
     "volume": 95.4,
@@ -18851,7 +18836,7 @@
     }
   },
   "Cannon M": {
-    "tier": 3,
+    "tier": 2,
     "type": "Cannon",
     "mass": 2670,
     "volume": 478,
@@ -19102,7 +19087,7 @@
     }
   },
   "Cannon L": {
-    "tier": 3,
+    "tier": 2,
     "type": "Cannon",
     "mass": 15240,
     "volume": 2614.2,
@@ -19353,7 +19338,7 @@
     }
   },
   "Laser XS": {
-    "tier": 3,
+    "tier": 2,
     "type": "Laser",
     "mass": 118.55,
     "volume": 39.2,
@@ -19604,7 +19589,7 @@
     }
   },
   "Laser S": {
-    "tier": 3,
+    "tier": 2,
     "type": "Laser",
     "mass": 508.26,
     "volume": 120.2,
@@ -19855,7 +19840,7 @@
     }
   },
   "Laser M": {
-    "tier": 3,
+    "tier": 2,
     "type": "Laser",
     "mass": 2690,
     "volume": 600.8,
@@ -20106,7 +20091,7 @@
     }
   },
   "Laser L": {
-    "tier": 3,
+    "tier": 2,
     "type": "Laser",
     "mass": 14770,
     "volume": 3221,
@@ -20357,7 +20342,7 @@
     }
   },
   "Missile XS": {
-    "tier": 3,
+    "tier": 2,
     "type": "Missile",
     "mass": 207.67,
     "volume": 40.2,
@@ -20608,7 +20593,7 @@
     }
   },
   "Missile S": {
-    "tier": 3,
+    "tier": 2,
     "type": "Missile",
     "mass": 593.35,
     "volume": 125.4,
@@ -20859,7 +20844,7 @@
     }
   },
   "Missile M": {
-    "tier": 3,
+    "tier": 2,
     "type": "Missile",
     "mass": 2970,
     "volume": 628,
@@ -21110,7 +21095,7 @@
     }
   },
   "Missile L": {
-    "tier": 3,
+    "tier": 2,
     "type": "Missile",
     "mass": 16130,
     "volume": 3364.2,
@@ -21361,7 +21346,7 @@
     }
   },
   "Railgun XS": {
-    "tier": 3,
+    "tier": 2,
     "type": "Railgun",
     "mass": 232.02,
     "volume": 33.66,
@@ -21612,7 +21597,7 @@
     }
   },
   "Railgun S": {
-    "tier": 3,
+    "tier": 2,
     "type": "Railgun",
     "mass": 517.52,
     "volume": 95.4,
@@ -21863,7 +21848,7 @@
     }
   },
   "Railgun M": {
-    "tier": 3,
+    "tier": 2,
     "type": "Railgun",
     "mass": 3010,
     "volume": 565.89,
@@ -22114,7 +22099,7 @@
     }
   },
   "Railgun L": {
-    "tier": 3,
+    "tier": 2,
     "type": "Railgun",
     "mass": 16720,
     "volume": 3054.89,
@@ -25446,26 +25431,6 @@
       "Silumin": 7,
       "Basic Fixation": 6,
       "Basic Reinforced Frame S": 1
-    }
-  },
-  "Interior door": {
-    "tier": 1,
-    "type": "Door/Gate",
-    "mass": 4200,
-    "volume": 546.4,
-    "outputQuantity": 1,
-    "time": 1920,
-    "skill": "Systems",
-    "byproducts": {},
-    "industries": [
-      "Nanopack",
-      "Assembly Line M"
-    ],
-    "input": {
-      "Basic Screw": 36,
-      "Basic Power System": 25,
-      "Basic Electric Engine M": 1,
-      "Basic Reinforced Frame M": 1
     }
   },
   "Fuel Intake XS": {
