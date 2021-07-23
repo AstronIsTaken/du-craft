@@ -210,7 +210,7 @@ button.bugButton:active {
     display: grid;
     grid-gap: 1px 5px;
     align-content: start;
-    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto;
     width: 100%;
     overflow: auto;
     background-color: #001926;

@@ -33,7 +33,7 @@ function copyStringToClipboard(str) {
 
 var tierClassNames = ["tier-basic", "tier-uncommon", "tier-advanced", "tier-rare", "tier-exotic"];
 
-var itemsAccordion, skillsAccordion, industryPrices, prices, recipes, german, french;
+var itemsAccordion, skillsAccordion, prices, recipes, german, french;
 
 var ver = "2021-07-21"
 document.getElementById("version").innerHTML = ver;
@@ -46,9 +46,6 @@ loadJSON("../data/itemsAccordion.json", function (json) {
 })
 loadJSON("../data/skillsAccordion.json", function (json) {
     skillsAccordion = JSON.parse(json);
-})
-loadJSON("../data/industryTimePrices.json", function (json) {
-    industryPrices = JSON.parse(json);
 })
 loadJSON("../data/orePrices.json", function (json) {
     prices = JSON.parse(json);
@@ -190,7 +187,6 @@ function calculate() {
 
     var totOre = 0;
     var totTime = 0;
-    var totPrice = 0;
     var orePrice = 0;
 
     var striped = false;
@@ -222,9 +218,6 @@ function calculate() {
 
                 var gapdet6 = document.createElement("div");
                 line1.push(gapdet6);
-
-                var gapdet7 = document.createElement("div");
-                line1.push(gapdet7);
 
                 line1.forEach(function (it, k) {
                     it.style.backgroundColor = "#777777";
@@ -292,10 +285,6 @@ function calculate() {
             item2.innerHTML = cc.trans(language, list[i].name);
             line.push(item2);
 
-            var price = document.createElement("div");
-            price.classList.add("queue-time");
-            line.push(price);
-
             var qty2 = document.createElement("div");
             qty2.classList.add("queue-quantity");
             qty2.innerHTML = formatNum(list[i].quantity, 0);
@@ -330,16 +319,6 @@ function calculate() {
             }
             indSel.onchange = updateIndSel;
             line.push(indSel);
-
-            var indPrice = list[i].time * industryPrices[cc.transr(language, indSel.options[indSel.selectedIndex].text)];
-            //console.log(list[i].name+" has ind price of "+industryPrices[indSel.options[indSel.selectedIndex].text]);
-            if (isNaN(indPrice)) {
-                console.log(list[i].name + " is nan price");
-            } else {
-                totPrice += indPrice;
-            }
-
-            price.innerHTML = formatNum(indPrice);
 
             var maintain = document.createElement("div");
             maintain.classList.add("queue-quantity");
@@ -427,8 +406,6 @@ function calculate() {
 
     totalTime.innerHTML = totTime.toString().toHHMMSS();
     totalOre.innerHTML = formatNum(totOre, 0);
-
-    totalPrice.innerHTML = formatNum(totPrice, 0);
 
     //console.log("end of calc prices");
     //console.log(JSON.stringify(prices));
@@ -1083,9 +1060,6 @@ function removeItem(event) {
     calculate();
 }
 
-var priceHeader1 = document.createElement("h3");
-priceHeader1.innerText = "Price per L of ore";
-priceDialog.appendChild(priceHeader1);
 Object.keys(prices).forEach(function (ore, i) {
 
     var label = document.createElement("div");
@@ -1109,30 +1083,6 @@ Object.keys(prices).forEach(function (ore, i) {
     priceDialog.appendChild(label);
 });
 
-var priceHeader2 = document.createElement("h3");
-priceHeader2.innerText = "Price per second of industry crafting time";
-priceDialog.appendChild(priceHeader2);
-
-Object.keys(industryPrices).forEach(function (ind, i) {
-    var label = document.createElement("div");
-    label.classList.add("accordion-item2");
-    label.classList.add("unselectable");
-    label.innerHTML = cc.trans(language, ind);
-
-    var qty = document.createElement("INPUT");
-    qty.setAttribute("type", "text");
-    qty.setAttribute("value", industryPrices[ind].toFixed(3).toString());
-    qty.style.width = "25%";
-    qty.style.float = "right";
-    qty.classList.add("accordion-item2");
-    qty.classList.add("price-ind");
-    qty.onblur = updatePrice;
-
-    label.appendChild(qty);
-
-    priceDialog.appendChild(label);
-});
-
 function updatePrice(event) {
     var name = event.target.parentElement.innerText;
     name = cc.transr(language, name);
@@ -1146,25 +1096,11 @@ function updatePrice(event) {
                 return;
             }
         }
-        for (var n of Object.keys(industryPrices)) {
-            if (n == name) {
-                event.target.value = prices[n];
-                return;
-            }
-        }
     }
     for (var n of Object.keys(prices)) {
         if (n == name) {
             //console.log(newParse(event.target.value))
             prices[n] = newParse(event.target.value);
-            updatePrices();
-            calculate();
-            return;
-        }
-    }
-    for (var n of Object.keys(industryPrices)) {
-        if (n == name) {
-            industryPrices[n] = newParse(event.target.value);
             updatePrices();
             calculate();
             return;
@@ -1191,9 +1127,6 @@ function updatePrices() {
             if (inp.classList[j] == "price-ore") {
                 inp.value = prices[ore].toFixed(2).toString();
                 //console.log("updating ore price "+ore);
-            } else if (inp.classList[j] == "price-ind") {
-                inp.value = industryPrices[ore].toFixed(3).toString();
-                //console.log("updating ind price "+ore);
             }
         }
     }
@@ -1249,9 +1182,6 @@ function clearLists() {
 
     window.localStorage.setItem("profiles", "[]");
 
-    loadJSON("../data/industryTimePrices.json", function (json) {
-        industryPrices = JSON.parse(json);
-    })
     loadJSON("../data/orePrices.json", function (json) {
         prices = JSON.parse(json);
     })
@@ -1272,7 +1202,6 @@ function getState() {
         craft: craft,
         skills: skills,
         prices: prices,
-        industryPrices: industryPrices,
         industrySelection: industrySelection,
         ver: ver,
         language: language
@@ -1456,8 +1385,7 @@ function tryRestoreState(profile) {
         //restore prices
         try {
             prices = state.prices;
-            industryPrices = state.industryPrices;
-            if (Object.keys(prices) === 0 || Object.keys(industryPrices) === 0) {
+            if (Object.keys(prices) === 0) {
                 throw 'prices are empty'
             }
             updatePrices();
