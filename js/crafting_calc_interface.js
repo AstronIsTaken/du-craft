@@ -168,7 +168,6 @@ function calculate() {
     }
     if (craft.length === 0) {
         totalTime.innerHTML = "0".toHHMMSS();
-        totalPrice.innerHTML = 0;
         trySaveState();
         return;
     }
