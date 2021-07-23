@@ -270,15 +270,15 @@ function recipeCalc(data) {
                         }
                     }
                 }, this);
-                return;
+                continue;
             }
 
             var candidates = [];
             var modify = [];
             Object.keys(this.db).forEach(function (name, i) {
                 var item = this.db[name];
-                if (item.skill == "" || item.skill == null) {
-                    if (item.type.search(skill.target) != -1 || name.search(skill.target) != -1) {
+                if (item.skill === "" || item.skill == null) {
+                    if (item.type.localeCompare(skill.target) == 0 && ('tier' in skill ? item.tier == skill.tier : true)) {
                         candidates.push(name);
                     }
                 } else if (item.skill == skill.target) {
@@ -293,7 +293,6 @@ function recipeCalc(data) {
                     if (candidates[f].search(skill.data[d]) != -1) {
                         found = true;
                         this.modifyItemStat(candidates[f], skill.targets[d].type, skill.targets[d].amount * skill.values[d], skill.targets[d].relative);
-                        //break;
                     }
                 }
                 if (!found) {

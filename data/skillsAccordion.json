@@ -5,6 +5,7 @@
       {
         "name": "Refining",
         "target": "Pure",
+        "tier": 1,
         "subject": "Recipe",
         "data": [
           "Efficiency",
@@ -44,6 +45,7 @@
       {
         "name": "Productivity",
         "target": "Pure",
+        "tier": 1,
         "subject": "Recipe",
         "data": [
           "Pure Aluminium",
@@ -82,6 +84,7 @@
       {
         "name": "Refining",
         "target": "Pure",
+        "tier": 2,
         "subject": "Recipe",
         "data": [
           "Efficiency",
@@ -121,6 +124,7 @@
       {
         "name": "Productivity",
         "target": "Pure",
+        "tier": 2,
         "subject": "Recipe",
         "data": [
           "Pure Calcium",
@@ -159,6 +163,7 @@
       {
         "name": "Refining",
         "target": "Pure",
+        "tier": 3,
         "subject": "Recipe",
         "data": [
           "Efficiency",
@@ -198,6 +203,7 @@
       {
         "name": "Productivity",
         "target": "Pure",
+        "tier": 3,
         "subject": "Recipe",
         "data": [
           "Pure Lithium",
@@ -236,6 +242,7 @@
       {
         "name": "Refining",
         "target": "Pure",
+        "tier": 4,
         "subject": "Recipe",
         "data": [
           "Efficiency",
@@ -275,6 +282,7 @@
       {
         "name": "Productivity",
         "target": "Pure",
+        "tier": 4,
         "subject": "Recipe",
         "data": [
           "Pure Cobalt",
@@ -313,6 +321,7 @@
       {
         "name": "Refining",
         "target": "Pure",
+        "tier": 5,
         "subject": "Recipe",
         "data": [
           "Efficiency",
@@ -352,6 +361,7 @@
       {
         "name": "Productivity",
         "target": "Pure",
+        "tier": 5,
         "subject": "Recipe",
         "data": [
           "Pure Manganese",
@@ -390,6 +400,7 @@
       {
         "name": "Refining",
         "target": "Product",
+        "tier": 1,
         "data": [
           "Efficiency",
           "Al-Fe Alloy",
@@ -433,6 +444,8 @@
       },
       {
         "name": "Productivity",
+        "target": "Product",
+        "tier": 1,
         "data": [
           "Al-Fe Alloy",
           "Polycarbonate Plastic",
@@ -476,6 +489,7 @@
       {
         "name": "Refining",
         "target": "Product",
+        "tier": 2,
         "data": [
           "Efficiency",
           "Calcium Reinforced Copper",
@@ -519,6 +533,8 @@
       },
       {
         "name": "Productivity",
+        "target": "Product",
+        "tier": 2,
         "data": [
           "Calcium Reinforced Copper",
           "Duralumin",
@@ -562,6 +578,7 @@
       {
         "name": "Refining",
         "target": "Product",
+        "tier": 3,
         "data": [
           "Efficiency",
           "Cu-Ag Alloy",
@@ -605,6 +622,8 @@
       },
       {
         "name": "Productivity",
+        "target": "Product",
+        "tier": 3,
         "data": [
           "Cu-Ag Alloy",
           "Al-Li Alloy",
@@ -648,6 +667,7 @@
       {
         "name": "Refining",
         "target": "Product",
+        "tier": 4,
         "data": [
           "Efficiency",
           "Red Gold",
@@ -691,6 +711,8 @@
       },
       {
         "name": "Productivity",
+        "target": "Product",
+        "tier": 4,
         "data": [
           "Red Gold",
           "Fluoropolymer",
@@ -734,6 +756,7 @@
       {
         "name": "Refining",
         "target": "Product",
+        "tier": 5,
         "data": [
           "Efficiency",
           "Ti-Nb Supraconductor",
@@ -777,6 +800,8 @@
       },
       {
         "name": "Productivity",
+        "target": "Product",
+        "tier": 5,
         "data": [
           "Ti-Nb Supraconductor",
           "Vanamer",
@@ -2015,7 +2040,7 @@
         ]
       },
       {
-        "name": "Chemical",
+        "name": "Chemical Industry M",
         "target": "Chemical Industry M",
         "subject": "Industry",
         "data": [
@@ -2036,7 +2061,7 @@
         ]
       },
       {
-        "name": "3D Printer",
+        "name": "3D Printer M",
         "target": "3D Printer M",
         "subject": "Industry",
         "data": [
@@ -2057,7 +2082,7 @@
         ]
       },
       {
-        "name": "Glass Furnace",
+        "name": "Glass Furnace M",
         "target": "Glass Furnace M",
         "subject": "Industry",
         "data": [
@@ -2078,8 +2103,8 @@
         ]
       },
       {
-        "name": "Metalworks",
-        "target": "Metalworks M",
+        "name": "Metalwork Industry M",
+        "target": "Metalwork Industry M",
         "subject": "Industry",
         "data": [
           "Efficiency",

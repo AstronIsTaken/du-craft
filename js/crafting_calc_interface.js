@@ -35,9 +35,11 @@ var tierClassNames = ["tier-basic", "tier-uncommon", "tier-advanced", "tier-rare
 
 var itemsAccordion, skillsAccordion, prices, recipes, german, french;
 
-var ver = "2021-07-21"
-document.getElementById("version").innerHTML = ver;
-console.log("Crafting Calculator Version: " + ver)
+var ver = "2";
+var lastUpdateTime = "2021-07-23";
+document.getElementById("lastUpdateTime").innerHTML = lastUpdateTime;
+console.log("Crafting Calculator Updated On: " + lastUpdateTime)
+console.log("Crafting Calculator Profile Version: " + ver)
 
 var language = "english"
 
