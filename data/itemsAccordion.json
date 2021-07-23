@@ -550,6 +550,15 @@
             ]
           },
           "Repair Unit",
+          {
+            "name": "Shield Generators",
+            "data": [
+              "Shield Generator XS",
+              "Shield Generator S",
+              "Shield Generator M",
+              "Shield Generator L"
+            ]
+          },
           "Transponder",
           {
             "name": "Weapon Unit",
@@ -1453,6 +1462,7 @@
               }
             ]
           },
+          "Deep Space Asteroid Tracker",
           "Resurrection Node",
           {
             "name": "Surrogate Station Equipment",
@@ -2192,6 +2202,7 @@
               "Advanced Antenna S",
               "Advanced Antenna M",
               "Advanced Antenna L",
+              "Advanced Antenna XL",
               "Rare Antenna S",
               "Rare Antenna M",
               "Rare Antenna L",
@@ -2330,6 +2341,7 @@
               "Advanced Laser Chamber S",
               "Advanced Laser Chamber M",
               "Advanced Laser Chamber L",
+              "Advanced Laser Chamber XL",
               "Rare Laser Chamber XS",
               "Rare Laser Chamber S",
               "Rare Laser Chamber M",

@@ -3152,6 +3152,28 @@
       "Advanced Power System": 50
     }
   },
+  "Advanced Antenna XL": {
+    "tier": 3,
+    "type": "Functional Part",
+    "mass": 0,
+    "volume": 0,
+    "outputQuantity": 1,
+    "time": 77760,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Basic Screw": 188,
+      "Basic Power System": 188,
+      "Uncommon Screw": 188,
+      "Uncommon Power System": 188,
+      "Cu-Ag Alloy": 2401,
+      "Advanced Screw": 250,
+      "Advanced Power System": 250
+    }
+  },
   "Rare Antenna S": {
     "tier": 4,
     "type": "Functional Part",
@@ -5020,6 +5042,28 @@
       "Ag-Li Reinforced Glass": 343,
       "Advanced LED": 50,
       "Advanced Optics": 50
+    }
+  },
+  "Advanced Laser Chamber XL": {
+    "tier": 3,
+    "type": "Functional Part",
+    "mass": 0,
+    "volume": 0,
+    "outputQuantity": 1,
+    "time": 77760,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Glass Furnace M"
+    ],
+    "input": {
+      "Basic LED": 188,
+      "Basic Optics": 188,
+      "Uncommon LED": 188,
+      "Uncommon Optics": 188,
+      "Ag-Li Reinforced Glass": 2401,
+      "Advanced LED": 250,
+      "Advanced Optics": 250
     }
   },
   "Rare Laser Chamber XS": {
@@ -14510,6 +14554,86 @@
       "Exotic Standard Frame L": 1
     }
   },
+  "Shield Generator XS": {
+    "tier": 3,
+    "type": "Shield Generator",
+    "mass": 670,
+    "volume": 210,
+    "outputQuantity": 1,
+    "time": 5400,
+    "skill": "InIn",
+    "byproducts": {},
+    "industries": [
+      "Assembly Line S"
+    ],
+    "input": {
+      "Uncommon Component": 6,
+      "Advanced Magnet": 5,
+      "Advanced Laser Chamber S": 1,
+      "Advanced Quantum Barrier": 4,
+      "Advanced Reinforced Frame S": 1
+    }
+  },
+  "Shield Generator S": {
+    "tier": 3,
+    "type": "Shield Generator",
+    "mass": 3300,
+    "volume": 950,
+    "outputQuantity": 1,
+    "time": 21600,
+    "skill": "InIn",
+    "byproducts": {},
+    "industries": [
+      "Assembly Line M"
+    ],
+    "input": {
+      "Uncommon Component": 36,
+      "Advanced Magnet": 25,
+      "Advanced Laser Chamber M": 1,
+      "Advanced Quantum Barrier": 16,
+      "Advanced Reinforced Frame M": 1
+    }
+  },
+  "Shield Generator M": {
+    "tier": 3,
+    "type": "Shield Generator",
+    "mass": 17000,
+    "volume": 4500,
+    "outputQuantity": 1,
+    "time": 86400,
+    "skill": "InIn",
+    "byproducts": {},
+    "industries": [
+      "Assembly Line L"
+    ],
+    "input": {
+      "Uncommon Component": 216,
+      "Advanced Magnet": 125,
+      "Advanced Laser Chamber L": 1,
+      "Advanced Quantum Barrier": 64,
+      "Advanced Reinforced Frame L": 1
+    }
+  },
+  "Shield Generator L": {
+    "tier": 3,
+    "type": "Shield Generator",
+    "mass": 92000,
+    "volume": 22700,
+    "outputQuantity": 1,
+    "time": 345600,
+    "skill": "InIn",
+    "byproducts": {},
+    "industries": [
+      "Assembly Line L"
+    ],
+    "input": {
+      "Uncommon Component": 1296,
+      "Advanced Magnet": 625,
+      "Advanced Laser Chamber XL": 1,
+      "Advanced Quantum Barrier": 256,
+      "Advanced Reinforced Frame XL": 1
+    }
+  },
   "Info Button S": {
     "tier": 1,
     "type": "Info Button",
@@ -18290,6 +18414,26 @@
     ],
     "input": {
       "Mangalloy": 100
+    }
+  },
+  "Deep Space Asteroid Tracker": {
+    "tier": 3,
+    "type": "Deep Space Asteroid Tracker",
+    "mass": 115000,
+    "volume": 20500,
+    "outputQuantity": 1,
+    "time": 345600,
+    "skill": "Systems",
+    "byproducts": {},
+    "industries": [
+      "Assembly Line XL"
+    ],
+    "input": {
+      "Uncommon LED": 1296,
+      "Advanced Processor": 625,
+      "Advanced Antenna XL": 1,
+      "Advanced Antimatter Core": 256,
+      "Advanced Reinforced Frame XL": 1
     }
   },
   "Resurrection Node": {

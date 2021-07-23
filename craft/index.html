@@ -2,7 +2,7 @@
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
-    <link rel="stylesheet" type="text/css" href="../css/craft.css">
+    <link rel="stylesheet" type="text/css" href="../css/craft.css?v=1">
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
@@ -22,18 +22,13 @@
     <button id="getDataButton" style="float:left;margin:0 5px;">Copy Config</button>
     <button id="setDataButton" style="float:left;margin:0 5px;">Paste Config</button>
 
-    <span style="color:#fff;float:left;padding:0 0 0 15px;">Ver:<span id="version">Loading</span></span>
-
-
-    <a class="navright" href="http://dual.sh">Dual.sh</a>
-
-
-    <span class="navright legend">Tiers
-<span class="basic">1:Basic</span>
-<span class="uncommon">2:Uncommon</span>
-<span class="advanced">3:Advanced</span>
-<span class="rare">4:Rare</span>
-<span class="exotic">5:Exotic</span>
+    <span style="color:#fff;float:left;padding:0 0 0 15px;">Ver:&nbsp;<span id="version">Loading</span></span>
+    <span class="navright legend">
+<span class="tier-basic tier-all">1 : Basic</span>
+<span class="tier-uncommon tier-all">2 : Uncommon</span>
+<span class="tier-advanced tier-all">3 : Advanced</span>
+<span class="tier-rare tier-all">4 : Rare</span>
+<span class="tier-exotic tier-all">5 : Exotic</span>
 </span>
 
 
@@ -43,7 +38,7 @@
     <div class="flex-box1 section-divider">
         <div class="section-header list-item" style="justify-content:space-between;">
             Your Inventory
-            <button id="invClearBut" style="flex:end">Clear</button>
+            <button id="invClearBut" class="clear-button">Clear</button>
         </div>
         <br>
         <div id="invList" class="grid-container1">
@@ -56,7 +51,7 @@
     <div class="flex-box1 section-divider">
         <div class="section-header list-item" style="justify-content:space-between;">
             Items To Craft
-            <button id="craftClearBut" style="position:relative;top:0;right:0;">Clear</button>
+            <button id="craftClearBut" class="clear-button">Clear</button>
         </div>
         <br>
         <div id="cftList" class="grid-container1">
@@ -78,10 +73,12 @@
         </div>
     </div>
     <div class="flex-box2 section-divider">
-        <div class="section-header list-item">Crafting Queue</div>
+        <div class="section-header list-item" style="justify-content:space-between;">
+            Crafting Queue
+            <button id="detailedCraftQueueButton" class="clear-button">Detailed View</button>
+        </div>
         <span class="totals">Crafting Time:
 			<span id="totalTime"></span>
-			<button id="detailedCraftQueueButton" style="float:right">Detailed View</button>
 		</span>
         <span class="totals">Crafting Price: <span id="totalPrice"></span> ħ</span>
 
@@ -149,8 +146,7 @@
             <select id="profileDeleteList"></select>
             <br>
             <br>
-            <button id="clearProfiles" class="bugButton" style="float:right;margin-bottom:5px;">Delete all profiles
-            </button>
+            <button id="clearProfiles" class="bugButton">Delete All</button>
         </div>
     </div>
 
@@ -222,14 +218,16 @@
             <span id="dataModalClose" class="modal-close">&times;</span>
             <h2>Input Config</h2>
         </div>
+        <div class="modal-body">
         <textarea id="configta" rows="20" cols="50"></textarea>
         <button id="doconfigBut">Insert</button>
+        </div>
     </div>
 
 </div>
 
-<script src="../js/crafting_calc.js"></script>
-<script src="../js/crafting_calc_interface.js"></script>
+<script src="../js/crafting_calc.js?v=1"></script>
+<script src="../js/crafting_calc_interface.js?v=1"></script>
 
 </body>
 </html>

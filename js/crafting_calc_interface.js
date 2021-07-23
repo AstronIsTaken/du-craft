@@ -1,7 +1,6 @@
 // helper functions
 
 function loadJSON(path, callback) {
-
     let xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     xobj.open('GET', path, false); // Replace 'my_data' with the path to your file
@@ -32,31 +31,13 @@ function copyStringToClipboard(str) {
     document.body.removeChild(el);
 }
 
-function getStringFromClipboard() {
-    // Create new element
-    var el = document.createElement('textarea');
-    // Set value (string to be copied)
-    el.style = {position: 'absolute', left: '-9999px'};
-    document.body.appendChild(el);
-    // Select text inside element
-    el.value = "";
-    el.select();
-    // Copy text to clipboard
-    document.execCommand('paste');
-    // Remove temporary element
-    var val = el.value;
-    console.log("clipboard val is: " + el.textContent);
-    document.body.removeChild(el);
-    return val
-}
-
-var tierNames = ["Basic", "Uncommon", "Advanced", "Rare", "Exotic"];
+var tierClassNames = ["tier-basic", "tier-uncommon", "tier-advanced", "tier-rare", "tier-exotic"];
 
 var itemsAccordion, skillsAccordion, industryPrices, prices, recipes, german, french;
 
 var ver = "2021-07-21"
 document.getElementById("version").innerHTML = ver;
-console.log("Crafing Calculator Version: " + ver)
+console.log("Crafting Calculator Version: " + ver)
 
 var language = "english"
 
@@ -76,7 +57,6 @@ loadJSON("../data/recipes.json", function (json) {
     recipes = json;
 })
 
-
 loadJSON("../data/craft_trans_german.json", function (json) {
     german = json;
 })
@@ -84,9 +64,7 @@ loadJSON("../data/craft_trans_french.json", function (json) {
     french = json;
 })
 
-
 //console.log(JSON.stringify(skillsAccordion,null,2));
-
 
 function formatNum(num, places) {
     if (typeof num != "number") {
@@ -106,7 +84,6 @@ function formatNum(num, places) {
     return x1 + x2;
 }
 
-
 String.prototype.toHHMMSS = function () {
     var sec_num = parseFloat(this); // don't forget the second param
     var days = Math.floor(sec_num / 86400);
@@ -125,7 +102,6 @@ String.prototype.toHHMMSS = function () {
     }
     return days + ' d : ' + hours + ' h : ' + minutes + ' m : ' + formatNum(seconds, 0) + ' s';
 }
-
 
 //-----------------------------------------------------------------------------------
 // crafting calculator variables and calculation
@@ -255,7 +231,6 @@ function calculate() {
                     queueListDetailed.appendChild(it);
                 });
 
-
                 line2 = [];
                 var gap4 = document.createElement("div");
                 gap4.innerHTML = cc.db[list[i].name].type;
@@ -276,7 +251,6 @@ function calculate() {
                     it.style["border-radius"] = "3px";
                     queueList.appendChild(it);
                 });
-
             }
         }
         //console.log("creating elements for "+JSON.stringify(list[i]));
@@ -302,17 +276,15 @@ function calculate() {
             check.onclick = finishOreItem;
             check.innerHTML = "&#x2714;"
 
-
             oreList.appendChild(item);
             oreList.appendChild(qty);
             oreList.appendChild(price);
             oreList.appendChild(check);
-
         } else {
             // detailed window list
-            var bgcolor = "#005380";
+            var rowClass = "details-row-1";
             if (striped) {
-                bgcolor = "#00324d"
+                rowClass = "details-row-2";
             }
             var line = [];
             var item2 = document.createElement("div");
@@ -385,18 +357,15 @@ function calculate() {
             maintain.innerHTML = formatNum(mv, 0);
             line.push(maintain);
 
-
             line.forEach(function (it, k) {
-                if (k % queueListDetailedCols != 0) {
-                    it.style.backgroundColor = bgcolor;
-                }
+                it.classList.add(rowClass);
                 queueListDetailed.appendChild(it);
             });
 
             striped = !striped;
 
-            item2.classList.add(tierNames[list[i].tier - 1].toLowerCase());
-
+            item2.classList.add(tierClassNames[list[i].tier - 1]);
+            item2.classList.add("tier-all");
 
             //main window queue list
 
@@ -424,15 +393,13 @@ function calculate() {
             queueList.appendChild(qty);
             queueList.appendChild(time);
             queueList.appendChild(check);
-
-
         }
         //console.log("list[i] "+JSON.stringify(list[i],null,2));
         //console.log(list[i].tier);
-        item.classList.add(tierNames[list[i].tier - 1].toLowerCase());
+        item.classList.add(tierClassNames[list[i].tier - 1]);
+        item.classList.add("tier-all");
         item.style.padding = "0 0 0 5px";
         item.style["border-radius"] = "3px";
-
     }
 
     var item = document.createElement("div");
@@ -453,12 +420,10 @@ function calculate() {
 
     var check = document.createElement("div");
 
-
     oreList.appendChild(item);
     oreList.appendChild(qty);
     oreList.appendChild(price);
     oreList.appendChild(check);
-
 
     totalTime.innerHTML = totTime.toString().toHHMMSS();
     totalOre.innerHTML = formatNum(totOre, 0);
@@ -470,7 +435,6 @@ function calculate() {
 
     trySaveState();
 }
-
 
 //-----------------------------------------------------------------------------
 // Modals for item selection and skill selection
@@ -518,13 +482,11 @@ function createItemsAcc(list, depth, filter = "", override = false) {
                 output.push(deeperOutput[0].join(''));
                 output.push(tab + '\t</div>\n');
             }
-
         } else {
             if (!cc.db[list[i]]) {
                 console.log('Item ' + list[i] + ' has no recipe');
                 continue;
             }
-
             var cn = "";
             if (list[i].search("Ore") != -1 || list[i].search("Pure") != -1) {
                 cn = list[i].split(" ")[0].toLowerCase();
@@ -631,7 +593,6 @@ function createSkillsAcc(list, depth, upperName, filter = "", override = false) 
                 output.push(deeperOutput[0].join(''));
                 output.push(tab + '\t</div>\n');
             }
-
         } else {
 
             if (filter == "" || list[i].toLowerCase().search(filter.toLowerCase()) != -1 || override) {
@@ -655,14 +616,12 @@ function createSkillsAcc(list, depth, upperName, filter = "", override = false) 
         output = ['<span style="color:#fff">No results</span>'];
     }
     return [output, found];
-
 }
 
 //console.log(JSON.stringify(skillsAccordion,null,2))
 var skillsAccList = createSkillsAcc(skillsAccordion, 0, "")[0];
 var skillsAccStr = skillsAccList.join('');
 skillAccordion.innerHTML = skillsAccStr;
-
 
 // skill modal callback to modify skill variable
 function setSkill(skillNames, value) {
@@ -689,11 +648,9 @@ function setSkill(skillNames, value) {
         }
     }
 
-
     cc.updateSkills(skills, industrySelection);
     updateSkills();
     calculate();
-
 }
 
 // set skill values visible in skill modal
@@ -716,7 +673,6 @@ function updateSkills() {
         }
     }
 }
-
 
 //-----------------------------------------------------------------------------------
 // callbacks
@@ -758,7 +714,6 @@ function finishCraftItem(event) {
 
     addInvItem(name, qty);
 }
-
 
 // modal accordion callbacks
 function setupCallbacks() {
@@ -822,7 +777,6 @@ window.onclick = function (event) {
 invAddBut.onclick = displayItemsModal;
 cftAddBut.onclick = displayItemsModal;
 
-
 function displaySkillsModal(input) {
     skillsModal.style.display = "block";
 }
@@ -833,7 +787,6 @@ function hideSkillsModal() {
 
 // When the user clicks on <span> (x), close the modal
 skillsModalClose.onclick = hideSkillsModal;
-
 
 function displayProfileModal(input) {
     profileModal.style.display = "block";
@@ -846,7 +799,6 @@ function hideProfileModal() {
 // When the user clicks on <span> (x), close the modal
 profileModalClose.onclick = hideProfileModal;
 
-
 function displayQueueModal(input) {
     craftQueueModal.style.display = "block";
 }
@@ -857,7 +809,6 @@ function hideQueueModal() {
 
 // When the user clicks on <span> (x), close the modal
 craftQueueModalClose.onclick = hideQueueModal;
-
 
 function displayPriceModal(input) {
     priceModal.style.display = "block";
@@ -891,7 +842,6 @@ function hideDataModal() {
 
 // When the user clicks on <span> (x), close the modal
 dataModalClose.onclick = hideDataModal;
-
 
 priceButton.onclick = displayPriceModal;
 detailedCraftQueueButton.onclick = displayQueueModal;
@@ -939,7 +889,6 @@ var doTrans = function () {
     setupCallbacks();
 }
 
-
 langButton.onclick = displayLangModal;
 lb_english.onclick = function () {
     language = "english";
@@ -953,7 +902,6 @@ lb_french.onclick = function () {
     language = "french";
     doTrans()
 };
-
 
 // updates the inv variable based on each number input
 function updateInv(event) {
@@ -1028,7 +976,8 @@ function updateInvList() {
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
         }
-        item.classList.add(tierNames[cc.db[name].tier - 1].toLowerCase());
+        item.classList.add(tierClassNames[cc.db[name].tier - 1]);
+        item.classList.add("tier-all");
         var qty = document.createElement("input");
         qty.type = "number";
         qty.classList.add("inv-quantity");
@@ -1067,7 +1016,8 @@ function updateCraftList() {
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
         }
-        item.classList.add(tierNames[cc.db[name].tier - 1].toLowerCase());
+        item.classList.add(tierClassNames[cc.db[name].tier - 1]);
+        item.classList.add("tier-all");
         var qty = document.createElement("input");
         qty.type = "number";
         qty.classList.add("cft-quantity");
@@ -1094,7 +1044,6 @@ function addItem(event) {
             }
         }
         addInvItem(name);
-
     } else {
         var items = document.getElementsByClassName("cft-item")
         for (var i = 0; i < items.length; i++) {
@@ -1103,7 +1052,6 @@ function addItem(event) {
                 return;
             }
         }
-
         addCraftItem(name, quantity);
     }
 }
@@ -1114,7 +1062,6 @@ function removeItem(event) {
     var item = minus.nextSibling;
     var qty = item.nextSibling;
     if (event.target.classList.contains("inv-remove")) {
-
         invList.removeChild(minus);
         invList.removeChild(item);
         invList.removeChild(qty);
@@ -1144,7 +1091,8 @@ Object.keys(prices).forEach(function (ore, i) {
     var label = document.createElement("div");
     label.classList.add("accordion-item2");
     label.classList.add("unselectable");
-    label.classList.add(tierNames[cc.db[ore].tier - 1].toLowerCase());
+    label.classList.add(tierClassNames[cc.db[ore].tier - 1]);
+    label.classList.add("tier-all");
     label.innerHTML = cc.trans(language, ore);
 
     var qty = document.createElement("INPUT");
@@ -1159,7 +1107,6 @@ Object.keys(prices).forEach(function (ore, i) {
     label.appendChild(qty);
 
     priceDialog.appendChild(label);
-
 });
 
 var priceHeader2 = document.createElement("h3");
@@ -1167,12 +1114,10 @@ priceHeader2.innerText = "Price per second of industry crafting time";
 priceDialog.appendChild(priceHeader2);
 
 Object.keys(industryPrices).forEach(function (ind, i) {
-
     var label = document.createElement("div");
     label.classList.add("accordion-item2");
     label.classList.add("unselectable");
     label.innerHTML = cc.trans(language, ind);
-
 
     var qty = document.createElement("INPUT");
     qty.setAttribute("type", "text");
@@ -1241,7 +1186,6 @@ function updatePrices() {
         //console.log(priceDialog.children[i].children[0].value);
 
         var inp = priceDialog.children[i].children[0];
-
 
         for (var j = 0; j < inp.classList.length; j++) {
             if (inp.classList[j] == "price-ore") {
@@ -1319,7 +1263,6 @@ function clearLists() {
     //console.log(JSON.stringify(skills,null,2));
     cc.updateSkills(skills, industrySelection)
     calculate();
-
 }
 
 function getState() {
@@ -1338,7 +1281,6 @@ function getState() {
     //console.log(JSON.stringify(prices,null,2));
     return JSON.stringify(state);
 }
-
 
 // profile saving/loading
 
@@ -1539,8 +1481,6 @@ function tryRestoreState(profile) {
         } catch (e) {
             console.log("failed to change languages");
         }
-
-
     } catch (e) {
         console.log('Could not restore the previous crafting calculator state.', e);
     }

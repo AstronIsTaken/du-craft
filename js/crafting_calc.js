@@ -61,7 +61,6 @@ function recipeCalc(data) {
     //parse db from JSON
     this.types = [];
 
-
     this.lang = {"english": {}};
     this.langr = {"english": {}}
 
@@ -117,8 +116,6 @@ function recipeCalc(data) {
             console.error("unknownItems: " + [...unknownItems]);
         }
         //console.log(JSON.stringify(this.types,null,2));
-
-
         //console.log("parse db return");
         //console.log(JSON.stringify(this.db));
 
@@ -308,7 +305,6 @@ function recipeCalc(data) {
         }
     }
 
-
     //crafting simulation calculation
     // returns list of required crafting queue for a given input of crafted items
     this.simulate = function (input, inventory, skills) {
@@ -331,7 +327,6 @@ function recipeCalc(data) {
             var ingredients = this.db[iqPair.name].getIngredients();
             var byproducts = this.db[iqPair.name].getByproducts();
             var oq = this.db[iqPair.name].actualOQ;
-
 
             this.debug.push("----checking ingredients of input");
             this.debug.push(JSON.stringify(ingredients));
@@ -366,12 +361,10 @@ function recipeCalc(data) {
                         skillQ: 0
                     }]);
 
-
                     byproducts.forEach(function (bPair, i) {
                         inventory[bPair.name].bpquantity += bPair.quantity;
                         itemSequence = itemSequence.concat([{name: bPair.name, bpquantity: bPair.quantity}]);
                     }, this);
-
                 }
             } else {
                 this.debug.push("this is a base recipe, inserting desired amount to inventory");
@@ -400,7 +393,6 @@ function recipeCalc(data) {
         //console.log("inventory: "+JSON.stringify(removeInvZeros(inventory)));
         return itemSequence;
     };
-
 
     // wrapper for the simulate func
     this.calcList = function (input, inv, skills) {
@@ -434,7 +426,6 @@ function recipeCalc(data) {
 
         inputRed.sort(sortFunc);
         inputRed.reverse();
-
 
         var inventory = {};
         Object.keys(this.db).forEach(function (k, i) {
@@ -482,10 +473,8 @@ function recipeCalc(data) {
         compressedList.forEach(populate, this);
         compressedList.sort(sortFunc);
 
-
         //console.log("calcLists normal");
         //console.log(JSON.stringify(compressedList,null,2));
         return {normal: compressedList, expanded: craftList, inventory: inventory}
     };
-
 }
