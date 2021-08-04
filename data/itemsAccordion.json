@@ -883,6 +883,7 @@
             "data": [
               "Bed",
               "Bench",
+              "Chair Surface",
               "Encampment Chair",
               "Navigator Chair",
               "Office Chair",
@@ -2427,9 +2428,20 @@
             ]
           },
           "Advanced Motherboard M",
-          "Uncommon Ore Scanner XL",
           {
-            "name": "Power Transformer",
+            "name": "Ore Scanners",
+            "data": [
+              "Basic Ore Scanner S",
+              "Basic Ore Scanner L",
+              "Uncommon Ore Scanner L",
+              "Uncommon Ore Scanner XL",
+              "Advanced Ore Scanner L",
+              "Rare Ore Scanner L",
+              "Exotic Ore Scanner L"
+            ]
+          },
+          {
+            "name": "Power Transformers",
             "data": [
               "Basic Power Transformer M",
               "Uncommon Power Transformer S",

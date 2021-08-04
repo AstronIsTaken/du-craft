@@ -6259,6 +6259,60 @@
       "Advanced Processor": 10
     }
   },
+  "Basic Ore Scanner S": {
+    "tier": 1,
+    "type": "Functional Part",
+    "mass": 10.93,
+    "volume": 15.5,
+    "outputQuantity": 1,
+    "time": 180,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Polycarbonate Plastic": 7,
+      "Basic Connector": 5
+    }
+  },
+  "Basic Ore Scanner L": {
+    "tier": 1,
+    "type": "Functional Part",
+    "mass": 320.29,
+    "volume": 471.5,
+    "outputQuantity": 1,
+    "time": 1620,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Polycarbonate Plastic": 343,
+      "Basic Connector": 125
+    }
+  },
+  "Uncommon Ore Scanner L": {
+    "tier": 2,
+    "type": "Functional Part",
+    "mass": 333.7,
+    "volume": 473.9,
+    "outputQuantity": 1,
+    "time": 6480,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Basic Connector": 38,
+      "Basic Electronics": 38,
+      "Polycalcite Plastic": 343,
+      "Uncommon Connector": 88,
+      "Uncommon Electronics": 88
+    }
+  },
   "Uncommon Ore Scanner XL": {
     "tier": 2,
     "type": "Functional Part",
@@ -6277,6 +6331,69 @@
       "Polycalcite Plastic": 2401,
       "Uncommon Connector": 438,
       "Uncommon Electronics": 438
+    }
+  },
+  "Advanced Ore Scanner L": {
+    "tier": 3,
+    "type": "Functional Part",
+    "mass": 344.5,
+    "volume": 473.9,
+    "outputQuantity": 1,
+    "time": 25920,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Basic Connector": 38,
+      "Basic Electronics": 38,
+      "Uncommon Connector": 38,
+      "Uncommon Electronics": 38,
+      "Polysulfide Plastic": 343,
+      "Advanced Connector": 50,
+      "Advanced Electronics": 50
+    }
+  },
+  "Rare Ore Scanner L": {
+    "tier": 4,
+    "type": "Functional Part",
+    "mass": 354.74,
+    "volume": 473.9,
+    "outputQuantity": 1,
+    "time": 103680,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Uncommon Connector": 38,
+      "Uncommon Electronics": 38,
+      "Advanced Connector": 38,
+      "Advanced Electronics": 38,
+      "Fluoropolymer": 343,
+      "Rare Electronics": 50
+    }
+  },
+  "Exotic Ore Scanner L": {
+    "tier": 5,
+    "type": "Functional Part",
+    "mass": 354.19,
+    "volume": 473.5,
+    "outputQuantity": 1,
+    "time": 414000,
+    "skill": "",
+    "byproducts": {},
+    "industries": [
+      "Electronics Industry M"
+    ],
+    "input": {
+      "Advanced Connector": 125,
+      "Advanced Electronics": 38,
+      "Rare Electronics": 38,
+      "Vanamer": 343,
+      "Exotic Electronics": 50
     }
   },
   "Basic Power Transformer M": {
@@ -15618,6 +15735,25 @@
       "Polycarbonate Plastic": 1,
       "Basic Screw": 1,
       "Basic Reinforced Frame XS": 1
+    }
+  },
+  "Chair Surface": {
+    "tier": 1,
+    "type": "Furniture",
+    "mass": 38,
+    "volume": 13,
+    "outputQuantity": 1,
+    "time": 90,
+    "skill": "Furniture/Appliance",
+    "byproducts": {},
+    "industries": [
+      "Nanopack",
+      "Assembly Line XS"
+    ],
+    "input": {
+      "Basic Screw": 1,
+      "Basic Hydraulics": 1,
+      "Basic Casing XS": 1
     }
   },
   "Wooden Low Table": {
