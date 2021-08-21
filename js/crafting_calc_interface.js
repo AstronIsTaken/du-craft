@@ -31,7 +31,7 @@ function copyStringToClipboard(str) {
     document.body.removeChild(el);
 }
 
-var itemsAccordion, skillsAccordion, prices, recipes, german, french;
+var itemsAccordion, skillsAccordion, prices, recipes, german;
 
 var ver = "2";
 var lastUpdateTime = "2021-07-23";
@@ -56,9 +56,6 @@ loadJSON("../data/recipes.json", function (json) {
 
 loadJSON("../data/craft_trans_german.json", function (json) {
     german = json;
-})
-loadJSON("../data/craft_trans_french.json", function (json) {
-    french = json;
 })
 
 //console.log(JSON.stringify(skillsAccordion,null,2));
@@ -141,7 +138,7 @@ var skills = getSkills(skillsAccordion, "")
 //console.log(recipes);
 //console.log(typeof recipes);
 var cc = new recipeCalc(recipes);
-cc.addTrans({"german": JSON.parse(german), "french": JSON.parse(french)});
+cc.addTrans({"german": JSON.parse(german)});
 //console.log(JSON.stringify(cc.db));
 
 var invListCols = invList.children.length;
@@ -856,10 +853,6 @@ lb_english.onclick = function () {
 };
 lb_german.onclick = function () {
     language = "german";
-    doTrans()
-};
-lb_french.onclick = function () {
-    language = "french";
     doTrans()
 };
 
