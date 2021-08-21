@@ -31,8 +31,6 @@ function copyStringToClipboard(str) {
     document.body.removeChild(el);
 }
 
-var tierClassNames = ["tier-basic", "tier-uncommon", "tier-advanced", "tier-rare", "tier-exotic"];
-
 var itemsAccordion, skillsAccordion, prices, recipes, german, french;
 
 var ver = "2";
@@ -106,7 +104,6 @@ String.prototype.toHHMMSS = function () {
 // crafting calculator variables and calculation
 var inv = [];
 var craft = [];
-var industrySelection = {};
 var itemLists = [];
 
 //populate skills
@@ -301,25 +298,10 @@ function calculate() {
             time2.innerHTML = formatNum(list[i].time, 0);
             line.push(time2);
 
-            var indSel = document.createElement("SELECT");
-            indSel.style.color = "white";
-            for (var j = list[i].industries.length - 1; j >= 0; j--) {
-                var ind = document.createElement("option");
-                ind.text = cc.trans(language, list[i].industries[j]);
-                ind.style.color = "white";
-                indSel.add(ind)
-            }
-
-            if (industrySelection[list[i].name] != null) {
-                indSel.value = cc.trans(language, industrySelection[list[i].name]);
-            } else {
-                //console.log(list[i].name+" didn't have an industrySelection");
-                industrySelection[list[i].name] = cc.transr(language, indSel.options[indSel.selectedIndex].text);
-                //console.log(indSel.options[indSel.selectedIndex].text);
-
-            }
-            indSel.onchange = updateIndSel;
-            line.push(indSel);
+            var industry = document.createElement("div");
+            industry.classList.add("queue-industry");
+            industry.innerHTML = list[i].industry;
+            line.push(industry);
 
             var maintain = document.createElement("div");
             maintain.classList.add("queue-quantity");
@@ -344,7 +326,7 @@ function calculate() {
 
             striped = !striped;
 
-            item2.classList.add(tierClassNames[list[i].tier - 1]);
+            item2.classList.add("tier-" + list[i].tier);
             item2.classList.add("tier-all");
 
             //main window queue list
@@ -376,7 +358,7 @@ function calculate() {
         }
         //console.log("list[i] "+JSON.stringify(list[i],null,2));
         //console.log(list[i].tier);
-        item.classList.add(tierClassNames[list[i].tier - 1]);
+        item.classList.add("tier-" + list[i].tier);
         item.classList.add("tier-all");
         item.style.padding = "0 0 0 5px";
         item.style["border-radius"] = "3px";
@@ -626,7 +608,7 @@ function setSkill(skillNames, value) {
         }
     }
 
-    cc.updateSkills(skills, industrySelection);
+    cc.updateSkills(skills);
     updateSkills();
     calculate();
 }
@@ -844,7 +826,7 @@ getDataButton.onclick = function () {
 doconfigBut.onclick = function () {
     trySaveState(configta.value);
     tryRestoreState();
-    cc.updateSkills(skills, industrySelection);
+    cc.updateSkills(skills);
     updateSkills();
     setupCallbacks();
     calculate();
@@ -954,7 +936,7 @@ function updateInvList() {
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
         }
-        item.classList.add(tierClassNames[cc.db[name].tier - 1]);
+        item.classList.add("tier-" + cc.db[name].tier);
         item.classList.add("tier-all");
         var qty = document.createElement("input");
         qty.type = "number";
@@ -994,7 +976,7 @@ function updateCraftList() {
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
         }
-        item.classList.add(tierClassNames[cc.db[name].tier - 1]);
+        item.classList.add("tier-" + cc.db[name].tier);
         item.classList.add("tier-all");
         var qty = document.createElement("input");
         qty.type = "number";
@@ -1066,7 +1048,7 @@ Object.keys(prices).forEach(function (ore, i) {
     var label = document.createElement("div");
     label.classList.add("accordion-item2");
     label.classList.add("unselectable");
-    label.classList.add(tierClassNames[cc.db[ore].tier - 1]);
+    label.classList.add("tier-" + cc.db[ore].tier);
     label.classList.add("tier-all");
     label.innerHTML = cc.trans(language, ore);
 
@@ -1133,48 +1115,6 @@ function updatePrices() {
     }
 }
 
-function updateIndSel(event) {
-    var indSel = event.target;
-    var item = indSel.previousSibling;
-
-    while (true) {
-        var classes = item.classList;
-        var flag = false;
-        for (var c of classes) {
-            if (c == "queue-item") {
-                flag = true;
-                break;
-            }
-        }
-        if (flag) {
-            break;
-        }
-        item = item.previousSibling;
-    }
-    var ind = cc.transr(language, item.innerText);
-    industrySelection[ind] = event.target.value;
-    updateIndSelections();
-    cc.updateSkills(skills, industrySelection);
-    calculate();
-}
-
-function updateIndSelections() {
-    Object.keys(industrySelection).forEach(function (name, i) {
-        for (var el of queueListDetailed.children) {
-            if (cc.transr(language, el.innerText) == name) {
-                var indSel = el;
-                var tagname = indSel.tagName;
-                while (tagname.toLowerCase() != "select") {
-                    indSel = indSel.nextSibling;
-                    tagname = indSel.tagName;
-                }
-                indSel.value = cc.trans(language, industrySelection[name]);
-                break;
-            }
-        }
-    });
-}
-
 function clearLists() {
     craft = [];
     updateCraftList();
@@ -1188,11 +1128,9 @@ function clearLists() {
     })
     updatePrices();
 
-    industrySelection = {};
-
     skills = getSkills(skillsAccordion, "")
     //console.log(JSON.stringify(skills,null,2));
-    cc.updateSkills(skills, industrySelection)
+    cc.updateSkills(skills)
     calculate();
 }
 
@@ -1203,7 +1141,6 @@ function getState() {
         craft: craft,
         skills: skills,
         prices: prices,
-        industrySelection: industrySelection,
         ver: ver,
         language: language
     };
@@ -1346,7 +1283,6 @@ function tryRestoreState(profile) {
         var oldInv = inv;
         var oldCraft = craft;
         var oldPrices = prices;
-        var oldIndSel = industrySelection;
 
         // restore skils
         try {
@@ -1394,16 +1330,6 @@ function tryRestoreState(profile) {
             console.log("failed to load prices");
             prices = oldPrices;
         }
-        try {
-            industrySelection = state.industrySelection;
-            if (Object.keys(industrySelection) === 0) {
-                throw 'industrySelection is empty'
-            }
-            updateIndSelections();
-        } catch (e) {
-            console.log("failed to load indsel");
-            industrySelection = oldIndSel;
-        }
 
         try {
             languageChanges[state.language]();
@@ -1443,7 +1369,7 @@ function trySaveState(data) {
 //console.log("attempting restore state");
 tryRestoreState();
 //console.log("attempting cc.updateSkills");
-cc.updateSkills(skills, industrySelection);
+cc.updateSkills(skills);
 updateSkills();
 //console.log("attempting ccalc");
 setupCallbacks();

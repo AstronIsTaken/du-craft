@@ -24,7 +24,7 @@ function itemRecipe(name, data) {
     this.outputQuantity = data.outputQuantity;
     this.time = data.time;
     this.byproducts = data.byproducts;
-    this.industries = data.industries;
+    this.industry = data.industry;
     this.input = data.input
     this.lang = {"english": this.name}
 
@@ -243,7 +243,7 @@ function recipeCalc(data) {
         }, this);
     }
 
-    this.updateSkills = function (skills, indConfig) {
+    this.updateSkills = function (skills) {
         this.resetItemStats();
         this.skills = skills;
 
@@ -252,21 +252,10 @@ function recipeCalc(data) {
 
             if (skill.subject == "Industry") {
                 Object.keys(this.db).forEach(function (name, i) {
-                    if (indConfig[name]) {
-                        if (skill.target == indConfig[name]) {
-                            for (var d = 0; d < skill.data.length; d++) {
-                                this.modifyItemStat(name, skill.targets[d].type, skill.targets[d].amount * skill.values[d], skill.targets[d].relative);
-                            }
-                        }
-                    } else {
-                        var ind = this.db[name].industries[0];
-                        if (this.db[name].industries.length > 1) {
-                            ind = this.db[name].industries[1]
-                        }
-                        if (skill.target == ind) {
-                            for (var d = 0; d < skill.data.length; d++) {
-                                this.modifyItemStat(name, skill.targets[d].type, skill.targets[d].amount * skill.values[d], skill.targets[d].relative);
-                            }
+                    var ind = this.db[name].industry;
+                    if (skill.target == ind) {
+                        for (var d = 0; d < skill.data.length; d++) {
+                            this.modifyItemStat(name, skill.targets[d].type, skill.targets[d].amount * skill.values[d], skill.targets[d].relative);
                         }
                     }
                 }, this);
@@ -457,7 +446,7 @@ function recipeCalc(data) {
             k.tier = this.db[k.name].tier;
             k.type = this.db[k.name].type;
             k.typeid = this.types.indexOf(k.type);
-            k.industries = this.db[k.name].industries;
+            k.industry = this.db[k.name].industry;
             k.skillT = 0;
             k.effectivenessT = 1;
         }

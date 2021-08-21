@@ -395,23 +395,27 @@ h3 {
     padding: 0 5px;
 }
 
-.tier-basic {
+.tier-0 {
+    color: #ffffff !important;
+}
+
+.tier-1 {
     color: #ab9b9b !important;
 }
 
-.tier-uncommon {
+.tier-2 {
     color: #009245 !important;
 }
 
-.tier-advanced {
+.tier-3 {
     color: #0071bc !important;
 }
 
-.tier-rare {
+.tier-4 {
     color: #662d91 !important;
 }
 
-.tier-exotic {
+.tier-5 {
     color: #d97500 !important;
 }
 
