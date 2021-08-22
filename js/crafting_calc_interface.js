@@ -1268,7 +1268,7 @@ function tryRestoreState(profile) {
         var state = JSON.parse(profile);
 
         if (state.ver != ver) {
-            alert("Old profile detected. You may have to reset the calculator (button at the top) to get it to work.\nHere's the raw data, which you may want to save:\n\n" + profile);
+            alert("Old profile detected. You may have to reset the calculator (button at the top) to get it to work.");
         }
         //console.log("restoring...");
 
