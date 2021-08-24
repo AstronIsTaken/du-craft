@@ -496,10 +496,50 @@ h3 {
 }
 
 .tree-leaf {
-    padding: 10px 0px 10px 20px;
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.skill-radio {
+    height: 100%;
+    display: inline-flex;
 }
 
 .skill-input {
-    width: 25%;
-    float: right;
+    width: auto;
+    height: 100%;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 20%;
+    padding: 2px 8px;
+    margin: 5px 5px;
+    background-color: #5088A3FF;
+    color: #fff;
+    font-size: 14px;
+    font-family: system-ui;
+    transition: all 100ms linear;
+}
+
+.skill-radio input:checked {
+    background-color: #0088cc;
+    color: #fff;
+    box-shadow: 0 1px 1px #0000002e;
+    text-shadow: 0 1px 0px #79485f7a;
+}
+
+.skill-input:checked ~ input  {
+    background-color: #454857;
+}
+
+.skill-input:before {
+    content: attr(label);
+    display: inline-block;
+    text-align: center;
+    width: 100%;
 }

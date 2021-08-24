@@ -534,26 +534,32 @@ document.body.addEventListener("keydown", function () {
 
 function updateSkillTreeDiv(skillTree) {
 
-    function makeSkillDiv(skill) {
+    function makeSkillRadio(skill) {
         const skillDiv = document.createElement("div");
         skillDiv.classList.add("tree-leaf");
         skillDiv.innerText = skill.name;
-        const skillInput = document.createElement("input");
-        skillInput.classList.add("skill-input");
-        skillInput.type = "number";
-        skillInput.min = "0";
-        skillInput.max = "5";
-        skillInput.value = "" + skillValues.getValue(skill.id);
-        skillInput.setAttribute("skill-id", skill.id);
-        skillInput.addEventListener("input", function (e) {
-            const updated = skillValues.setValue(skill.id, this.value);
-            this.value = "" + skillValues.getValue(skill.id);
-            if (updated) {
-                cc.updateSkills(getAllSkills(), skillValues);
-                calculate();
-            }
-        });
-        skillDiv.appendChild(skillInput);
+        const radioDiv = document.createElement("div");
+        radioDiv.classList.add("skill-radio");
+        for (let i = 0; i <= 5; i++) {
+            const skillInput = document.createElement("input");
+            skillInput.classList.add("skill-input");
+            skillInput.type = "radio";
+            skillInput.name = skill.id;
+            const iSt = "" + i;
+            skillInput.id = iSt;
+            skillInput.value = iSt;
+            skillInput.setAttribute("label", iSt);
+            skillInput.checked = skillValues.getValue(skill.id) == i;
+            skillInput.addEventListener("change", function (e) {
+                const updated = skillValues.setValue(skill.id, this.value);
+                if (updated) {
+                    cc.updateSkills(getAllSkills(), skillValues);
+                    calculate();
+                }
+            });
+            radioDiv.appendChild(skillInput)
+        }
+        skillDiv.appendChild(radioDiv);
         return skillDiv;
     }
 
@@ -579,6 +585,7 @@ function updateSkillTreeDiv(skillTree) {
         return nodeTitleDiv;
     }
 
+    console.log(JSON.stringify(skillValues.values));
     const skillTreeDiv = document.getElementById("skillTreeDiv");
 
     skillTree.forEach(category => {
@@ -596,7 +603,7 @@ function updateSkillTreeDiv(skillTree) {
             groupNodeBody.classList.add("tree-node-body");
             groupNode.appendChild(groupNodeBody);
             group.skills.forEach(skill => {
-                const skillLeaf = makeSkillDiv(skill);
+                const skillLeaf = makeSkillRadio(skill);
                 groupNodeBody.appendChild(skillLeaf);
             });
             categoryNodeBody.appendChild(groupNode)
@@ -611,8 +618,8 @@ function updateSkills() {
     const skillInputs = document.getElementsByClassName("skill-input");
     for (let i = 0; i < skillInputs.length; i++) {
         const skillInput = skillInputs[i];
-        const skillId = skillInput.getAttribute("skill-id");
-        skillInput.value = "" + skillValues.getValue(skillId);
+        const skillId = skillInput.getAttribute("name");
+        skillInput.checked = parseInt(skillInput.value) == skillValues.getValue(skillId);
     }
     cc.updateSkills(getAllSkills(), skillValues);
     calculate();
