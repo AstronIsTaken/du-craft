@@ -594,6 +594,7 @@
   "Kergon-X1 Fuel": {
     "tier": 1,
     "type": "Fuel",
+    "subtype": "Space",
     "volume": 1,
     "outputQuantity": 100,
     "time": 120,
@@ -608,6 +609,7 @@
   "Kergon-X2 Fuel": {
     "tier": 1,
     "type": "Fuel",
+    "subtype": "Space",
     "volume": 1,
     "outputQuantity": 100,
     "time": 120,
@@ -622,6 +624,7 @@
   "Kergon-X3 Fuel": {
     "tier": 1,
     "type": "Fuel",
+    "subtype": "Space",
     "volume": 1,
     "outputQuantity": 100,
     "time": 120,
@@ -636,6 +639,7 @@
   "Kergon-X4 Fuel": {
     "tier": 1,
     "type": "Fuel",
+    "subtype": "Space",
     "volume": 1,
     "outputQuantity": 100,
     "time": 120,
@@ -14594,7 +14598,7 @@
       "Pure Vanadium": 100
     }
   },
-  "Plastic Honeycomb": {
+  "Polycarbonate Plastic Honeycomb": {
     "tier": 1,
     "type": "Product Honeycomb",
     "volume": 10,
@@ -18041,6 +18045,7 @@
   "Cannon Agile Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18056,6 +18061,7 @@
   "Cannon Defense Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18071,6 +18077,7 @@
   "Cannon Heavy Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18086,6 +18093,7 @@
   "Cannon Kinetic Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 200,
@@ -18100,6 +18108,7 @@
   "Cannon Precision Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18115,6 +18124,7 @@
   "Cannon Agile Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18130,6 +18140,7 @@
   "Cannon Defense Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18145,6 +18156,7 @@
   "Cannon Heavy Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18160,6 +18172,7 @@
   "Cannon Precision Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 400,
@@ -18175,6 +18188,7 @@
   "Cannon Thermic Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 1,
     "outputQuantity": 40,
     "time": 200,
@@ -18189,6 +18203,7 @@
   "Cannon Agile Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18204,6 +18219,7 @@
   "Cannon Defense Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18219,6 +18235,7 @@
   "Cannon Heavy Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18234,6 +18251,7 @@
   "Cannon Kinetic Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -18248,6 +18266,7 @@
   "Cannon Precision Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18263,6 +18282,7 @@
   "Cannon Agile Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18278,6 +18298,7 @@
   "Cannon Defense Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18293,6 +18314,7 @@
   "Cannon Heavy Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18308,6 +18330,7 @@
   "Cannon Precision Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 800,
@@ -18323,6 +18346,7 @@
   "Cannon Thermic Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -18352,6 +18376,7 @@
   "Cannon Defense Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18367,6 +18392,7 @@
   "Cannon Heavy Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18382,6 +18408,7 @@
   "Cannon Kinetic Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -18396,6 +18423,7 @@
   "Cannon Precision Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18411,6 +18439,7 @@
   "Cannon Agile Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18426,6 +18455,7 @@
   "Cannon Defense Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18441,6 +18471,7 @@
   "Cannon Heavy Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18456,6 +18487,7 @@
   "Cannon Precision Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 1600,
@@ -18471,6 +18503,7 @@
   "Cannon Thermic Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -18485,6 +18518,7 @@
   "Cannon Agile Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18500,6 +18534,7 @@
   "Cannon Defense Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18515,6 +18550,7 @@
   "Cannon Heavy Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18530,6 +18566,7 @@
   "Cannon Kinetic Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -18544,6 +18581,7 @@
   "Cannon Precision Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18559,6 +18597,7 @@
   "Cannon Agile Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18574,6 +18613,7 @@
   "Cannon Defense Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18589,6 +18629,7 @@
   "Cannon Heavy Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18604,6 +18645,7 @@
   "Cannon Precision Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 3200,
@@ -18619,6 +18661,7 @@
   "Cannon Thermic Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -18633,6 +18676,7 @@
   "Laser Agile Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18648,6 +18692,7 @@
   "Laser Defense Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18663,6 +18708,7 @@
   "Laser Electromagnetic Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 200,
@@ -18677,6 +18723,7 @@
   "Laser Heavy Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18692,6 +18739,7 @@
   "Laser Precision Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18707,6 +18755,7 @@
   "Laser Agile Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18722,6 +18771,7 @@
   "Laser Defense Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18737,6 +18787,7 @@
   "Laser Heavy Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18752,6 +18803,7 @@
   "Laser Precision Thermic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 400,
@@ -18767,6 +18819,7 @@
   "Laser Thermic Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 2,
     "outputQuantity": 40,
     "time": 200,
@@ -18781,6 +18834,7 @@
   "Laser Agile Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18796,6 +18850,7 @@
   "Laser Defense Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18811,6 +18866,7 @@
   "Laser Electromagnetic Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -18825,6 +18881,7 @@
   "Laser Heavy Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18840,6 +18897,7 @@
   "Laser Precision Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18855,6 +18913,7 @@
   "Laser Agile Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18870,6 +18929,7 @@
   "Laser Defense Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18885,6 +18945,7 @@
   "Laser Heavy Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18900,6 +18961,7 @@
   "Laser Precision Thermic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 800,
@@ -18915,6 +18977,7 @@
   "Laser Thermic Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -18929,6 +18992,7 @@
   "Laser Agile Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -18944,6 +19008,7 @@
   "Laser Defense Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -18959,6 +19024,7 @@
   "Laser Electromagnetic Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -18973,6 +19039,7 @@
   "Laser Heavy Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -18988,6 +19055,7 @@
   "Laser Precision Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -19003,6 +19071,7 @@
   "Laser Agile Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -19018,6 +19087,7 @@
   "Laser Defense Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -19033,6 +19103,7 @@
   "Laser Heavy Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -19048,6 +19119,7 @@
   "Laser Precision Thermic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 1600,
@@ -19063,6 +19135,7 @@
   "Laser Thermic Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -19077,6 +19150,7 @@
   "Laser Agile Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19092,6 +19166,7 @@
   "Laser Defense Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19107,6 +19182,7 @@
   "Laser Electromagnetic Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -19121,6 +19197,7 @@
   "Laser Heavy Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19136,6 +19213,7 @@
   "Laser Precision Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19151,6 +19229,7 @@
   "Laser Agile Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19166,6 +19245,7 @@
   "Laser Defense Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19181,6 +19261,7 @@
   "Laser Heavy Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19196,6 +19277,7 @@
   "Laser Precision Thermic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 3200,
@@ -19211,6 +19293,7 @@
   "Laser Thermic Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -19225,6 +19308,7 @@
   "Missile Agile Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19240,6 +19324,7 @@
   "Missile Antimatter Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 200,
@@ -19254,6 +19339,7 @@
   "Missile Defense Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19269,6 +19355,7 @@
   "Missile Heavy Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19284,6 +19371,7 @@
   "Missile Precision Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19299,6 +19387,7 @@
   "Missile Agile Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19314,6 +19403,7 @@
   "Missile Defense Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19329,6 +19419,7 @@
   "Missile Heavy Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19344,6 +19435,7 @@
   "Missile Kinetic Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 200,
@@ -19358,6 +19450,7 @@
   "Missile Precision Kinetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 5,
     "outputQuantity": 40,
     "time": 400,
@@ -19373,6 +19466,7 @@
   "Missile Agile Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19388,6 +19482,7 @@
   "Missile Antimatter Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 400,
@@ -19402,6 +19497,7 @@
   "Missile Defense Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19417,6 +19513,7 @@
   "Missile Heavy Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19432,6 +19529,7 @@
   "Missile Precision Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19447,6 +19545,7 @@
   "Missile Agile Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19462,6 +19561,7 @@
   "Missile Defense Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19477,6 +19577,7 @@
   "Missile Heavy Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19492,6 +19593,7 @@
   "Missile Kinetic Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 400,
@@ -19506,6 +19608,7 @@
   "Missile Precision Kinetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 25,
     "outputQuantity": 40,
     "time": 800,
@@ -19521,6 +19624,7 @@
   "Missile Agile Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19536,6 +19640,7 @@
   "Missile Antimatter Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 800,
@@ -19550,6 +19655,7 @@
   "Missile Defense Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19565,6 +19671,7 @@
   "Missile Heavy Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19580,6 +19687,7 @@
   "Missile Precision Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19595,6 +19703,7 @@
   "Missile Agile Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19610,6 +19719,7 @@
   "Missile Defense Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19625,6 +19735,7 @@
   "Missile Heavy Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19640,6 +19751,7 @@
   "Missile Kinetic Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 800,
@@ -19654,6 +19766,7 @@
   "Missile Precision Kinetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 125,
     "outputQuantity": 40,
     "time": 1600,
@@ -19669,6 +19782,7 @@
   "Missile Agile Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19684,6 +19798,7 @@
   "Missile Antimatter Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19698,6 +19813,7 @@
   "Missile Defense Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19713,6 +19829,7 @@
   "Missile Heavy Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19728,6 +19845,7 @@
   "Missile Precision Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19743,6 +19861,7 @@
   "Missile Agile Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19758,6 +19877,7 @@
   "Missile Defense Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19773,6 +19893,7 @@
   "Missile Heavy Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19788,6 +19909,7 @@
   "Missile Kinetic Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 1600,
@@ -19802,6 +19924,7 @@
   "Missile Precision Kinetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 625,
     "outputQuantity": 40,
     "time": 3200,
@@ -19817,6 +19940,7 @@
   "Railgun Agile Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19832,6 +19956,7 @@
   "Railgun Antimatter Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 200,
@@ -19846,6 +19971,7 @@
   "Railgun Defense Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19861,6 +19987,7 @@
   "Railgun Heavy Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19876,6 +20003,7 @@
   "Railgun Precision Antimatter Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19891,6 +20019,7 @@
   "Railgun Agile Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19906,6 +20035,7 @@
   "Railgun Defense Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19921,6 +20051,7 @@
   "Railgun Electromagnetic Ammo XS": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 200,
@@ -19935,6 +20066,7 @@
   "Railgun Heavy Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19950,6 +20082,7 @@
   "Railgun Precision Electromagnetic Ammo XS": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "XS",
     "volume": 10,
     "outputQuantity": 40,
     "time": 400,
@@ -19965,6 +20098,7 @@
   "Railgun Agile Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -19980,6 +20114,7 @@
   "Railgun Antimatter Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 400,
@@ -19994,6 +20129,7 @@
   "Railgun Defense Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20009,6 +20145,7 @@
   "Railgun Heavy Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20024,6 +20161,7 @@
   "Railgun Precision Antimatter Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20039,6 +20177,7 @@
   "Railgun Agile Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20054,6 +20193,7 @@
   "Railgun Defense Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20069,6 +20209,7 @@
   "Railgun Electromagnetic Ammo S": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 400,
@@ -20083,6 +20224,7 @@
   "Railgun Heavy Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20098,6 +20240,7 @@
   "Railgun Precision Electromagnetic Ammo S": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "S",
     "volume": 50,
     "outputQuantity": 40,
     "time": 800,
@@ -20113,6 +20256,7 @@
   "Railgun Agile Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20128,6 +20272,7 @@
   "Railgun Antimatter Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 800,
@@ -20142,6 +20287,7 @@
   "Railgun Defense Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20157,6 +20303,7 @@
   "Railgun Heavy Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20172,6 +20319,7 @@
   "Railgun Precision Antimatter Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20187,6 +20335,7 @@
   "Railgun Agile Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20202,6 +20351,7 @@
   "Railgun Defense Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20217,6 +20367,7 @@
   "Railgun Electromagnetic Ammo M": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 800,
@@ -20231,6 +20382,7 @@
   "Railgun Heavy Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20246,6 +20398,7 @@
   "Railgun Precision Electromagnetic Ammo M": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "M",
     "volume": 250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20261,6 +20414,7 @@
   "Railgun Agile Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20276,6 +20430,7 @@
   "Railgun Antimatter Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20290,6 +20445,7 @@
   "Railgun Defense Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20305,6 +20461,7 @@
   "Railgun Heavy Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20320,6 +20477,7 @@
   "Railgun Precision Antimatter Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20335,6 +20493,7 @@
   "Railgun Agile Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20350,6 +20509,7 @@
   "Railgun Defense Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20365,6 +20525,7 @@
   "Railgun Electromagnetic Ammo L": {
     "tier": 2,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 1600,
@@ -20379,6 +20540,7 @@
   "Railgun Heavy Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,
@@ -20394,6 +20556,7 @@
   "Railgun Precision Electromagnetic Ammo L": {
     "tier": 3,
     "type": "Ammo",
+    "subtype": "L",
     "volume": 1250,
     "outputQuantity": 40,
     "time": 3200,

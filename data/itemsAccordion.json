@@ -1821,7 +1821,7 @@
               "Mangalloy Honeycomb",
               "Maraging Steel Honeycomb",
               "Marble Honeycomb",
-              "Plastic Honeycomb",
+              "Polycarbonate Plastic Honeycomb",
               "Sc-Al Honeycomb",
               "Silumin Honeycomb",
               "Stainless Steel Honeycomb",
@@ -1915,7 +1915,7 @@
         "name": "Refined Materials",
         "data": [
           {
-            "name": "Catalyst",
+            "name": "Catalysts",
             "data": [
               "Catalyst 3",
               "Catalyst 4",

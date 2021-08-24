@@ -358,7 +358,7 @@ body {
     margin: 50px;
     border: 1px solid #888;
     border-radius: 20px;
-    width: 450px;
+    width: 500px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     overflow: auto;
 }
@@ -431,4 +431,75 @@ h3 {
     color: orange;
     font-style: normal;
     font-weight: bold;
+}
+
+/* Skill Tree */
+.tree-node {
+    color: #fff;
+}
+
+.tree-node-active {
+
+}
+
+.tree-node-title {
+    background-color: #002233;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: 1px #888 solid;
+    border-radius: 5px;
+    padding: 5px 18px;
+    transition: 0.4s;
+}
+
+.tree-node-body {
+    margin-left: 20px;
+    display: none;
+}
+
+.tree-node-active > .tree-node-body {
+    display: block;
+}
+
+.tree-node-title:hover {
+    background-color: #004466;
+}
+
+.tree-node-title:active {
+    background-color: #006699;
+}
+
+.tree-node-title-active {
+}
+
+.tree-node-title-text {
+    position: relative;
+}
+
+.tree-node-plus {
+    width: 20px;
+    display: inline-block;
+}
+
+.tree-node-minus {
+    width: 20px;
+    display: none;
+}
+
+.tree-node-title-active > .tree-node-plus {
+    display: none;
+}
+
+.tree-node-title-active > .tree-node-minus {
+    display: inline-block;
+}
+
+.tree-leaf {
+    padding: 10px 0px 10px 20px;
+}
+
+.skill-input {
+    width: 25%;
+    float: right;
 }
