@@ -31,7 +31,10 @@ class SkillCategory {
     }
 }
 
+showOnlyApplicableSkills = false;
+
 class SkillValues {
+    onlyApplicableSkills = false;
     values = {};
 
     getValue(id) {
@@ -113,7 +116,7 @@ loadJSON("../data/itemsAccordion.json", function (json) {
     itemsAccordion = JSON.parse(json);
 })
 loadJSON("../data/recipes.json", function (json) {
-    recipes = json;
+    recipes = JSON.parse(json);
 })
 loadJSON("../data/skillsAccordion.json", function (json) {
     skillTree = parseSkillFile(JSON.parse(json));
@@ -547,7 +550,16 @@ document.body.addEventListener("keydown", function () {
     keyHit = (new Date()).getTime();
 });
 
-function updateSkillTreeDiv(skillTree) {
+function onOnlyApplicableSkills(checked) {
+    if (checked == skillValues.onlyApplicableSkills) {
+        return;
+    }
+    skillValues.onlyApplicableSkills = checked;
+
+    updateSkillTreeDiv();
+}
+
+function updateSkillTreeDiv() {
 
     function makeSkillRadio(skill) {
         const skillDiv = document.createElement("div");
@@ -602,33 +614,64 @@ function updateSkillTreeDiv(skillTree) {
 
     const skillTreeDiv = document.getElementById("skillTreeDiv");
 
+    while (skillTreeDiv.firstChild) {
+        skillTreeDiv.removeChild(skillTreeDiv.firstChild);
+    }
+
     skillTree.forEach(category => {
-        const categoryNode = document.createElement("div");
-        categoryNode.classList.add("tree-node");
-        categoryNode.appendChild(makeSkillNodeTitle(category.name));
-        const categoryNodeBody = document.createElement("div");
-        categoryNodeBody.classList.add("tree-node-body");
-        categoryNode.appendChild(categoryNodeBody);
+        const groupNodes = [];
         category.groups.forEach(group => {
+            const skillLeafs = [];
+            group.skills.forEach(skill => {
+                if (shouldDisplaySkill(skill)) {
+                    const skillLeaf = makeSkillRadio(skill);
+                    skillLeafs.push(skillLeaf);
+                }
+            });
+            if (skillLeafs.length === 0) {
+                return;
+            }
             const groupNode = document.createElement("div");
             groupNode.classList.add("tree-node");
             groupNode.appendChild(makeSkillNodeTitle(group.name));
             const groupNodeBody = document.createElement("div");
             groupNodeBody.classList.add("tree-node-body");
             groupNode.appendChild(groupNodeBody);
-            group.skills.forEach(skill => {
-                const skillLeaf = makeSkillRadio(skill);
-                groupNodeBody.appendChild(skillLeaf);
-            });
-            categoryNodeBody.appendChild(groupNode)
+            skillLeafs.forEach(s => groupNodeBody.appendChild(s));
+            groupNodes.push(groupNode);
         });
+        if (groupNodes.length === 0) {
+            return;
+        }
+        const categoryNode = document.createElement("div");
+        categoryNode.classList.add("tree-node");
+        categoryNode.appendChild(makeSkillNodeTitle(category.name));
+        const categoryNodeBody = document.createElement("div");
+        categoryNodeBody.classList.add("tree-node-body");
+        categoryNode.appendChild(categoryNodeBody);
+        groupNodes.forEach(g => categoryNodeBody.appendChild(g));
         skillTreeDiv.appendChild(categoryNode);
     });
 }
 
-updateSkillTreeDiv(skillTree);
+function shouldDisplaySkill(skill) {
+    if (!skillValues.onlyApplicableSkills) {
+        return true;
+    }
+    for (const item of itemLists.normal) {
+
+        const itemRecipe = cc.db[item.name];
+        if (isSkillApplicable(skill, itemRecipe)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+updateSkillTreeDiv();
 
 function updateSkills() {
+    console.log("Updating skills");
     const skillInputs = document.getElementsByClassName("skill-input");
     for (let i = 0; i < skillInputs.length; i++) {
         const skillInput = skillInputs[i];
@@ -1003,6 +1046,9 @@ function addItem(event) {
         }
         addCraftItem(name, quantity);
     }
+    if (skillValues.onlyApplicableSkills) {
+        updateSkillTreeDiv();
+    }
 }
 
 // callback for the minus buttons to remove row from the appropriate list
@@ -1030,6 +1076,9 @@ function removeItem(event) {
         }
     }
     calculate();
+    if (skillValues.onlyApplicableSkills) {
+        updateSkillTreeDiv();
+    }
 }
 
 Object.keys(prices).forEach(function (ore, i) {

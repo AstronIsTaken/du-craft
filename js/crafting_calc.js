@@ -41,6 +41,9 @@ function itemRecipe(name, data) {
 }
 
 function isSkillApplicable(skill, recipe) {
+    if (recipe.type == "Ore") {
+        return false;
+    }
     switch (skill.subject) {
         case "Tier":
             return recipe.tier == skill.tier && recipe.type == skill.type
@@ -55,7 +58,7 @@ function isSkillApplicable(skill, recipe) {
 }
 
 // holds recipe database and performs crafting calculations
-function recipeCalc(data) {
+function recipeCalc(recipes) {
 
     //parse db from JSON
     this.types = [];
@@ -78,14 +81,14 @@ function recipeCalc(data) {
         }
     }
 
-    this.parseDb = function (db) {
+    this.parseDb = function (recipes) {
         var lines;
         var cols;
         var headers;
         this.db = {};
         var unknownItems = new Set();
 
-        var db = JSON.parse(db);
+        var db = recipes;
         Object.keys(db).forEach(function (name, i) {
             var fnd = false;
             for (var j = 0; j < this.types.length; j++) {
@@ -125,8 +128,8 @@ function recipeCalc(data) {
     };
 
 
-    this.data = data;
-    this.parseDb(data);
+    this.recipes = recipes;
+    this.parseDb(recipes);
     this.debug = [];
 
     this.reduceItems = function (list) {

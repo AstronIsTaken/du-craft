@@ -116,9 +116,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <span id="skillsModalClose" class="modal-close">&times;</span>
-            <h2>Skill Selection</h2>
+            <h2>Skills</h2>
         </div>
-        <div id="skillTreeDiv" class="modal-body">
+        <div class="modal-body">
+            <label class="checkbox-container">Only applicable skills
+                <input id="onlyApplicableSkills" type="checkbox" onchange="onOnlyApplicableSkills(this.checked)">
+                <span class="checkbox-checkmark"/>
+            </label>
+            <div id="skillTreeDiv"/>
         </div>
     </div>
 

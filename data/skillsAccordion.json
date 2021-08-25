@@ -1297,10 +1297,10 @@
             "name": "Polycarbonate Plastic Honeycomb"
           },
           {
-            "name": "Silumin"
+            "name": "Silumin Honeycomb"
           },
           {
-            "name": "Steel"
+            "name": "Steel Honeycomb"
           }
         ]
       },
@@ -1338,10 +1338,10 @@
             "amount": 0.1
           },
           {
-            "name": "Duralumin"
+            "name": "Duralumin Honeycomb"
           },
           {
-            "name": "Stainless Steel"
+            "name": "Stainless Steel Honeycomb"
           }
         ]
       },
