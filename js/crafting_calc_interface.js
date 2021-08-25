@@ -123,10 +123,9 @@ loadJSON("../data/orePrices.json", function (json) {
 })
 
 loadJSON("../data/craft_trans_german.json", function (json) {
-    german = json;
+    // german = json;
+    german = JSON.stringify({});
 })
-
-//console.log(JSON.stringify(skillsAccordion,null,2));
 
 function formatNum(num, places) {
     if (typeof num != "number") {
