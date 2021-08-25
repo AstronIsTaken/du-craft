@@ -18,17 +18,17 @@
     <button id="priceButton" style="float:left;margin:0 5px;">Prices</button>
     <button id="profileButton" style="float:left;margin:0 5px;">Save/Load Profiles</button>
     <button id="clearButton" style="float:left;margin:0 5px;" class="bugButton">Reset</button>
-    <button id="langButton" style="float:left;margin:0 5px;display:none">&#128214;</button>
+    <button id="langButton" style="float:left;margin:0 5px;display:none;">&#128214;</button>
     <button id="getDataButton" style="float:left;margin:0 5px;">Copy Config</button>
     <button id="setDataButton" style="float:left;margin:0 5px;">Paste Config</button>
 
     <span style="color:#fff;float:left;padding:0 0 0 15px;">Updated on&nbsp;<a id="lastUpdateTime" href="https://github.com/AstronIsTaken/du-craft/releases" target="_blank">Loading</a></span>
     <span class="navright legend">
-<span class="tier-basic tier-all">1 : Basic</span>
-<span class="tier-uncommon tier-all">2 : Uncommon</span>
-<span class="tier-advanced tier-all">3 : Advanced</span>
-<span class="tier-rare tier-all">4 : Rare</span>
-<span class="tier-exotic tier-all">5 : Exotic</span>
+<span class="tier-1 tier-all">1 : Basic</span>
+<span class="tier-2 tier-all">2 : Uncommon</span>
+<span class="tier-3 tier-all">3 : Advanced</span>
+<span class="tier-4 tier-all">4 : Rare</span>
+<span class="tier-5 tier-all">5 : Exotic</span>
 </span>
 
 
@@ -121,9 +121,9 @@
         <div class="modal-body">
             <label class="checkbox-container">Only applicable skills
                 <input id="onlyApplicableSkills" type="checkbox" onchange="onOnlyApplicableSkills(this.checked)">
-                <span class="checkbox-checkmark"/>
+                <span class="checkbox-checkmark"></span>
             </label>
-            <div id="skillTreeDiv"/>
+            <div id="skillTreeDiv"></div>
         </div>
     </div>
 
@@ -228,8 +228,8 @@
 
 </div>
 
-<script src="js/crafting_calc.js?v=2"></script>
-<script src="js/crafting_calc_interface.js?v=2"></script>
+<script src="js/crafting_calc.js?v=3"></script>
+<script src="js/crafting_calc_interface.js?v=3"></script>
 
 </body>
 </html>

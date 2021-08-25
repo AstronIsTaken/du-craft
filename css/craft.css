@@ -548,6 +548,9 @@ h3 {
     width: 100%;
 }
 
+.hidden-tree-node {
+    display:none;
+}
 
 /* The container */
 .checkbox-container {
@@ -618,26 +621,4 @@ h3 {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-
-dbutton {
-    color: #fff;
-    background-color: #004466;
-    border: 1px #888 solid;
-    border-radius: 3px;
-    box-shadow: 0px 0px 3px #fff;
-    cursor: pointer;
-}
-
-.dclear-button {
-
-}
-
-dbutton:hover {
-    background-color: #006699;
-}
-
-dbutton:active {
-    background-color: #0088cc;
 }

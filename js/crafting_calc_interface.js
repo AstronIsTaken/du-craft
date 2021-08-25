@@ -17,17 +17,21 @@ class Skill {
 
 class SkillGroup {
     name;
+    id;
     skills = [];
-    constructor(name) {
-        this.name = name;
+    constructor(categoryName, groupName) {
+        this.name = groupName;
+        this.id = [categoryName, groupName].join(".");
     }
 }
 
 class SkillCategory {
     name;
+    id;
     groups = [];
     constructor(name) {
         this.name = name;
+        this.id = name;
     }
 }
 
@@ -101,8 +105,8 @@ function copyStringToClipboard(str) {
 
 var itemsAccordion, prices, recipes, german;
 
-const version = "2";
-const lastUpdateTime = "2021-07-23";
+const version = "1";
+const lastUpdateTime = "2021-08-25";
 document.getElementById("lastUpdateTime").innerHTML = lastUpdateTime;
 console.log("Crafting Calculator Updated On: " + lastUpdateTime)
 console.log("Crafting Calculator Profile Version: " + version)
@@ -180,7 +184,7 @@ function parseSkillFile(skillFileJson) {
     skillFileJson.forEach(categoryJson => {
         const category = new SkillCategory(categoryJson.name);
         categoryJson.data.forEach(groupJson => {
-            const group = new SkillGroup(groupJson.name);
+            const group = new SkillGroup(categoryJson.name, groupJson.name);
             groupJson.skills.forEach(skillJson => {
                 const skill = new Skill(category.name, group.name, skillJson.name);
                 skill.type = getOneOf(skillJson, groupJson, "type");
@@ -550,21 +554,13 @@ document.body.addEventListener("keydown", function () {
     keyHit = (new Date()).getTime();
 });
 
-function onOnlyApplicableSkills(checked) {
-    if (checked == skillValues.onlyApplicableSkills) {
-        return;
-    }
-    skillValues.onlyApplicableSkills = checked;
-
-    updateSkillTreeDiv();
-}
-
-function updateSkillTreeDiv() {
+function initSkillTreeDiv() {
 
     function makeSkillRadio(skill) {
         const skillDiv = document.createElement("div");
         skillDiv.classList.add("tree-leaf");
         skillDiv.innerText = skill.name;
+        skillDiv.setAttribute("skill-id", skill.id);
         const radioDiv = document.createElement("div");
         radioDiv.classList.add("skill-radio");
         for (let i = 0; i <= 5; i++) {
@@ -623,15 +619,14 @@ function updateSkillTreeDiv() {
         category.groups.forEach(group => {
             const skillLeafs = [];
             group.skills.forEach(skill => {
-                if (shouldDisplaySkill(skill)) {
-                    const skillLeaf = makeSkillRadio(skill);
-                    skillLeafs.push(skillLeaf);
-                }
+                const skillLeaf = makeSkillRadio(skill);
+                skillLeafs.push(skillLeaf);
             });
             if (skillLeafs.length === 0) {
                 return;
             }
             const groupNode = document.createElement("div");
+            groupNode.setAttribute("skill-group-id", group.id);
             groupNode.classList.add("tree-node");
             groupNode.appendChild(makeSkillNodeTitle(group.name));
             const groupNodeBody = document.createElement("div");
@@ -644,6 +639,7 @@ function updateSkillTreeDiv() {
             return;
         }
         const categoryNode = document.createElement("div");
+        categoryNode.setAttribute("skill-category-id", category.id);
         categoryNode.classList.add("tree-node");
         categoryNode.appendChild(makeSkillNodeTitle(category.name));
         const categoryNodeBody = document.createElement("div");
@@ -658,6 +654,9 @@ function shouldDisplaySkill(skill) {
     if (!skillValues.onlyApplicableSkills) {
         return true;
     }
+    if (craft.length === 0) {
+        return false;
+    }
     for (const item of itemLists.normal) {
 
         const itemRecipe = cc.db[item.name];
@@ -668,7 +667,56 @@ function shouldDisplaySkill(skill) {
     return false;
 }
 
-updateSkillTreeDiv();
+function updateSkillTreeDiv() {
+    const skillTreeDiv = document.getElementById("skillTreeDiv");
+    const hiddenNodes = skillTreeDiv.getElementsByClassName("hidden-tree-node");
+    while (hiddenNodes.length > 0) {
+        hiddenNodes[0].classList.remove("hidden-tree-node");
+    }
+    if (skillValues.onlyApplicableSkills) {
+        skillTree.forEach(category => {
+            let emptyCategory = true;
+           category.groups.forEach(group => {
+               let emptyGroup = true;
+               group.skills.forEach(skill => {
+                   if (shouldDisplaySkill(skill)) {
+                       emptyGroup = false;
+                   } else {
+                       const skillElement = skillTreeDiv.querySelector('[skill-id="'+ skill.id + '"]');
+                       if (skillElement) {
+                           skillElement.classList.add("hidden-tree-node");
+                       }
+                   }
+               });
+               if (emptyGroup) {
+                   const groupElement = skillTreeDiv.querySelector('[skill-group-id="'+ group.id + '"]');
+                   if (groupElement) {
+                       groupElement.classList.add("hidden-tree-node");
+                   }
+               } else {
+                   emptyCategory = false;
+               }
+           });
+            if (emptyCategory) {
+                const categoryElement = skillTreeDiv.querySelector('[skill-category-id="'+ category.id + '"]');
+                if (categoryElement) {
+                    categoryElement.classList.add("hidden-tree-node");
+                }
+            }
+        });
+    }
+}
+
+function onOnlyApplicableSkills(checked) {
+    if (checked == skillValues.onlyApplicableSkills) {
+        return;
+    }
+    skillValues.onlyApplicableSkills = checked;
+
+    updateSkillTreeDiv();
+}
+
+initSkillTreeDiv();
 
 function updateSkills() {
     console.log("Updating skills");
@@ -1145,13 +1193,37 @@ function updatePrices() {
     }
 }
 
+function updateProfiles() {
+    var profileDropdowns = [profileList, profileDeleteList];
+    var profiles = window.localStorage.getItem("profiles");
+    profileDropdowns.forEach(function (dd, i) {
+        while (dd.options.length > 0) {
+            dd.remove(0);
+        }
+    });
+
+    if (profiles) {
+        profiles = JSON.parse(profiles);
+        profileDropdowns.forEach(function (dd, i) {
+            profiles.forEach(function (item, i) {
+                var option = document.createElement("option");
+                option.text = item;
+                dd.add(option)
+            });
+        });
+    } else {
+        window.localStorage.removeItem("profiles");
+    }
+}
+
 function clearLists() {
     craft = [];
     updateCraftList();
     inv = [];
     updateInvList();
 
-    window.localStorage.setItem("profiles", "[]");
+    window.localStorage.clear();
+    clearProfiles();
 
     loadJSON("../data/orePrices.json", function (json) {
         prices = JSON.parse(json);
@@ -1159,9 +1231,7 @@ function clearLists() {
     updatePrices();
 
     skillValues = new SkillValues();
-
-    cc.updateSkills(getAllSkills(), skillValues);
-    calculate();
+    updateSkills();
 }
 
 function getState() {
@@ -1194,7 +1264,7 @@ function saveProfile() {
     var profiles = window.localStorage.getItem("profiles");
 
     if (!profiles) {
-        profiles = JSON.stringify([name]);
+        profiles = [name];
     } else {
         profiles = JSON.parse(profiles);
         var free = true;
@@ -1247,41 +1317,21 @@ function deleteProfile() {
 
 profileDeleteButton.onclick = deleteProfile;
 
-function updateProfiles() {
-    var profileDropdowns = [profileList, profileDeleteList];
-    var profiles = window.localStorage.getItem("profiles");
-    profileDropdowns.forEach(function (dd, i) {
-        while (dd.options.length > 0) {
-            dd.remove(0);
-        }
-    });
-
-    if (profiles) {
-        profiles = JSON.parse(profiles);
-        profileDropdowns.forEach(function (dd, i) {
-            profiles.forEach(function (item, i) {
-                var option = document.createElement("option");
-                option.text = item;
-                dd.add(option)
-            });
-        });
-    } else {
-        window.localStorage.setItem("profiles", "[]");
-    }
-}
-
-clearProfiles.onclick = function () {
+function clearProfiles() {
     var profiles = window.localStorage.getItem("profiles");
     if (profiles) {
         profiles = JSON.parse(profiles);
         for (var profile in profiles) {
-            window.localStorage.setItem("profile_" + profile, null);
+            window.localStorage.removeItem("profile_" + profile);
         }
-        window.localStorage.setItem("profiles", null);
-        updateProfiles();
+        window.localStorage.removeItem("profiles");
     }
-
+    profileSaveInput.value = "";
+    updateProfiles();
 };
+
+clearProfiles.onclick = clearProfiles;
+
 
 updateProfiles();
 
