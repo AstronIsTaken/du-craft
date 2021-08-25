@@ -134,28 +134,27 @@ loadJSON("../data/craft_trans_german.json", function (json) {
     german = JSON.stringify({});
 })
 
-function formatNum(num, places) {
+function formatNum(num, fractionDigits) {
     if (typeof num != "number") {
         num = parseFloat(num);
     }
-    var nStr = num.toFixed(places).toString();
-    nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    }
-    return x1 + x2;
+    const formatter = fD => new Intl.NumberFormat(navigator.language, {
+        minimumFractionDigits: fD,
+        maximumFractionDigits: fD,
+    });
+    return formatter(fractionDigits).format(num);
 }
 
-String.prototype.toHHMMSS = function () {
-    var sec_num = parseFloat(this); // don't forget the second param
-    var days = Math.floor(sec_num / 86400);
-    var hours = Math.floor((sec_num - (days * 86400)) / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600) - (days * 86400)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60) - (days * 86400);
+function formatTime(time) {
+    if (typeof time != "number") {
+        time = parseFloat(time);
+    }
+
+    time = parseInt(time, 10);
+    let days = Math.floor(time / 86400);
+    let hours = Math.floor((time % 86400) / 3600);
+    let minutes = Math.floor((time % 3600) / 60);
+    let seconds = time % 60;
 
     if (hours < 10) {
         hours = "0" + hours;
@@ -164,9 +163,9 @@ String.prototype.toHHMMSS = function () {
         minutes = "0" + minutes;
     }
     if (seconds < 10) {
-        seconds = "0" + formatNum(seconds, 2);
+        seconds = "0" + seconds;
     }
-    return days + ' d : ' + hours + ' h : ' + minutes + ' m : ' + formatNum(seconds, 0) + ' s';
+    return (days > 0 ? days + ":" : "") + hours + ':' + minutes + ':' + seconds;
 }
 
 //-----------------------------------------------------------------------------------
@@ -240,7 +239,7 @@ function calculate() {
         queueListDetailed.removeChild(queueListDetailed.children[queueListDetailedCols])
     }
     if (craft.length === 0) {
-        totalTime.innerHTML = "0".toHHMMSS();
+        totalTime.innerHTML = formatTime(0);
         trySaveState();
         return;
     }
@@ -308,6 +307,7 @@ function calculate() {
             }
         }
 
+        const quantityFractionDigits = ["Ore", "Pure", "Product", "Catalyst"].includes(list[i].type) ? 2 : 0;
         if (list[i].type == "Ore") {
             var item = document.createElement("div");
             item.classList.add("ore-item");
@@ -317,7 +317,7 @@ function calculate() {
 
             var qty = document.createElement("div");
             qty.classList.add("ore-quantity");
-            qty.innerHTML = formatNum(list[i].quantity, 0);
+            qty.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
             totOre += list[i].quantity;
 
             var price = document.createElement("div");
@@ -348,17 +348,17 @@ function calculate() {
 
             var qty2 = document.createElement("div");
             qty2.classList.add("queue-quantity");
-            qty2.innerHTML = formatNum(list[i].quantity, 0);
+            qty2.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
             line.push(qty2);
 
             var bp = document.createElement("div");
             bp.classList.add("queue-quantity");
-            bp.innerHTML = formatNum(list[i].bpquantity, 0);
+            bp.innerHTML = formatNum(list[i].bpquantity, quantityFractionDigits);
             line.push(bp);
 
             var time2 = document.createElement("div");
             time2.classList.add("queue-time");
-            time2.innerHTML = formatNum(list[i].time, 0);
+            time2.innerHTML = formatTime(list[i].time);
             line.push(time2);
 
             var industry = document.createElement("div");
@@ -401,11 +401,11 @@ function calculate() {
 
             var qty = document.createElement("div");
             qty.classList.add("queue-quantity");
-            qty.innerHTML = formatNum(list[i].quantity, 0);
+            qty.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
 
             var time = document.createElement("div");
             time.classList.add("queue-time");
-            time.innerHTML = formatNum(list[i].time, 0);
+            time.innerHTML = formatTime(list[i].time);
             totTime += list[i].time;
 
             var check = document.createElement("button");
@@ -448,7 +448,7 @@ function calculate() {
     oreList.appendChild(price);
     oreList.appendChild(check);
 
-    totalTime.innerHTML = totTime.toString().toHHMMSS();
+    totalTime.innerHTML = formatTime(totTime);
     totalOre.innerHTML = formatNum(totOre, 0);
 
     trySaveState();

@@ -306,8 +306,9 @@ body {
 }
 
 .inv-quantity, .cft-quantity, .ore-quantity, .queue-quantity, .queue-time {
-    text-align: center;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', serif;
+    text-align: right;
+    padding-right: 5%;
 }
 
 .quantity-color {
