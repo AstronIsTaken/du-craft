@@ -357,7 +357,7 @@ function recipeCalc(recipes) {
 
 
         function populate(k, i) {
-            const stacks = Math.ceil(k.quantity / this.db[k.name].outputQuantity);
+            const stacks = Math.ceil(k.quantity / this.db[k.name].actualOQ);
             k.time = stacks * this.db[k.name].actualTime;
             k.tier = this.db[k.name].tier;
             k.type = this.db[k.name].type;
