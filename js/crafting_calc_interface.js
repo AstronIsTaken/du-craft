@@ -1010,7 +1010,7 @@ function updateInvList() {
         item.classList.add("inv-item");
         item.innerHTML = cc.trans(language, name);
         //console.log(name+" "+type);
-        if (tp == "Ore" || tp == "Pure") {
+        if (tp === "Ore" || tp === "Pure") {
             item.classList.add(name.replace(" ", "_"));
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
