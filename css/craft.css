@@ -20,6 +20,10 @@ a.navright {
     text-align: center;
 }
 
+a {
+    color: #0095ff;
+}
+
 .bugButton a {
     text-decoration: none;
     color: #000;

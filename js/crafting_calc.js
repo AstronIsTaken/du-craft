@@ -43,11 +43,12 @@ function itemRecipe(name, data) {
 function isSkillApplicable(skill, recipe) {
     switch (skill.subject) {
         case "Tier":
-            return recipe.tier == skill.tier && recipe.type == skill.type && recipe.subtype == skill.subtype;
+            return recipe.tier == skill.tier && recipe.type == skill.type
+                && (skill.subtype == undefined || recipe.subtype == skill.subtype);
         case "Item":
             return recipe.name == skill.name;
         case "Type":
-            return recipe.type == skill.type && recipe.subtype == skill.subtype;
+            return recipe.type == skill.type && (skill.subtype == undefined || recipe.subtype == skill.subtype);
         case "Industry":
             return recipe.industry == skill.name;
     }
@@ -171,26 +172,39 @@ function recipeCalc(data) {
         return newList;
     };
 
-    this.modifyItemStat = function (itemName, skill, skillValue) {
+    this.modifyItemStat = function (item, skill, skillValue) {
         const amount = skill.amount * skillValue;
+        let currentBonus = 0;
+        let skillBonus = 0;
         switch (skill.class) {
             case "Time":
-                this.db[itemName].actualTime = this.db[itemName].actualTime * (1 - amount);
+                currentBonus = item.time - item.actualTime;
+                skillBonus = item.time * amount;
+                item.actualTime = item.time - currentBonus - skillBonus;
                 break;
             case "Speed":
-                const speed = this.db[itemName].outputQuantity / this.db[itemName].actualTime * (1 + amount)
-                this.db[itemName].actualTime = this.db[itemName].outputQuantity / speed;
+                currentBonus = item.time - item.actualTime;
+                const speed = item.outputQuantity / item.time * (1 + amount)
+                skillBonus = item.time - item.outputQuantity / speed;
+                item.actualTime = item.time - currentBonus - skillBonus;
                 break;
             case "Output":
-                this.db[itemName].actualOQ = this.db[itemName].actualOQ * (1 + amount);
-                Object.keys(this.db[itemName].actualB).forEach(function (k, i) {
-                    this.db[itemName].actualB[k] = this.db[itemName].byproducts[k] * (1 + amount);
-                }, this);
+                currentBonus = item.actualOQ - item.outputQuantity;
+                skillBonus = item.outputQuantity * amount;
+                item.actualOQ = item.outputQuantity + skillBonus + currentBonus;
+                for (const bp in item.byproducts) {
+                    currentBonus = item.actualB[bp] - item.byproducts[bp];
+                    skillBonus = item.byproducts[bp] * amount;
+                    item.actualB[bp] = item.byproducts[bp] + skillBonus + currentBonus;
+                }
                 break;
             case "Input":
-                Object.keys(this.db[itemName].actualInput).forEach(function (k, i) {
-                    this.db[itemName].actualInput[k] = this.db[itemName].actualInput[k] * (1 - amount);
-                }, this);
+                for (const i in item.input) {
+                    currentBonus = item.input[i] - item.actualInput[i];
+                    skillBonus = item.input[i] * amount;
+                    item.actualInput[i] = item.input[i] - skillBonus - currentBonus;
+                }
+                break;
         }
     }
 
@@ -210,7 +224,7 @@ function recipeCalc(data) {
             Object.keys(this.db).forEach(function (name) {
                 const item = this.db[name];
                 if (isSkillApplicable(skill, item)) {
-                    this.modifyItemStat(name, skill, skillValues.getValue(skill.id));
+                    this.modifyItemStat(item, skill, skillValues.getValue(skill.id));
                 }
             }, this);
         });
@@ -340,7 +354,8 @@ function recipeCalc(data) {
 
 
         function populate(k, i) {
-            k.time = k.quantity / this.db[k.name].outputQuantity * this.db[k.name].actualTime;
+            const stacks = Math.ceil(k.quantity / this.db[k.name].outputQuantity);
+            k.time = stacks * this.db[k.name].actualTime;
             k.tier = this.db[k.name].tier;
             k.type = this.db[k.name].type;
             k.typeid = this.types.indexOf(k.type);

@@ -452,7 +452,7 @@
             "name": "Maraging Steel"
           },
           {
-            "name": "Gold Coated Glass"
+            "name": "Gold-Coated Glass"
           }
         ]
       },
@@ -477,7 +477,7 @@
             "name": "Maraging Steel"
           },
           {
-            "name": "Gold Coated Glass"
+            "name": "Gold-Coated Glass"
           }
         ]
       },
@@ -1517,6 +1517,7 @@
       {
         "name": "Basic Scrap Productivity",
         "type": "Scrap",
+        "tier": 1,
         "subject": "Item",
         "class": "Output",
         "amount": 0.02,
@@ -1538,6 +1539,7 @@
       {
         "name": "Uncommon Scrap Refining",
         "type": "Scrap",
+        "tier": 2,
         "subject": "Item",
         "class": "Input",
         "amount": 0.04,
@@ -1571,6 +1573,7 @@
       {
         "name": "Uncommon Scrap Productivity",
         "type": "Scrap",
+        "tier": 2,
         "subject": "Item",
         "class": "Output",
         "amount": 0.02,
@@ -1592,6 +1595,7 @@
       {
         "name": "Advanced Scrap Refining",
         "type": "Scrap",
+        "tier": 3,
         "subject": "Item",
         "class": "Input",
         "amount": 0.04,
@@ -1625,6 +1629,7 @@
       {
         "name": "Advanced Scrap Productivity",
         "type": "Scrap",
+        "tier": 3,
         "subject": "Item",
         "class": "Output",
         "amount": 0.02,
@@ -1646,6 +1651,7 @@
       {
         "name": "Rare Scrap Refining",
         "type": "Scrap",
+        "tier": 4,
         "subject": "Item",
         "class": "Input",
         "amount": 0.04,
@@ -1679,6 +1685,7 @@
       {
         "name": "Rare Scrap Productivity",
         "type": "Scrap",
+        "tier": 4,
         "subject": "Item",
         "class": "Output",
         "amount": 0.02,
@@ -1700,6 +1707,7 @@
       {
         "name": "Exotic Scrap Refining",
         "type": "Scrap",
+        "tier": 5,
         "subject": "Item",
         "class": "Input",
         "amount": 0.04,
@@ -1733,6 +1741,7 @@
       {
         "name": "Exotic Scrap Productivity",
         "type": "Scrap",
+        "tier": 5,
         "subject": "Item",
         "class": "Output",
         "amount": 0.02,
@@ -1758,7 +1767,6 @@
     "data": [
       {
         "name": "Industry Efficiency",
-        "type": "",
         "subject": "Industry",
         "class": "Time",
         "amount": 0.02,
@@ -1782,7 +1790,6 @@
       },
       {
         "name": "Industry Efficiency Handling",
-        "type": "",
         "subject": "Industry",
         "class": "Time",
         "amount": 0.02,
@@ -1806,7 +1813,6 @@
       },
       {
         "name": "Assembly Efficiency",
-        "type": "",
         "subject": "Industry",
         "class": "Time",
         "amount": 0.02,
@@ -1830,7 +1836,6 @@
       },
       {
         "name": "Assembly Efficiency Handling",
-        "type": "",
         "subject": "Industry",
         "class": "Time",
         "amount": 0.02,

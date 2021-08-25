@@ -112,14 +112,14 @@ let skillValues = new SkillValues();
 loadJSON("../data/itemsAccordion.json", function (json) {
     itemsAccordion = JSON.parse(json);
 })
+loadJSON("../data/recipes.json", function (json) {
+    recipes = json;
+})
 loadJSON("../data/skillsAccordion.json", function (json) {
     skillTree = parseSkillFile(JSON.parse(json));
 })
 loadJSON("../data/orePrices.json", function (json) {
     prices = JSON.parse(json);
-})
-loadJSON("../data/recipes.json", function (json) {
-    recipes = json;
 })
 
 loadJSON("../data/craft_trans_german.json", function (json) {
@@ -188,12 +188,28 @@ function parseSkillFile(skillFileJson) {
                 skill.class = getOneOf(skillJson, groupJson, "class");
                 skill.amount = getOneOf(skillJson, groupJson, "amount");
                 group.skills.push(skill);
+                validateSkill(skill);
             });
             category.groups.push(group);
         });
         skillTree.push(category);
     });
     return skillTree;
+}
+
+function validateSkill(skill) {
+    console.assert(skill.name, JSON.stringify(skill));
+    console.assert(skill.id, JSON.stringify(skill));
+    console.assert(skill.class, JSON.stringify(skill));
+    console.assert(skill.amount, JSON.stringify(skill));
+    console.assert(skill.subject, JSON.stringify(skill));
+    if (skill.subject == "Industry") {
+        console.assert(!skill.type, JSON.stringify(skill));
+        console.assert(!skill.tier, JSON.stringify(skill));
+    } else {
+        console.assert(skill.type, JSON.stringify(skill));
+        console.assert(skill.tier, JSON.stringify(skill));
+    }
 }
 
 var cc = new recipeCalc(recipes);
@@ -585,7 +601,6 @@ function updateSkillTreeDiv(skillTree) {
         return nodeTitleDiv;
     }
 
-    console.log(JSON.stringify(skillValues.values));
     const skillTreeDiv = document.getElementById("skillTreeDiv");
 
     skillTree.forEach(category => {
@@ -808,7 +823,7 @@ craftClearBut.onclick = function () {
 }
 
 getDataButton.onclick = function () {
-    copyStringToClipboard(getStateJsonString());
+    copyStringToClipboard(getStateJsonString(true));
 }
 doconfigBut.onclick = function () {
     trySaveState(configta.value);
