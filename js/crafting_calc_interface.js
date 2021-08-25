@@ -42,7 +42,7 @@ class SkillValues {
     values = {};
 
     getValue(id) {
-        return this.values.hasOwnProperty(id) ? this.values[id] : 0;
+        return parseInt(this.values.hasOwnProperty(id) ? this.values[id] : 0);
     }
 
     setValue(id, value) {
@@ -53,7 +53,7 @@ class SkillValues {
         } else if (newValue > 5) {
             newValue = 5;
         }
-        if (oldValue != newValue) {
+        if (oldValue !== newValue) {
             this.values[id] = newValue;
             return true;
         }
@@ -208,7 +208,7 @@ function validateSkill(skill) {
     console.assert(skill.class, JSON.stringify(skill));
     console.assert(skill.amount, JSON.stringify(skill));
     console.assert(skill.subject, JSON.stringify(skill));
-    if (skill.subject == "Industry") {
+    if (skill.subject === "Industry") {
         console.assert(!skill.type, JSON.stringify(skill));
         console.assert(!skill.tier, JSON.stringify(skill));
     } else {
@@ -255,9 +255,9 @@ function calculate() {
 
     for (var i = 0; i < list.length; i++) {
         var typeIndex = cc.types.indexOf(cc.db[list[i].name].type);
-        if (i > 0 && typeIndex != 0) {
+        if (i > 0 && typeIndex !== 0) {
             var typeIndexLast = cc.types.indexOf(cc.db[list[i - 1].name].type);
-            if (typeIndex != typeIndexLast) {
+            if (typeIndex !== typeIndexLast) {
                 var line1 = [];
 
                 var gapdet1 = document.createElement("div");
@@ -308,7 +308,7 @@ function calculate() {
         }
 
         const quantityFractionDigits = ["Ore", "Pure", "Product", "Catalyst"].includes(list[i].type) ? 2 : 0;
-        if (list[i].type == "Ore") {
+        if (list[i].type === "Ore") {
             var item = document.createElement("div");
             item.classList.add("ore-item");
             item.innerHTML = cc.trans(language, list[i].name);
@@ -373,7 +373,7 @@ function calculate() {
                 var ings = cc.db[list[j].name].getIngredients();
                 for (var k = 0; k < ings.length; k++) {
                     var ing = ings[k]
-                    if (ing.name == list[i].name) {
+                    if (ing.name === list[i].name) {
                         mv = Math.max(mv, ing.quantity);
                     }
                 }
@@ -382,7 +382,7 @@ function calculate() {
             maintain.innerHTML = formatNum(mv, 0);
             line.push(maintain);
 
-            line.forEach(function (it, k) {
+            line.forEach(function (it) {
                 it.classList.add(rowClass);
                 queueListDetailed.appendChild(it);
             });
@@ -475,14 +475,14 @@ function createItemsAcc(list, depth, filter = "", override = false) {
         //console.log("list i "+list[i]);
         if (typeof list[i] == "object") {
             var or = override;
-            if (filter != "" && cc.trans(language, list[i].name).toLowerCase().search(filter.toLowerCase()) != -1) {
+            if (filter !== "" && cc.trans(language, list[i].name).toLowerCase().search(filter.toLowerCase()) !== -1) {
                 or = true;
             }
             var deeperOutput = createItemsAcc(list[i].data, depth + 1, filter, or);
             if (deeperOutput[1] || override) {
                 found = true;
                 output.push(tab + '<div class="accordion unselectable"><span>');
-                if (!or && filter != "" && deeperOutput[1]) {
+                if (!or && filter !== "" && deeperOutput[1]) {
                     output.push('-');
                 } else {
                     output.push('+');
@@ -490,7 +490,7 @@ function createItemsAcc(list, depth, filter = "", override = false) {
                 output.push('</span><span class="accordion-title">');
                 output.push(cc.trans(language, list[i].name));
                 output.push('</span></div>\n' + tab + '\t<div class="accordion-panel unselectable');
-                if (!or && filter != "" && deeperOutput[1]) {
+                if (!or && filter !== "" && deeperOutput[1]) {
                     output.push(' active" style="display:block"')
                 }
                 output.push('">\n');
@@ -503,10 +503,10 @@ function createItemsAcc(list, depth, filter = "", override = false) {
                 continue;
             }
             var cn = "";
-            if (list[i].search("Ore") != -1 || list[i].search("Pure") != -1) {
+            if (list[i].search("Ore") !== -1 || list[i].search("Pure") !== -1) {
                 cn = list[i].split(" ")[0].toLowerCase();
             }
-            if (filter == "" || cc.trans(language, list[i]).toLowerCase().search(filter.toLowerCase()) != -1 || override) {
+            if (filter === "" || cc.trans(language, list[i]).toLowerCase().search(filter.toLowerCase()) !== -1 || override) {
                 output.push(tab + "\t<div class='accordion-item unselectable " + cn + "'>");
                 output.push(cc.trans(language, list[i]));
                 output.push("</div>\n");
@@ -516,7 +516,7 @@ function createItemsAcc(list, depth, filter = "", override = false) {
     if (output.length > 0) {
         found = true;
     }
-    if (!found && depth == 0) {
+    if (!found && depth === 0) {
         output = ['<span style="color:#fff">No results</span>'];
     }
     return [output, found];
@@ -533,7 +533,7 @@ async function setFilter() {
     var t = (new Date()).getTime();
     if (t - keyHit >= 2000) {
         //console.log("waiting");
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise((resolve) => {
             setTimeout(() => resolve(), 2000)
         });
         let result = await promise;
@@ -572,8 +572,8 @@ function initSkillTreeDiv() {
             skillInput.id = iSt;
             skillInput.value = iSt;
             skillInput.setAttribute("label", iSt);
-            skillInput.checked = skillValues.getValue(skill.id) == i;
-            skillInput.addEventListener("change", function (e) {
+            skillInput.checked = skillValues.getValue(skill.id) === i;
+            skillInput.addEventListener("change", function () {
                 const updated = skillValues.setValue(skill.id, this.value);
                 if (updated) {
                     cc.updateSkills(getAllSkills(), skillValues);
@@ -724,7 +724,7 @@ function updateSkills() {
     for (let i = 0; i < skillInputs.length; i++) {
         const skillInput = skillInputs[i];
         const skillId = skillInput.getAttribute("name");
-        skillInput.checked = parseInt(skillInput.value) == skillValues.getValue(skillId);
+        skillInput.checked = parseInt(skillInput.value) === skillValues.getValue(skillId);
     }
     cc.updateSkills(getAllSkills(), skillValues);
     calculate();
@@ -749,7 +749,7 @@ function finishOreItem(event) {
     name = cc.transr(language, name);
 
     var ast = name.search(/\*/);
-    if (ast != -1) {
+    if (ast !== -1) {
         name = name.substring(0, ast - 1);
     }
     addInvItem(name, qty);
@@ -762,7 +762,7 @@ function finishCraftItem(event) {
     name = cc.transr(language, name);
 
     var ast = name.search(/\*/);
-    if (ast != -1) {
+    if (ast !== -1) {
         name = name.substring(0, ast - 1);
     }
 
@@ -772,9 +772,8 @@ function finishCraftItem(event) {
 // modal accordion callbacks
 function setupCallbacks() {
     var acc = document.getElementsByClassName("accordion");
-    var i;
 
-    for (i = 0; i < acc.length; i++) {
+    for (let i = 0; i < acc.length; i++) {
         acc[i].replaceWith(acc[i].cloneNode(true));
         acc[i].addEventListener("click", function () {
             this.classList.toggle("accordion-active");
@@ -785,7 +784,7 @@ function setupCallbacks() {
                 panel.style.display = "block";
             }
 
-            if (this.children[0].innerHTML == "+") {
+            if (this.children[0].innerHTML === "+") {
                 this.children[0].innerHTML = "-";
             } else {
                 this.children[0].innerHTML = "+";
