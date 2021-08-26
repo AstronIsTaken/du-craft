@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta content="utf-8" http-equiv="encoding">
-    <link rel="stylesheet" type="text/css" href="../css/craft.css?v=2">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/craft.css?v=3">
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Dual Universe Beta Crafting Calculator</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P52PMV90FX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-P52PMV90FX');
+    </script>
 </head>
-<title>Dual Universe Beta Crafting Calculator</title>
-<html>
+<html lang="en-US">
 <body>
 
 <nav class="navbar">
@@ -18,17 +29,17 @@
     <button id="priceButton" style="float:left;margin:0 5px;">Prices</button>
     <button id="profileButton" style="float:left;margin:0 5px;">Save/Load Profiles</button>
     <button id="clearButton" style="float:left;margin:0 5px;" class="bugButton">Reset</button>
-    <button id="langButton" style="float:left;margin:0 5px;">&#128214;</button>
+    <button id="langButton" style="float:left;margin:0 5px;display:none;">&#128214;</button>
     <button id="getDataButton" style="float:left;margin:0 5px;">Copy Config</button>
     <button id="setDataButton" style="float:left;margin:0 5px;">Paste Config</button>
 
     <span style="color:#fff;float:left;padding:0 0 0 15px;">Updated on&nbsp;<a id="lastUpdateTime" href="https://github.com/AstronIsTaken/du-craft/releases" target="_blank">Loading</a></span>
     <span class="navright legend">
-<span class="tier-basic tier-all">1 : Basic</span>
-<span class="tier-uncommon tier-all">2 : Uncommon</span>
-<span class="tier-advanced tier-all">3 : Advanced</span>
-<span class="tier-rare tier-all">4 : Rare</span>
-<span class="tier-exotic tier-all">5 : Exotic</span>
+<span class="tier-1 tier-all">1 : Basic</span>
+<span class="tier-2 tier-all">2 : Uncommon</span>
+<span class="tier-3 tier-all">3 : Advanced</span>
+<span class="tier-4 tier-all">4 : Rare</span>
+<span class="tier-5 tier-all">5 : Exotic</span>
 </span>
 
 
@@ -77,7 +88,7 @@
             Crafting Queue
             <button id="detailedCraftQueueButton" class="clear-button">Detailed View</button>
         </div>
-        <span class="totals">Crafting Time:
+        <span class="totals hidden">Crafting Time:
 			<span id="totalTime"></span>
 		</span>
 
@@ -116,9 +127,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <span id="skillsModalClose" class="modal-close">&times;</span>
-            <h2>Skill Selection</h2>
+            <h2>Skills</h2>
         </div>
-        <div id="skillAccordion" class="modal-body">
+        <div class="modal-body">
+            <label class="checkbox-container">Show only applicable skills
+                <input id="onlyApplicableSkills" type="checkbox" onchange="onOnlyApplicableSkills(this.checked)">
+                <span class="checkbox-checkmark"></span>
+            </label>
+            <div id="skillTreeDiv"></div>
         </div>
     </div>
 
@@ -199,7 +215,6 @@
         </div>
         <div id="langDialog" class="modal-body">
             <button id="lb_english">English</button>
-            <button id="lb_french">Français</button>
             <button id="lb_german">Deutsch</button>
         </div>
 
@@ -224,8 +239,8 @@
 
 </div>
 
-<script src="../js/crafting_calc.js?v=2"></script>
-<script src="../js/crafting_calc_interface.js?v=2"></script>
+<script src="js/crafting_calc.js?v=3"></script>
+<script src="js/crafting_calc_interface.js?v=3"></script>
 
 </body>
 </html>

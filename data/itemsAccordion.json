@@ -883,6 +883,7 @@
             "data": [
               "Bed",
               "Bench",
+              "Chair Surface",
               "Encampment Chair",
               "Navigator Chair",
               "Office Chair",
@@ -1820,7 +1821,7 @@
               "Mangalloy Honeycomb",
               "Maraging Steel Honeycomb",
               "Marble Honeycomb",
-              "Plastic Honeycomb",
+              "Polycarbonate Plastic Honeycomb",
               "Sc-Al Honeycomb",
               "Silumin Honeycomb",
               "Stainless Steel Honeycomb",
@@ -1914,7 +1915,7 @@
         "name": "Refined Materials",
         "data": [
           {
-            "name": "Catalyst",
+            "name": "Catalysts",
             "data": [
               "Catalyst 3",
               "Catalyst 4",
@@ -2427,9 +2428,20 @@
             ]
           },
           "Advanced Motherboard M",
-          "Uncommon Ore Scanner XL",
           {
-            "name": "Power Transformer",
+            "name": "Ore Scanners",
+            "data": [
+              "Basic Ore Scanner S",
+              "Basic Ore Scanner L",
+              "Uncommon Ore Scanner L",
+              "Uncommon Ore Scanner XL",
+              "Advanced Ore Scanner L",
+              "Rare Ore Scanner L",
+              "Exotic Ore Scanner L"
+            ]
+          },
+          {
+            "name": "Power Transformers",
             "data": [
               "Basic Power Transformer M",
               "Uncommon Power Transformer S",

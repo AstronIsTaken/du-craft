@@ -20,6 +20,10 @@ a.navright {
     text-align: center;
 }
 
+a {
+    color: #0095ff;
+}
+
 .bugButton a {
     text-decoration: none;
     color: #000;
@@ -302,8 +306,9 @@ body {
 }
 
 .inv-quantity, .cft-quantity, .ore-quantity, .queue-quantity, .queue-time {
-    text-align: center;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', serif;
+    text-align: right;
+    padding-right: 5%;
 }
 
 .quantity-color {
@@ -358,7 +363,7 @@ body {
     margin: 50px;
     border: 1px solid #888;
     border-radius: 20px;
-    width: 450px;
+    width: 500px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     overflow: auto;
 }
@@ -395,23 +400,27 @@ h3 {
     padding: 0 5px;
 }
 
-.tier-basic {
+.tier-0 {
+    color: #ffffff !important;
+}
+
+.tier-1 {
     color: #ab9b9b !important;
 }
 
-.tier-uncommon {
+.tier-2 {
     color: #009245 !important;
 }
 
-.tier-advanced {
+.tier-3 {
     color: #0071bc !important;
 }
 
-.tier-rare {
+.tier-4 {
     color: #662d91 !important;
 }
 
-.tier-exotic {
+.tier-5 {
     color: #d97500 !important;
 }
 
@@ -427,4 +436,194 @@ h3 {
     color: orange;
     font-style: normal;
     font-weight: bold;
+}
+
+/* Skill Tree */
+.tree-node {
+    color: #fff;
+}
+
+.tree-node-active {
+
+}
+
+.tree-node-title {
+    background-color: #002233;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: 1px #888 solid;
+    border-radius: 5px;
+    padding: 5px 18px;
+    transition: 0.4s;
+}
+
+.tree-node-body {
+    margin-left: 20px;
+    display: none;
+}
+
+.tree-node-active > .tree-node-body {
+    display: block;
+}
+
+.tree-node-title:hover {
+    background-color: #004466;
+}
+
+.tree-node-title:active {
+    background-color: #006699;
+}
+
+.tree-node-title-active {
+}
+
+.tree-node-title-text {
+    position: relative;
+}
+
+.tree-node-plus {
+    width: 20px;
+    display: inline-block;
+}
+
+.tree-node-minus {
+    width: 20px;
+    display: none;
+}
+
+.tree-node-title-active > .tree-node-plus {
+    display: none;
+}
+
+.tree-node-title-active > .tree-node-minus {
+    display: inline-block;
+}
+
+.tree-leaf {
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.skill-radio {
+    height: 100%;
+    display: inline-flex;
+}
+
+.skill-input {
+    width: auto;
+    height: 100%;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 20%;
+    padding: 2px 8px;
+    margin: 5px 5px;
+    background-color: #5088A3FF;
+    color: #fff;
+    font-size: 14px;
+    font-family: system-ui;
+    transition: all 100ms linear;
+}
+
+.skill-radio input:checked {
+    background-color: #0088cc;
+    color: #fff;
+    box-shadow: 0 1px 1px #0000002e;
+    text-shadow: 0 1px 0px #79485f7a;
+}
+
+.skill-input:checked ~ input  {
+    background-color: #454857;
+}
+
+.skill-input:before {
+    content: attr(label);
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.hidden-tree-node {
+    display:none;
+}
+
+/* The container */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+
+    border: 1px #888 solid;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px #fff;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkbox-checkmark {
+    background-color: #004466;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkbox-checkmark {
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkbox-checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkbox-checkmark:after {
+    left: 6px;
+    top: 1px;
+    width: 6px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.hidden {
+    display: none;
 }

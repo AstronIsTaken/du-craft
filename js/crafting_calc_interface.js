@@ -1,4 +1,77 @@
+// classes
+
+class Skill {
+    name;
+    id;
+    type;
+    subtype;
+    tier;
+    subject;
+    class;
+    amount;
+    constructor(categoryName, groupName, skillName) {
+        this.name = skillName;
+        this.id = [categoryName, groupName, skillName].join(".");
+    }
+}
+
+class SkillGroup {
+    name;
+    id;
+    skills = [];
+    constructor(categoryName, groupName) {
+        this.name = groupName;
+        this.id = [categoryName, groupName].join(".");
+    }
+}
+
+class SkillCategory {
+    name;
+    id;
+    groups = [];
+    constructor(name) {
+        this.name = name;
+        this.id = name;
+    }
+}
+
+showOnlyApplicableSkills = false;
+
+class SkillValues {
+    onlyApplicableSkills = false;
+    values = {};
+
+    getValue(id) {
+        return parseInt(this.values.hasOwnProperty(id) ? this.values[id] : 0);
+    }
+
+    setValue(id, value) {
+        const oldValue = this.getValue(id);
+        let newValue = parseInt(value);
+        if (isNaN(newValue) || newValue < 0) {
+            newValue = 0;
+        } else if (newValue > 5) {
+            newValue = 5;
+        }
+        if (oldValue !== newValue) {
+            this.values[id] = newValue;
+            return true;
+        }
+        return false;
+    }
+}
+
 // helper functions
+function getAllSkills() {
+    const skills = [];
+    skillTree.forEach(c => {
+        c.groups.forEach(g => {
+            skills.push(...g.skills);
+        })
+    })
+    return skills;
+}
+
 
 function loadJSON(path, callback) {
     let xobj = new XMLHttpRequest();
@@ -10,7 +83,6 @@ function loadJSON(path, callback) {
             callback(xobj.responseText);
         }
     };
-    //console.log(path);
     xobj.send(null);
 }
 
@@ -31,64 +103,58 @@ function copyStringToClipboard(str) {
     document.body.removeChild(el);
 }
 
-var tierClassNames = ["tier-basic", "tier-uncommon", "tier-advanced", "tier-rare", "tier-exotic"];
+var itemsAccordion, prices, recipes, german;
 
-var itemsAccordion, skillsAccordion, prices, recipes, german, french;
-
-var ver = "2";
-var lastUpdateTime = "2021-07-23";
+const version = "1";
+const lastUpdateTime = "2021-08-25";
 document.getElementById("lastUpdateTime").innerHTML = lastUpdateTime;
 console.log("Crafting Calculator Updated On: " + lastUpdateTime)
-console.log("Crafting Calculator Profile Version: " + ver)
+console.log("Crafting Calculator Profile Version: " + version)
 
-var language = "english"
+let language = "english";
+
+let skillTree;
+let skillValues = new SkillValues();
 
 loadJSON("../data/itemsAccordion.json", function (json) {
     itemsAccordion = JSON.parse(json);
 })
+loadJSON("../data/recipes.json", function (json) {
+    recipes = JSON.parse(json);
+})
 loadJSON("../data/skillsAccordion.json", function (json) {
-    skillsAccordion = JSON.parse(json);
+    skillTree = parseSkillFile(JSON.parse(json));
 })
 loadJSON("../data/orePrices.json", function (json) {
     prices = JSON.parse(json);
 })
-loadJSON("../data/recipes.json", function (json) {
-    recipes = json;
-})
 
 loadJSON("../data/craft_trans_german.json", function (json) {
-    german = json;
-})
-loadJSON("../data/craft_trans_french.json", function (json) {
-    french = json;
+    // german = json;
+    german = JSON.stringify({});
 })
 
-//console.log(JSON.stringify(skillsAccordion,null,2));
-
-function formatNum(num, places) {
+function formatNum(num, fractionDigits) {
     if (typeof num != "number") {
         num = parseFloat(num);
     }
-    //console.log(num)
-    var nStr = num.toFixed(places).toString();
-    nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    }
-    //console.log(x1+" "+x2);
-    return x1 + x2;
+    const formatter = fD => new Intl.NumberFormat(navigator.language, {
+        minimumFractionDigits: fD,
+        maximumFractionDigits: fD,
+    });
+    return formatter(fractionDigits).format(num);
 }
 
-String.prototype.toHHMMSS = function () {
-    var sec_num = parseFloat(this); // don't forget the second param
-    var days = Math.floor(sec_num / 86400);
-    var hours = Math.floor((sec_num - (days * 86400)) / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600) - (days * 86400)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60) - (days * 86400);
+function formatTime(time) {
+    if (typeof time != "number") {
+        time = parseFloat(time);
+    }
+
+    time = parseInt(time, 10);
+    let days = Math.floor(time / 86400);
+    let hours = Math.floor((time % 86400) / 3600);
+    let minutes = Math.floor((time % 3600) / 60);
+    let seconds = time % 60;
 
     if (hours < 10) {
         hours = "0" + hours;
@@ -97,55 +163,62 @@ String.prototype.toHHMMSS = function () {
         minutes = "0" + minutes;
     }
     if (seconds < 10) {
-        seconds = "0" + formatNum(seconds, 2);
+        seconds = "0" + seconds;
     }
-    return days + ' d : ' + hours + ' h : ' + minutes + ' m : ' + formatNum(seconds, 0) + ' s';
+    return (days > 0 ? days + ":" : "") + hours + ':' + minutes + ':' + seconds;
 }
 
 //-----------------------------------------------------------------------------------
 // crafting calculator variables and calculation
 var inv = [];
 var craft = [];
-var industrySelection = {};
 var itemLists = [];
 
-//populate skills
-
-function getSkills(list, upperName) {
-    var s = []
-    for (var i = 0; i < list.length; i++) {
-        var skill = JSON.parse(JSON.stringify(list[i]));
-        //console.log(skill.name);
-        if (typeof skill.data[0] != "string") {
-            if (upperName != "") {
-                s = s.concat(getSkills(skill.data, upperName + "." + skill.name));
-            } else {
-                s = s.concat(getSkills(skill.data, skill.name));
-            }
-
-        } else {
-            if (upperName != "") {
-                skill.name = upperName + "." + skill.name;
-            }
-            skill.values = [];
-            for (var j = 0; j < skill.data.length; j++) {
-                skill.values[j] = 0;
-            }
-            s.push(skill);
-        }
-
-    }
-    return s
+function getOneOf(obj1, obj2, property) {
+    return obj1.hasOwnProperty(property) ? obj1[property] : obj2[property];
 }
 
-var skills = getSkills(skillsAccordion, "")
-//console.log(JSON.stringify(skills,null,2));
+function parseSkillFile(skillFileJson) {
+    const skillTree = [];
+    skillFileJson.forEach(categoryJson => {
+        const category = new SkillCategory(categoryJson.name);
+        categoryJson.data.forEach(groupJson => {
+            const group = new SkillGroup(categoryJson.name, groupJson.name);
+            groupJson.skills.forEach(skillJson => {
+                const skill = new Skill(category.name, group.name, skillJson.name);
+                skill.type = getOneOf(skillJson, groupJson, "type");
+                skill.subtype = getOneOf(skillJson, {}, "subtype");
+                skill.tier = getOneOf(skillJson, groupJson, "tier");
+                skill.subject = getOneOf(skillJson, groupJson, "subject");
+                skill.class = getOneOf(skillJson, groupJson, "class");
+                skill.amount = getOneOf(skillJson, groupJson, "amount");
+                group.skills.push(skill);
+                validateSkill(skill);
+            });
+            category.groups.push(group);
+        });
+        skillTree.push(category);
+    });
+    return skillTree;
+}
 
-//console.log(recipes);
-//console.log(typeof recipes);
+function validateSkill(skill) {
+    console.assert(skill.name, JSON.stringify(skill));
+    console.assert(skill.id, JSON.stringify(skill));
+    console.assert(skill.class, JSON.stringify(skill));
+    console.assert(skill.amount, JSON.stringify(skill));
+    console.assert(skill.subject, JSON.stringify(skill));
+    if (skill.subject === "Industry") {
+        console.assert(!skill.type, JSON.stringify(skill));
+        console.assert(!skill.tier, JSON.stringify(skill));
+    } else {
+        console.assert(skill.type, JSON.stringify(skill));
+        console.assert(skill.tier, JSON.stringify(skill));
+    }
+}
+
 var cc = new recipeCalc(recipes);
-cc.addTrans({"german": JSON.parse(german), "french": JSON.parse(french)});
-//console.log(JSON.stringify(cc.db));
+cc.addTrans({"german": JSON.parse(german)});
 
 var invListCols = invList.children.length;
 var craftListCols = cftList.children.length;
@@ -155,9 +228,6 @@ var queueListDetailedCols = queueListDetailed.children.length;
 
 //run crafting calculations and update output lists oreList and queueList
 function calculate() {
-    //console.log("calculating...")
-    //console.log("craft "+JSON.stringify(craft));
-    //console.log("inv "+JSON.stringify(inv));
 
     while (oreList.children.length > oreListCols) {
         oreList.removeChild(oreList.children[oreListCols])
@@ -169,22 +239,13 @@ function calculate() {
         queueListDetailed.removeChild(queueListDetailed.children[queueListDetailedCols])
     }
     if (craft.length === 0) {
-        totalTime.innerHTML = "0".toHHMMSS();
+        totalTime.innerHTML = formatTime(0);
         trySaveState();
         return;
     }
 
-    //console.log("calculating the craft");
-    itemLists = cc.calcList(craft, inv, skills);
-    //console.log(JSON.stringify(cc.debug,null,2));
-    //console.log("got the craft list");
+    itemLists = cc.calcList(craft, inv);
     var list = itemLists.normal;
-
-    //console.log("result of craftcalc is");
-    //console.log(JSON.stringify(list,null,2));
-
-    //console.log("start of calc prices");
-    //console.log(JSON.stringify(prices));
 
     var totOre = 0;
     var totTime = 0;
@@ -192,13 +253,11 @@ function calculate() {
 
     var striped = false;
 
-    var currentTypeIndex = 0;
-
     for (var i = 0; i < list.length; i++) {
         var typeIndex = cc.types.indexOf(cc.db[list[i].name].type);
-        if (i > 0 && typeIndex != 0) {
+        if (i > 0 && typeIndex !== 0) {
             var typeIndexLast = cc.types.indexOf(cc.db[list[i - 1].name].type);
-            if (typeIndex != typeIndexLast) {
+            if (typeIndex !== typeIndexLast) {
                 var line1 = [];
 
                 var gapdet1 = document.createElement("div");
@@ -247,8 +306,9 @@ function calculate() {
                 });
             }
         }
-        //console.log("creating elements for "+JSON.stringify(list[i]));
-        if (list[i].type == "Ore") {
+
+        const quantityFractionDigits = ["Ore", "Pure", "Product", "Catalyst"].includes(list[i].type) ? 2 : 0;
+        if (list[i].type === "Ore") {
             var item = document.createElement("div");
             item.classList.add("ore-item");
             item.innerHTML = cc.trans(language, list[i].name);
@@ -257,7 +317,7 @@ function calculate() {
 
             var qty = document.createElement("div");
             qty.classList.add("ore-quantity");
-            qty.innerHTML = formatNum(list[i].quantity, 0);
+            qty.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
             totOre += list[i].quantity;
 
             var price = document.createElement("div");
@@ -288,38 +348,23 @@ function calculate() {
 
             var qty2 = document.createElement("div");
             qty2.classList.add("queue-quantity");
-            qty2.innerHTML = formatNum(list[i].quantity, 0);
+            qty2.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
             line.push(qty2);
 
             var bp = document.createElement("div");
             bp.classList.add("queue-quantity");
-            bp.innerHTML = formatNum(list[i].bpquantity, 0);
+            bp.innerHTML = formatNum(list[i].bpquantity, quantityFractionDigits);
             line.push(bp);
 
             var time2 = document.createElement("div");
             time2.classList.add("queue-time");
-            time2.innerHTML = formatNum(list[i].time, 0);
+            time2.innerHTML = formatTime(list[i].time);
             line.push(time2);
 
-            var indSel = document.createElement("SELECT");
-            indSel.style.color = "white";
-            for (var j = list[i].industries.length - 1; j >= 0; j--) {
-                var ind = document.createElement("option");
-                ind.text = cc.trans(language, list[i].industries[j]);
-                ind.style.color = "white";
-                indSel.add(ind)
-            }
-
-            if (industrySelection[list[i].name] != null) {
-                indSel.value = cc.trans(language, industrySelection[list[i].name]);
-            } else {
-                //console.log(list[i].name+" didn't have an industrySelection");
-                industrySelection[list[i].name] = cc.transr(language, indSel.options[indSel.selectedIndex].text);
-                //console.log(indSel.options[indSel.selectedIndex].text);
-
-            }
-            indSel.onchange = updateIndSel;
-            line.push(indSel);
+            var industry = document.createElement("div");
+            industry.classList.add("queue-industry");
+            industry.innerHTML = list[i].industry;
+            line.push(industry);
 
             var maintain = document.createElement("div");
             maintain.classList.add("queue-quantity");
@@ -328,7 +373,7 @@ function calculate() {
                 var ings = cc.db[list[j].name].getIngredients();
                 for (var k = 0; k < ings.length; k++) {
                     var ing = ings[k]
-                    if (ing.name == list[i].name) {
+                    if (ing.name === list[i].name) {
                         mv = Math.max(mv, ing.quantity);
                     }
                 }
@@ -337,14 +382,14 @@ function calculate() {
             maintain.innerHTML = formatNum(mv, 0);
             line.push(maintain);
 
-            line.forEach(function (it, k) {
+            line.forEach(function (it) {
                 it.classList.add(rowClass);
                 queueListDetailed.appendChild(it);
             });
 
             striped = !striped;
 
-            item2.classList.add(tierClassNames[list[i].tier - 1]);
+            item2.classList.add("tier-" + list[i].tier);
             item2.classList.add("tier-all");
 
             //main window queue list
@@ -356,12 +401,11 @@ function calculate() {
 
             var qty = document.createElement("div");
             qty.classList.add("queue-quantity");
-            //qty.innerHTML="<span class='queue-quantity-total'>"+formatNum(list[i].quantity,0)+"</span> (<span class='queue-quantity-byproduct'>"+formatNum(list[i].bpquantity,0)+"</span>)";
-            qty.innerHTML = formatNum(list[i].quantity, 0);
+            qty.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
 
             var time = document.createElement("div");
             time.classList.add("queue-time");
-            time.innerHTML = formatNum(list[i].time, 0);
+            time.innerHTML = formatTime(list[i].time);
             totTime += list[i].time;
 
             var check = document.createElement("button");
@@ -374,9 +418,8 @@ function calculate() {
             queueList.appendChild(time);
             queueList.appendChild(check);
         }
-        //console.log("list[i] "+JSON.stringify(list[i],null,2));
-        //console.log(list[i].tier);
-        item.classList.add(tierClassNames[list[i].tier - 1]);
+
+        item.classList.add("tier-" + list[i].tier);
         item.classList.add("tier-all");
         item.style.padding = "0 0 0 5px";
         item.style["border-radius"] = "3px";
@@ -405,11 +448,8 @@ function calculate() {
     oreList.appendChild(price);
     oreList.appendChild(check);
 
-    totalTime.innerHTML = totTime.toString().toHHMMSS();
+    totalTime.innerHTML = formatTime(totTime);
     totalOre.innerHTML = formatNum(totOre, 0);
-
-    //console.log("end of calc prices");
-    //console.log(JSON.stringify(prices));
 
     trySaveState();
 }
@@ -423,7 +463,7 @@ function createItemsAcc(list, depth, filter = "", override = false) {
     if (filter == undefined) {
         filter = "";
     }
-    //console.log("ca "+depth);
+
     var output = [];
     var tab = ""
     var found = false;
@@ -434,18 +474,15 @@ function createItemsAcc(list, depth, filter = "", override = false) {
     for (var i = 0; i < list.length; i++) {
         //console.log("list i "+list[i]);
         if (typeof list[i] == "object") {
-            //console.log("["+i+","+depth+"]"+list[i].name);
             var or = override;
-            if (filter != "" && cc.trans(language, list[i].name).toLowerCase().search(filter.toLowerCase()) != -1) {
+            if (filter !== "" && cc.trans(language, list[i].name).toLowerCase().search(filter.toLowerCase()) !== -1) {
                 or = true;
             }
             var deeperOutput = createItemsAcc(list[i].data, depth + 1, filter, or);
-            //console.log("found item on deeper list? "+deeperOutput[1]);
-            //console.log("override? "+or);
             if (deeperOutput[1] || override) {
                 found = true;
                 output.push(tab + '<div class="accordion unselectable"><span>');
-                if (!or && filter != "" && deeperOutput[1]) {
+                if (!or && filter !== "" && deeperOutput[1]) {
                     output.push('-');
                 } else {
                     output.push('+');
@@ -453,7 +490,7 @@ function createItemsAcc(list, depth, filter = "", override = false) {
                 output.push('</span><span class="accordion-title">');
                 output.push(cc.trans(language, list[i].name));
                 output.push('</span></div>\n' + tab + '\t<div class="accordion-panel unselectable');
-                if (!or && filter != "" && deeperOutput[1]) {
+                if (!or && filter !== "" && deeperOutput[1]) {
                     output.push(' active" style="display:block"')
                 }
                 output.push('">\n');
@@ -466,10 +503,10 @@ function createItemsAcc(list, depth, filter = "", override = false) {
                 continue;
             }
             var cn = "";
-            if (list[i].search("Ore") != -1 || list[i].search("Pure") != -1) {
+            if (list[i].search("Ore") !== -1 || list[i].search("Pure") !== -1) {
                 cn = list[i].split(" ")[0].toLowerCase();
             }
-            if (filter == "" || cc.trans(language, list[i]).toLowerCase().search(filter.toLowerCase()) != -1 || override) {
+            if (filter === "" || cc.trans(language, list[i]).toLowerCase().search(filter.toLowerCase()) !== -1 || override) {
                 output.push(tab + "\t<div class='accordion-item unselectable " + cn + "'>");
                 output.push(cc.trans(language, list[i]));
                 output.push("</div>\n");
@@ -479,7 +516,7 @@ function createItemsAcc(list, depth, filter = "", override = false) {
     if (output.length > 0) {
         found = true;
     }
-    if (!found && depth == 0) {
+    if (!found && depth === 0) {
         output = ['<span style="color:#fff">No results</span>'];
     }
     return [output, found];
@@ -492,26 +529,15 @@ itemAccordion.innerHTML = itemsAccStr;
 var keyHit = (new Date()).getTime();
 
 async function setFilter() {
-    /*
-    var t=(new Date()).getTime();
-    if (t-filterTime>3000){
-        itemsAccList=createItemsAcc(itemsAccordion,0,itemFilter.value)[0];
-        itemsAccStr=itemsAccList.join('')
-        itemAccordion.innerHTML=itemsAccStr;
-        filterTime=t;
-    }
-    */
-    //console.log('key hit');
+
     var t = (new Date()).getTime();
     if (t - keyHit >= 2000) {
         //console.log("waiting");
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise((resolve) => {
             setTimeout(() => resolve(), 2000)
         });
         let result = await promise;
 
-        //console.log("filtering");
-        //console.log(itemFilter.value);
         itemsAccList = createItemsAcc(itemsAccordion, 0, itemFilter.value)[0];
         itemsAccStr = itemsAccList.join('')
         itemAccordion.innerHTML = itemsAccStr;
@@ -528,129 +554,182 @@ document.body.addEventListener("keydown", function () {
     keyHit = (new Date()).getTime();
 });
 
+function initSkillTreeDiv() {
 
-function createSkillsAcc(list, depth, upperName, filter = "", override = false) {
-
-    function makeSkillInput(fullName) {
-        var namestr = '"' + fullName + '"'
-        return "<input oninput='setSkill(" + namestr + ",this.value)'" +
-            " data-skill='" + fullName + "' class='accordion-input2' type='number' min='0' max='5' value='0'>";
-    }
-
-    if (filter == undefined) {
-        filter = "";
-    }
-    //console.log("ca "+depth);
-    var output = [];
-    var tab = ""
-    var found = false;
-    for (var j = 0; j <= depth; j++) {
-        tab += " ";
-    }
-
-    for (var i = 0; i < list.length; i++) {
-        //console.log("list i "+list[i]);
-        if (typeof list[i] == "object") {
-            var or = override;
-            if (filter != "" && list[i].name.toLowerCase().search(filter.toLowerCase()) != -1) {
-                or = true;
-            }
-            var nextName = list[i].name;
-            if (upperName != "") {
-                nextName = upperName + "." + list[i].name;
-            }
-            var deeperOutput = createSkillsAcc(list[i].data, depth + 1, nextName, filter, or);
-            //console.log("list i "+list[i].name);
-            //console.log("found item on deeper list? "+deeperOutput[1]);
-            //console.log("override? "+or);
-            if (deeperOutput[1] || override) {
-                found = true;
-                output.push(tab + '<div class="accordion unselectable"><span>+</span><span class="accordion-title">');
-                output.push(list[i].name);
-                output.push('</span></div>\n' + tab + '\t<div class="accordion-panel unselectable">\n');
-                output.push(deeperOutput[0].join(''));
-                output.push(tab + '\t</div>\n');
-            }
-        } else {
-
-            if (filter == "" || list[i].toLowerCase().search(filter.toLowerCase()) != -1 || override) {
-                output.push(tab + "\t<div class='accordion-item2 unselectable'>");
-                output.push(list[i]);
-
-                var nextName = list[i].name;
-                if (upperName != "") {
-                    nextName = upperName + "." + list[i];
+    function makeSkillRadio(skill) {
+        const skillDiv = document.createElement("div");
+        skillDiv.classList.add("tree-leaf");
+        skillDiv.innerText = skill.name;
+        skillDiv.setAttribute("skill-id", skill.id);
+        const radioDiv = document.createElement("div");
+        radioDiv.classList.add("skill-radio");
+        for (let i = 0; i <= 5; i++) {
+            const skillInput = document.createElement("input");
+            skillInput.classList.add("skill-input");
+            skillInput.type = "radio";
+            skillInput.name = skill.id;
+            const iSt = "" + i;
+            skillInput.id = iSt;
+            skillInput.value = iSt;
+            skillInput.setAttribute("label", iSt);
+            skillInput.checked = skillValues.getValue(skill.id) === i;
+            skillInput.addEventListener("change", function () {
+                const updated = skillValues.setValue(skill.id, this.value);
+                if (updated) {
+                    cc.updateSkills(getAllSkills(), skillValues);
+                    calculate();
                 }
-
-                output.push(makeSkillInput(nextName));
-                output.push("</div>\n");
-            }
+            });
+            radioDiv.appendChild(skillInput)
         }
+        skillDiv.appendChild(radioDiv);
+        return skillDiv;
     }
-    if (output.length > 0) {
-        found = true;
+
+    function makeSkillNodeTitle(nodeName) {
+        const nodeTitleDiv = document.createElement("div");
+        nodeTitleDiv.classList.add("tree-node-title");
+        const plus = document.createElement("span");
+        plus.classList.add("tree-node-plus");
+        plus.innerText = "+";
+        const minus = document.createElement("span");
+        minus.classList.add("tree-node-minus");
+        minus.innerText = "-";
+        const title = document.createElement("span");
+        title.classList.add("tree-node-title-text");
+        title.innerText = nodeName;
+        nodeTitleDiv.appendChild(plus);
+        nodeTitleDiv.appendChild(minus);
+        nodeTitleDiv.appendChild(title);
+        nodeTitleDiv.addEventListener("click", function () {
+            this.classList.toggle("tree-node-title-active");
+            this.parentElement.classList.toggle("tree-node-active");
+        });
+        return nodeTitleDiv;
     }
-    if (!found && depth == 0) {
-        output = ['<span style="color:#fff">No results</span>'];
+
+    const skillTreeDiv = document.getElementById("skillTreeDiv");
+
+    while (skillTreeDiv.firstChild) {
+        skillTreeDiv.removeChild(skillTreeDiv.firstChild);
     }
-    return [output, found];
+
+    skillTree.forEach(category => {
+        const groupNodes = [];
+        category.groups.forEach(group => {
+            const skillLeafs = [];
+            group.skills.forEach(skill => {
+                const skillLeaf = makeSkillRadio(skill);
+                skillLeafs.push(skillLeaf);
+            });
+            if (skillLeafs.length === 0) {
+                return;
+            }
+            const groupNode = document.createElement("div");
+            groupNode.setAttribute("skill-group-id", group.id);
+            groupNode.classList.add("tree-node");
+            groupNode.appendChild(makeSkillNodeTitle(group.name));
+            const groupNodeBody = document.createElement("div");
+            groupNodeBody.classList.add("tree-node-body");
+            groupNode.appendChild(groupNodeBody);
+            skillLeafs.forEach(s => groupNodeBody.appendChild(s));
+            groupNodes.push(groupNode);
+        });
+        if (groupNodes.length === 0) {
+            return;
+        }
+        const categoryNode = document.createElement("div");
+        categoryNode.setAttribute("skill-category-id", category.id);
+        categoryNode.classList.add("tree-node");
+        categoryNode.appendChild(makeSkillNodeTitle(category.name));
+        const categoryNodeBody = document.createElement("div");
+        categoryNodeBody.classList.add("tree-node-body");
+        categoryNode.appendChild(categoryNodeBody);
+        groupNodes.forEach(g => categoryNodeBody.appendChild(g));
+        skillTreeDiv.appendChild(categoryNode);
+    });
 }
 
-//console.log(JSON.stringify(skillsAccordion,null,2))
-var skillsAccList = createSkillsAcc(skillsAccordion, 0, "")[0];
-var skillsAccStr = skillsAccList.join('');
-skillAccordion.innerHTML = skillsAccStr;
+function shouldDisplaySkill(skill) {
+    if (!skillValues.onlyApplicableSkills) {
+        return true;
+    }
+    if (craft.length === 0) {
+        return false;
+    }
+    for (const item of itemLists.normal) {
 
-// skill modal callback to modify skill variable
-function setSkill(skillNames, value) {
-    //console.log("setting skill")
-
-    var names = skillNames.split(".");
-    var lastName = names[names.length - 1];
-    names.pop();
-    var checkName = names.join(".");
-
-    //console.log(skillNames);
-    //console.log(checkName);
-
-    for (var i = 0; i < skills.length; i++) {
-        if (skills[i].name == checkName) {
-            for (var j = 0; j < skills[i].data.length; j++) {
-                if (skills[i].data[j] == lastName) {
-                    //console.log("found the skill in script");
-                    //console.log(JSON.stringify(skills[i],null,2));
-                    skills[i].values[j] = parseInt(value);
-                    //console.log(JSON.stringify(skills[i],null,2));
-                }
-            }
+        const itemRecipe = cc.db[item.name];
+        if (isSkillApplicable(skill, itemRecipe)) {
+            return true;
         }
     }
+    return false;
+}
 
-    cc.updateSkills(skills, industrySelection);
-    updateSkills();
+function updateSkillTreeDiv() {
+    const skillTreeDiv = document.getElementById("skillTreeDiv");
+    const hiddenNodes = skillTreeDiv.getElementsByClassName("hidden-tree-node");
+    while (hiddenNodes.length > 0) {
+        hiddenNodes[0].classList.remove("hidden-tree-node");
+    }
+    if (skillValues.onlyApplicableSkills) {
+        skillTree.forEach(category => {
+            let emptyCategory = true;
+           category.groups.forEach(group => {
+               let emptyGroup = true;
+               group.skills.forEach(skill => {
+                   if (shouldDisplaySkill(skill)) {
+                       emptyGroup = false;
+                   } else {
+                       const skillElement = skillTreeDiv.querySelector('[skill-id="'+ skill.id + '"]');
+                       if (skillElement) {
+                           skillElement.classList.add("hidden-tree-node");
+                       }
+                   }
+               });
+               if (emptyGroup) {
+                   const groupElement = skillTreeDiv.querySelector('[skill-group-id="'+ group.id + '"]');
+                   if (groupElement) {
+                       groupElement.classList.add("hidden-tree-node");
+                   }
+               } else {
+                   emptyCategory = false;
+               }
+           });
+            if (emptyCategory) {
+                const categoryElement = skillTreeDiv.querySelector('[skill-category-id="'+ category.id + '"]');
+                if (categoryElement) {
+                    categoryElement.classList.add("hidden-tree-node");
+                }
+            }
+        });
+    }
+}
+
+function onOnlyApplicableSkills(checked) {
+    if (checked == skillValues.onlyApplicableSkills) {
+        return;
+    }
+    skillValues.onlyApplicableSkills = checked;
+
+    updateSkillTreeDiv();
+}
+
+initSkillTreeDiv();
+
+function updateSkills() {
+    console.log("Updating skills");
+    const skillInputs = document.getElementsByClassName("skill-input");
+    for (let i = 0; i < skillInputs.length; i++) {
+        const skillInput = skillInputs[i];
+        const skillId = skillInput.getAttribute("name");
+        skillInput.checked = parseInt(skillInput.value) === skillValues.getValue(skillId);
+    }
+    cc.updateSkills(getAllSkills(), skillValues);
     calculate();
 }
 
-// set skill values visible in skill modal
-function updateSkills() {
-
-    for (var i = 0; i < skills.length; i++) {
-        var skill = skills[i]
-        for (var j = 0; j < skill.data.length; j++) {
-
-            var value = skill.values[j];
-            var input = document.querySelector && document.querySelector('input[data-skill="' + skill.name + "." + skill.data[j] + '"');
-            if (input && input.value.toString() !== value.toString()) {
-                //console.log("looking for");
-                //console.log(skill.name +"."+skill.data[j]);
-                //console.log("html value "+input.value.toString());
-                //console.log("script value "+value.toString());
-                input.value = value.toString();
-            }
-
-        }
-    }
-}
 
 //-----------------------------------------------------------------------------------
 // callbacks
@@ -670,7 +749,7 @@ function finishOreItem(event) {
     name = cc.transr(language, name);
 
     var ast = name.search(/\*/);
-    if (ast != -1) {
+    if (ast !== -1) {
         name = name.substring(0, ast - 1);
     }
     addInvItem(name, qty);
@@ -682,11 +761,8 @@ function finishCraftItem(event) {
     var name = event.target.previousSibling.previousSibling.previousSibling.innerHTML;
     name = cc.transr(language, name);
 
-    //console.log("finish ore item "+name+" "+qty);
-    //console.log(typeof name)
-
     var ast = name.search(/\*/);
-    if (ast != -1) {
+    if (ast !== -1) {
         name = name.substring(0, ast - 1);
     }
 
@@ -696,13 +772,10 @@ function finishCraftItem(event) {
 // modal accordion callbacks
 function setupCallbacks() {
     var acc = document.getElementsByClassName("accordion");
-    var i;
 
-    for (i = 0; i < acc.length; i++) {
+    for (let i = 0; i < acc.length; i++) {
         acc[i].replaceWith(acc[i].cloneNode(true));
-        //console.log("setting up "+acc[i].innerHTML+" with event listener");
         acc[i].addEventListener("click", function () {
-            //console.log("an accordion was clicked");
             this.classList.toggle("accordion-active");
             var panel = this.nextElementSibling;
             if (panel.style.display === "block") {
@@ -711,7 +784,7 @@ function setupCallbacks() {
                 panel.style.display = "block";
             }
 
-            if (this.children[0].innerHTML == "+") {
+            if (this.children[0].innerHTML === "+") {
                 this.children[0].innerHTML = "-";
             } else {
                 this.children[0].innerHTML = "+";
@@ -839,12 +912,12 @@ craftClearBut.onclick = function () {
 }
 
 getDataButton.onclick = function () {
-    copyStringToClipboard(getState());
+    copyStringToClipboard(getStateJsonString(true));
 }
 doconfigBut.onclick = function () {
     trySaveState(configta.value);
     tryRestoreState();
-    cc.updateSkills(skills, industrySelection);
+    cc.updateSkills(getAllSkills(), skillValues);
     updateSkills();
     setupCallbacks();
     calculate();
@@ -852,10 +925,6 @@ doconfigBut.onclick = function () {
 setDataButton.onclick = displayDataModal;
 
 var doTrans = function () {
-    skillsAccList = createSkillsAcc(skillsAccordion, 0, "")[0];
-    skillsAccStr = skillsAccList.join('');
-    skillAccordion.innerHTML = skillsAccStr;
-
     itemsAccList = createItemsAcc(itemsAccordion, 0, "")[0];
     itemsAccStr = itemsAccList.join('')
     itemAccordion.innerHTML = itemsAccStr;
@@ -874,10 +943,6 @@ lb_english.onclick = function () {
 };
 lb_german.onclick = function () {
     language = "german";
-    doTrans()
-};
-lb_french.onclick = function () {
-    language = "french";
     doTrans()
 };
 
@@ -906,7 +971,6 @@ function updateCft(event) {
             break;
         }
     }
-    //console.log(JSON.stringify(craft));
     calculate();
 }
 
@@ -937,9 +1001,6 @@ function updateInvList() {
         var name = inv[i].name;
         var tp = cc.db[name].type;
         var quantity = inv[i].quantity.toString()
-        //if (quantity<=0){continue;}
-
-        //console.log(i+" "+name+", "+tp);
 
         var minus = document.createElement("button");
         minus.classList.add("inv-remove");
@@ -949,12 +1010,12 @@ function updateInvList() {
         item.classList.add("inv-item");
         item.innerHTML = cc.trans(language, name);
         //console.log(name+" "+type);
-        if (tp == "Ore" || tp == "Pure") {
+        if (tp === "Ore" || tp === "Pure") {
             item.classList.add(name.replace(" ", "_"));
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
         }
-        item.classList.add(tierClassNames[cc.db[name].tier - 1]);
+        item.classList.add("tier-" + cc.db[name].tier);
         item.classList.add("tier-all");
         var qty = document.createElement("input");
         qty.type = "number";
@@ -994,7 +1055,7 @@ function updateCraftList() {
             item.style.padding = "0 0 0 5px";
             item.style["border-radius"] = "3px";
         }
-        item.classList.add(tierClassNames[cc.db[name].tier - 1]);
+        item.classList.add("tier-" + cc.db[name].tier);
         item.classList.add("tier-all");
         var qty = document.createElement("input");
         qty.type = "number";
@@ -1032,6 +1093,9 @@ function addItem(event) {
         }
         addCraftItem(name, quantity);
     }
+    if (skillValues.onlyApplicableSkills) {
+        updateSkillTreeDiv();
+    }
 }
 
 // callback for the minus buttons to remove row from the appropriate list
@@ -1059,6 +1123,9 @@ function removeItem(event) {
         }
     }
     calculate();
+    if (skillValues.onlyApplicableSkills) {
+        updateSkillTreeDiv();
+    }
 }
 
 Object.keys(prices).forEach(function (ore, i) {
@@ -1066,7 +1133,7 @@ Object.keys(prices).forEach(function (ore, i) {
     var label = document.createElement("div");
     label.classList.add("accordion-item2");
     label.classList.add("unselectable");
-    label.classList.add(tierClassNames[cc.db[ore].tier - 1]);
+    label.classList.add("tier-" + cc.db[ore].tier);
     label.classList.add("tier-all");
     label.innerHTML = cc.trans(language, ore);
 
@@ -1087,8 +1154,6 @@ Object.keys(prices).forEach(function (ore, i) {
 function updatePrice(event) {
     var name = event.target.parentElement.innerText;
     name = cc.transr(language, name);
-    //console.log(event.target.value);
-    //console.log(parseFloat("lol"));
     if (isNaN(parseFloat(event.target.value))) {
         alert(event.target.value + " is not a valid number");
         for (var n of Object.keys(prices)) {
@@ -1100,7 +1165,6 @@ function updatePrice(event) {
     }
     for (var n of Object.keys(prices)) {
         if (n == name) {
-            //console.log(newParse(event.target.value))
             prices[n] = newParse(event.target.value);
             updatePrices();
             calculate();
@@ -1110,17 +1174,12 @@ function updatePrice(event) {
 }
 
 function updatePrices() {
-    //console.log("update prices");
-    //console.log(JSON.stringify(prices));
     for (var i = 0; i < priceDialog.children.length; i++) {
         var ore = priceDialog.children[i].innerText;
         ore = cc.transr(language, ore);
-        //console.log(ore);
-        //console.log(priceDialog.children[i].children.length);
         if (priceDialog.children[i].children.length < 1) {
             continue;
         }
-        //console.log(priceDialog.children[i].children[0].value);
 
         var inp = priceDialog.children[i].children[0];
 
@@ -1133,46 +1192,27 @@ function updatePrices() {
     }
 }
 
-function updateIndSel(event) {
-    var indSel = event.target;
-    var item = indSel.previousSibling;
-
-    while (true) {
-        var classes = item.classList;
-        var flag = false;
-        for (var c of classes) {
-            if (c == "queue-item") {
-                flag = true;
-                break;
-            }
-        }
-        if (flag) {
-            break;
-        }
-        item = item.previousSibling;
-    }
-    var ind = cc.transr(language, item.innerText);
-    industrySelection[ind] = event.target.value;
-    updateIndSelections();
-    cc.updateSkills(skills, industrySelection);
-    calculate();
-}
-
-function updateIndSelections() {
-    Object.keys(industrySelection).forEach(function (name, i) {
-        for (var el of queueListDetailed.children) {
-            if (cc.transr(language, el.innerText) == name) {
-                var indSel = el;
-                var tagname = indSel.tagName;
-                while (tagname.toLowerCase() != "select") {
-                    indSel = indSel.nextSibling;
-                    tagname = indSel.tagName;
-                }
-                indSel.value = cc.trans(language, industrySelection[name]);
-                break;
-            }
+function updateProfiles() {
+    var profileDropdowns = [profileList, profileDeleteList];
+    var profiles = window.localStorage.getItem("profiles");
+    profileDropdowns.forEach(function (dd, i) {
+        while (dd.options.length > 0) {
+            dd.remove(0);
         }
     });
+
+    if (profiles) {
+        profiles = JSON.parse(profiles);
+        profileDropdowns.forEach(function (dd, i) {
+            profiles.forEach(function (item, i) {
+                var option = document.createElement("option");
+                option.text = item;
+                dd.add(option)
+            });
+        });
+    } else {
+        window.localStorage.removeItem("profiles");
+    }
 }
 
 function clearLists() {
@@ -1181,35 +1221,34 @@ function clearLists() {
     inv = [];
     updateInvList();
 
-    window.localStorage.setItem("profiles", "[]");
+    window.localStorage.clear();
+    clearProfiles();
 
     loadJSON("../data/orePrices.json", function (json) {
         prices = JSON.parse(json);
     })
     updatePrices();
 
-    industrySelection = {};
-
-    skills = getSkills(skillsAccordion, "")
-    //console.log(JSON.stringify(skills,null,2));
-    cc.updateSkills(skills, industrySelection)
-    calculate();
+    skillValues = new SkillValues();
+    updateSkills();
 }
 
 function getState() {
-    // inv, craft, skills, prices, factory selection for parts
-    var state = {
-        inv: inv,
+    const state = {
+        inventory: inv,
         craft: craft,
-        skills: skills,
+        skillValues: skillValues,
         prices: prices,
-        industrySelection: industrySelection,
-        ver: ver,
+        version: version,
         language: language
     };
-    //console.log("get state: prices:");
-    //console.log(JSON.stringify(prices,null,2));
-    return JSON.stringify(state);
+    return state;
+}
+
+function getStateJsonString(pretty = false) {
+    const state = getState();
+    state.skillValues = state.skillValues.values;
+    return pretty ? JSON.stringify(state, null, 2) : JSON.stringify(state);
 }
 
 // profile saving/loading
@@ -1219,13 +1258,12 @@ function saveProfile() {
     if (name == "") {
         return;
     }
-    var state = getState();
-    //console.log(state);
+    var state = getStateJsonString();
     window.localStorage.setItem("profile_" + name, state);
     var profiles = window.localStorage.getItem("profiles");
 
     if (!profiles) {
-        profiles = JSON.stringify([name]);
+        profiles = [name];
     } else {
         profiles = JSON.parse(profiles);
         var free = true;
@@ -1266,61 +1304,33 @@ function deleteProfile() {
     window.localStorage.setItem("profile_" + name, null);
     var profiles = JSON.parse(window.localStorage.getItem("profiles"));
 
-    //console.log(JSON.stringify(profiles));
-
     for (var i = 0; i < profiles.length; i++) {
         if (profiles[i] == name) {
             profiles.splice(i, 1);
             break;
         }
     }
-    //console.log('after delete');
-    //console.log(JSON.stringify(profiles));
     window.localStorage.setItem('profiles', JSON.stringify(profiles));
     updateProfiles();
 }
 
 profileDeleteButton.onclick = deleteProfile;
 
-function updateProfiles() {
-    //console.log("update prof");
-    var profileDropdowns = [profileList, profileDeleteList];
-    var profiles = window.localStorage.getItem("profiles");
-    //console.log(profiles);
-    profileDropdowns.forEach(function (dd, i) {
-        while (dd.options.length > 0) {
-            dd.remove(0);
-        }
-        //console.log(JSON.stringify(dd.options));
-    });
-
-    if (profiles) {
-        //console.log(profiles);
-        profiles = JSON.parse(profiles);
-        profileDropdowns.forEach(function (dd, i) {
-            profiles.forEach(function (item, i) {
-                var option = document.createElement("option");
-                option.text = item;
-                dd.add(option)
-            });
-        });
-    } else {
-        window.localStorage.setItem("profiles", "[]");
-    }
-}
-
-clearProfiles.onclick = function () {
+function clearProfiles() {
     var profiles = window.localStorage.getItem("profiles");
     if (profiles) {
         profiles = JSON.parse(profiles);
         for (var profile in profiles) {
-            window.localStorage.setItem("profile_" + profile, null);
+            window.localStorage.removeItem("profile_" + profile);
         }
-        window.localStorage.setItem("profiles", null);
-        updateProfiles();
+        window.localStorage.removeItem("profiles");
     }
-
+    profileSaveInput.value = "";
+    updateProfiles();
 };
+
+clearProfiles.onclick = clearProfiles;
+
 
 updateProfiles();
 
@@ -1335,40 +1345,37 @@ function tryRestoreState(profile) {
             return;
         }
 
-        var state = JSON.parse(profile);
+        const state = JSON.parse(profile);
 
-        if (state.ver != ver) {
-            alert("Old profile detected. You may have to reset the calculator (button at the top) to get it to work.\nHere's the raw data, which you may want to save:\n\n" + profile);
+        if (state.version != version) {
+            alert("Old profile detected. You may have to reset the calculator (button at the top) to get it to work.");
         }
         //console.log("restoring...");
 
-        var oldSkills = skills;
-        var oldInv = inv;
-        var oldCraft = craft;
-        var oldPrices = prices;
-        var oldIndSel = industrySelection;
+        const oldState = getState();
 
         // restore skils
         try {
-            skills = state.skills;
-            if (Object.keys(skills) === 0) {
-                throw 'skills is empty'
+            if (Object.keys(state.skillValues) === 0) {
+                throw 'skills are empty'
             }
+            skillValues = new SkillValues();
+            skillValues.values = state.skillValues;
             updateSkills();
         } catch (e) {
             console.log("failed to load skills");
-            skills = oldSkills;
+            skillValues = oldState.skillValues;
         }
         // restore inventory
         try {
-            inv = state.inv;
+            inv = state.inventory;
             if (Object.keys(inv) === 0) {
                 throw 'inv is empty'
             }
             updateInvList();
         } catch (e) {
             console.log("failed to load inv");
-            inv = oldInv;
+            inv = oldState.inventory;
         }
 
         // restore items to craft
@@ -1380,7 +1387,7 @@ function tryRestoreState(profile) {
             updateCraftList();
         } catch (e) {
             console.log("failed to load craft");
-            craft = oldCraft;
+            craft = oldState.craft;
         }
 
         //restore prices
@@ -1394,16 +1401,6 @@ function tryRestoreState(profile) {
             console.log("failed to load prices");
             prices = oldPrices;
         }
-        try {
-            industrySelection = state.industrySelection;
-            if (Object.keys(industrySelection) === 0) {
-                throw 'industrySelection is empty'
-            }
-            updateIndSelections();
-        } catch (e) {
-            console.log("failed to load indsel");
-            industrySelection = oldIndSel;
-        }
 
         try {
             languageChanges[state.language]();
@@ -1415,36 +1412,23 @@ function tryRestoreState(profile) {
     }
 }
 
-function trySaveState(data) {
+function trySaveState(data = "") {
     try {
         if (!window.localStorage) {
             return;
         }
-        //console.log("saving...");
-        if (data == null) {
-            window.localStorage.setItem('crafting_state', getState());
+        if (data == "") {
+            window.localStorage.setItem('crafting_state', getStateJsonString());
         } else {
             window.localStorage.setItem('crafting_state', data);
         }
     } catch (e) {
         console.log('Could not save crafting calculator state.', e);
     }
-    /*
-    var profile=window.localStorage.getItem("crafting_state");
-
-    var state = JSON.parse(profile);
-    console.log("checking save...");
-    // restore skils
-    //console.log(JSON.stringify(state.skills.Pure.Material,null,2))
-    */
 }
 
-//window.localStorage.clear();
-//console.log("attempting restore state");
 tryRestoreState();
-//console.log("attempting cc.updateSkills");
-cc.updateSkills(skills, industrySelection);
+cc.updateSkills(getAllSkills(), skillValues);
 updateSkills();
-//console.log("attempting ccalc");
 setupCallbacks();
 calculate();
