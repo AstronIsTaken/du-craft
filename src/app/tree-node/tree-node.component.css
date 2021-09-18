@@ -1,0 +1,66 @@
+:host {
+  color: #fff;
+}
+
+.tree-node-title {
+  background-color: #002233;
+  cursor: pointer;
+  /*width: 100%;*/
+  text-align: left;
+  border: 1px #888 solid;
+  border-radius: 5px;
+  padding: 5px 18px;
+  transition: 0.4s;
+}
+
+.tree-node-body {
+  margin-left: 20px;
+  display: none;
+}
+
+.tree-node-title-active + .tree-node-body {
+  display: block;
+}
+
+.tree-node-title:hover {
+  background-color: #004466;
+}
+
+.tree-node-title:active {
+  background-color: #006699;
+}
+
+.tree-node-title-active {
+}
+
+.tree-node-title-text {
+  position: relative;
+}
+
+.tree-node-plus {
+  width: 20px;
+  display: inline-block;
+}
+
+.tree-node-minus {
+  width: 20px;
+  display: none;
+}
+
+.tree-node-title-active > .tree-node-plus {
+  display: none;
+}
+
+.tree-node-title-active > .tree-node-minus {
+  display: inline-block;
+}
+
+.tree-leaf {
+  padding: 5px 0px 5px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

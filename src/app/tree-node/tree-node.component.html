@@ -1,0 +1,13 @@
+<ng-container *ngIf="!getNodes(node); else elseBlock;">
+  <ng-container *ngTemplateOutlet="leafTemplate || template; context: { $implicit: node }"></ng-container>
+</ng-container>
+<ng-template #elseBlock>
+  <div class="tree-node-title" (click)="nodeStatuses.set(node.name, !nodeStatuses.get(node.name))" [ngClass]="nodeStatuses.get(node.name)? 'tree-node-title-active' : ''">
+    <span class="tree-node-plus">+</span><span class="tree-node-minus">-</span><ng-content></ng-content><span class="tree-node-title-text">{{node.name}}</span>
+  </div>
+  <div class="tree-node-body">
+    <ng-container *ngFor="let childNode of getNodes(node)">
+      <app-tree-node [node]="childNode" [template]="leafTemplate || template" [getNodes]="getNodes" [nodeStatuses]="nodeStatuses"></app-tree-node>
+    </ng-container>
+  </div>
+</ng-template>

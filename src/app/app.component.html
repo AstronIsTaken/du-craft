@@ -1,0 +1,42 @@
+<style>
+
+</style>
+
+<!-- Menu -->
+<div class="toolbar" role="banner">
+
+</div>
+
+<div class="content" role="main">
+  <app-widget title="Selected items">
+    <button header-button>Test</button>
+    <div body>
+      <ng-container *ngFor="let item of selectedItems">
+        <div>{{item}}</div>
+      </ng-container>
+    </div>
+  </app-widget>
+  <app-widget title="Items To Craft">
+    <div body>
+      <div>
+        <input #searchBox (input)="searchItem(searchBox.value)">
+      </div>
+      <ng-container *ngFor="let node of (itemsTree$ | async)?.nodes">
+        <app-tree-node [node]="node" [getNodes]="getItemTreeNodes" [nodeStatuses]="itemsTreeStatus">
+          <div *leaf="let leafName" class="item-tree-leaf" (click)="selectTreeItem(leafName)" >{{leafName}}</div>
+        </app-tree-node>
+      </ng-container>
+    </div>
+  </app-widget>
+  <app-widget title="Skills">
+    <div body>
+      <ng-container *ngFor="let category of skillTree.categories">
+        <app-tree-node [node]="category" [getNodes]="getSkillTreeNodes" [nodeStatuses]="skillTreeStatus">
+          <div *leaf="let skill" class="item-tree-leaf" (click)="selectTreeItem(skill.id)" >{{skill.name}}</div>
+        </app-tree-node>
+      </ng-container>
+    </div>
+  </app-widget>
+  <app-widget title="Crafting Queue"></app-widget>
+</div>
+

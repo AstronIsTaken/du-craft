@@ -7,13 +7,13 @@
         "type": "Pure",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -35,7 +35,7 @@
         "type": "Pure",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -57,13 +57,13 @@
         "type": "Pure",
         "tier": 2,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -85,7 +85,7 @@
         "type": "Pure",
         "tier": 2,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -107,13 +107,13 @@
         "type": "Pure",
         "tier": 3,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -135,7 +135,7 @@
         "type": "Pure",
         "tier": 3,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -157,13 +157,13 @@
         "type": "Pure",
         "tier": 4,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -185,7 +185,7 @@
         "type": "Pure",
         "tier": 4,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -207,13 +207,13 @@
         "type": "Pure",
         "tier": 5,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -235,7 +235,7 @@
         "type": "Pure",
         "tier": 5,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -262,13 +262,13 @@
         "type": "Product",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -293,7 +293,7 @@
         "type": "Product",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -318,13 +318,13 @@
         "type": "Product",
         "tier": 2,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -349,7 +349,7 @@
         "type": "Product",
         "tier": 2,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -374,13 +374,13 @@
         "type": "Product",
         "tier": 3,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -405,7 +405,7 @@
         "type": "Product",
         "tier": 3,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -430,13 +430,13 @@
         "type": "Product",
         "tier": 4,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -461,7 +461,7 @@
         "type": "Product",
         "tier": 4,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -486,13 +486,13 @@
         "type": "Product",
         "tier": 5,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.05
           },
           {
@@ -517,7 +517,7 @@
         "type": "Product",
         "tier": 5,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.03,
         "skills": [
           {
@@ -546,7 +546,7 @@
         "name": "Intermediary Part Productivity",
         "type": "Intermediary Part",
         "subject": "Tier",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.1,
         "skills": [
           {
@@ -567,7 +567,7 @@
         "name": "Intermediary Part Manufacturer",
         "type": "Intermediary Part",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.1,
         "skills": [
           {
@@ -588,7 +588,7 @@
         "name": "Complex Part Manufacturer",
         "type": "Complex Part",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.1,
         "skills": [
           {
@@ -617,7 +617,7 @@
         "name": "Exceptional Part Manufacturer",
         "type": "Exceptional Part",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.1,
         "skills": [
           {
@@ -638,7 +638,7 @@
         "name": "Functional Part Manufacturer",
         "type": "Functional Part",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.1,
         "skills": [
           {
@@ -667,7 +667,7 @@
         "name": "Structural Part Manufacturer",
         "type": "Structural Part",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.1,
         "skills": [
           {
@@ -701,7 +701,7 @@
         "name": "Combat Element Efficiency",
         "type": "Combat Element",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -730,7 +730,7 @@
         "name": "Furniture & Appliances Element Efficiency",
         "type": "Furniture & Appliances Element",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -759,7 +759,7 @@
         "name": "Industry & Infrastructure Element Efficiency",
         "type": "Industry & Infrastructure Element",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -788,7 +788,7 @@
         "name": "Piloting Element Efficiency",
         "type": "Piloting Element",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -817,7 +817,7 @@
         "name": "Systems Element Efficiency",
         "type": "Systems Element",
         "subject": "Tier",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -852,12 +852,12 @@
         "type": "Ammo",
         "tier": 2,
         "subject": "Tier",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.025,
         "skills": [
           {
             "name": "Efficiency",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -883,12 +883,12 @@
         "type": "Ammo",
         "tier": 3,
         "subject": "Tier",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.025,
         "skills": [
           {
             "name": "Efficiency",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -919,7 +919,7 @@
         "type": "Fuel",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -941,13 +941,13 @@
         "type": "Fuel",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.03,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Type",
-            "class": "Speed",
+            "operation": "Speed",
             "amount": 0.1
           },
           {
@@ -979,13 +979,13 @@
         "type": "Pure Honeycomb",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1007,7 +1007,7 @@
         "type": "Pure Honeycomb",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1029,13 +1029,13 @@
         "type": "Pure Honeycomb",
         "tier": 2,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1057,7 +1057,7 @@
         "type": "Pure Honeycomb",
         "tier": 2,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1079,13 +1079,13 @@
         "type": "Pure Honeycomb",
         "tier": 3,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1107,7 +1107,7 @@
         "type": "Pure Honeycomb",
         "tier": 3,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1129,13 +1129,13 @@
         "type": "Pure Honeycomb",
         "tier": 4,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1157,7 +1157,7 @@
         "type": "Pure Honeycomb",
         "tier": 4,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1179,13 +1179,13 @@
         "type": "Pure Honeycomb",
         "tier": 5,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1207,7 +1207,7 @@
         "type": "Pure Honeycomb",
         "tier": 5,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1234,7 +1234,7 @@
         "type": "Product Honeycomb",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
@@ -1259,7 +1259,7 @@
         "type": "Product Honeycomb",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1284,13 +1284,13 @@
         "type": "Product Honeycomb",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1309,7 +1309,7 @@
         "type": "Product Honeycomb",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1328,13 +1328,13 @@
         "type": "Product Honeycomb",
         "tier": 2,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1350,7 +1350,7 @@
         "type": "Product Honeycomb",
         "tier": 2,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1366,13 +1366,13 @@
         "type": "Product Honeycomb",
         "tier": 3,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1388,7 +1388,7 @@
         "type": "Product Honeycomb",
         "tier": 3,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1404,13 +1404,13 @@
         "type": "Product Honeycomb",
         "tier": 4,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1426,7 +1426,7 @@
         "type": "Product Honeycomb",
         "tier": 4,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1442,13 +1442,13 @@
         "type": "Product Honeycomb",
         "tier": 5,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.05,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
@@ -1464,7 +1464,7 @@
         "type": "Product Honeycomb",
         "tier": 5,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.05,
         "skills": [
           {
@@ -1485,19 +1485,19 @@
         "type": "Scrap",
         "tier": 1,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.04,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
             "name": "Refinery",
             "subject": "Tier",
-            "class": "Input",
+            "operation": "Input",
             "amount": 0.02
           },
           {
@@ -1519,7 +1519,7 @@
         "type": "Scrap",
         "tier": 1,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.02,
         "skills": [
           {
@@ -1541,19 +1541,19 @@
         "type": "Scrap",
         "tier": 2,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.04,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
             "name": "Refinery",
             "subject": "Tier",
-            "class": "Input",
+            "operation": "Input",
             "amount": 0.02
           },
           {
@@ -1575,7 +1575,7 @@
         "type": "Scrap",
         "tier": 2,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.02,
         "skills": [
           {
@@ -1597,19 +1597,19 @@
         "type": "Scrap",
         "tier": 3,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.04,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
             "name": "Refinery",
             "subject": "Tier",
-            "class": "Input",
+            "operation": "Input",
             "amount": 0.02
           },
           {
@@ -1631,7 +1631,7 @@
         "type": "Scrap",
         "tier": 3,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.02,
         "skills": [
           {
@@ -1653,19 +1653,19 @@
         "type": "Scrap",
         "tier": 4,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.04,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
             "name": "Refinery",
             "subject": "Tier",
-            "class": "Input",
+            "operation": "Input",
             "amount": 0.02
           },
           {
@@ -1687,7 +1687,7 @@
         "type": "Scrap",
         "tier": 4,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.02,
         "skills": [
           {
@@ -1709,19 +1709,19 @@
         "type": "Scrap",
         "tier": 5,
         "subject": "Item",
-        "class": "Input",
+        "operation": "Input",
         "amount": 0.04,
         "skills": [
           {
             "name": "Efficiency",
             "subject": "Tier",
-            "class": "Time",
+            "operation": "Time",
             "amount": 0.1
           },
           {
             "name": "Refinery",
             "subject": "Tier",
-            "class": "Input",
+            "operation": "Input",
             "amount": 0.02
           },
           {
@@ -1743,7 +1743,7 @@
         "type": "Scrap",
         "tier": 5,
         "subject": "Item",
-        "class": "Output",
+        "operation": "Output",
         "amount": 0.02,
         "skills": [
           {
@@ -1767,8 +1767,9 @@
     "data": [
       {
         "name": "Industry Efficiency",
+        "type": "",
         "subject": "Industry",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -1790,8 +1791,9 @@
       },
       {
         "name": "Industry Efficiency Handling",
+        "type": "",
         "subject": "Industry",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -1813,8 +1815,9 @@
       },
       {
         "name": "Assembly Efficiency",
+        "type": "",
         "subject": "Industry",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
@@ -1836,8 +1839,9 @@
       },
       {
         "name": "Assembly Efficiency Handling",
+        "type": "",
         "subject": "Industry",
-        "class": "Time",
+        "operation": "Time",
         "amount": 0.02,
         "skills": [
           {
