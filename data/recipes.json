@@ -2305,6 +2305,27 @@
       "Advanced Quantum Core": 1
     }
   },
+  "Rare Quantum Alignment Unit": {
+    "tier": 4,
+    "type": "Exceptional Part",
+    "volume": 27.5,
+    "outputQuantity": 1,
+    "time": 11820,
+    "byproducts": {},
+    "industry": "Electronics Industry M",
+    "input": {
+      "Polycarbonate Plastic": 5,
+      "Basic LED": 5,
+      "Basic Quantum Core": 2,
+      "Polycalcite Plastic": 5,
+      "Uncommon LED": 5,
+      "Uncommon Quantum Core": 1,
+      "Polysulfide Plastic": 5,
+      "Advanced Quantum Core": 1,
+      "Fluoropolymer": 5,
+      "Rare Quantum Core": 1
+    }
+  },
   "Exotic Quantum Alignment Unit": {
     "tier": 5,
     "type": "Exceptional Part",
@@ -20703,6 +20724,101 @@
       "Advanced Processor": 5,
       "Advanced Antenna S": 1,
       "Advanced Standard Frame S": 1
+    }
+  },
+  "Basic Mining Unit S": {
+    "tier": 1,
+    "type": "Industry & Infrastructure Element",
+    "volume": 70,
+    "outputQuantity": 1,
+    "time": 432,
+    "byproducts": {},
+    "industry": "Assembly Line S",
+    "input": {
+      "Basic Fixation": 6,
+      "Basic Hydraulics": 5,
+      "Basic Ore Scanner S": 1,
+      "Basic Standard Frame S": 1
+    }
+  },
+  "Basic Mining Unit L": {
+    "tier": 1,
+    "type": "Industry & Infrastructure Element",
+    "volume": 2200,
+    "outputQuantity": 1,
+    "time": 6912,
+    "byproducts": {},
+    "industry": "Assembly Line L",
+    "input": {
+      "Basic Fixation": 216,
+      "Basic Hydraulics": 125,
+      "Basic Ore Scanner L": 1,
+      "Basic Standard Frame L": 1
+    }
+  },
+  "Uncommon Mining Unit L": {
+    "tier": 2,
+    "type": "Industry & Infrastructure Element",
+    "volume": 2454,
+    "outputQuantity": 1,
+    "time": 20760,
+    "byproducts": {},
+    "industry": "Assembly Line L",
+    "input": {
+      "Basic Fixation": 108,
+      "Uncommon Fixation": 108,
+      "Uncommon Hydraulics": 125,
+      "Uncommon Ore Scanner L": 1,
+      "Uncommon Standard Frame L": 1
+    }
+  },
+  "Advanced Mining Unit L": {
+    "tier": 3,
+    "type": "Industry & Infrastructure Element",
+    "volume": 4050,
+    "outputQuantity": 1,
+    "time": 77760,
+    "byproducts": {},
+    "industry": "Assembly Line L",
+    "input": {
+      "Uncommon Fixation": 216,
+      "Advanced Hydraulics": 125,
+      "Advanced Ore Scanner L": 1,
+      "Advanced Quantum Alignment Unit": 64,
+      "Advanced Standard Frame L": 1
+    }
+  },
+  "Rare Mining Unit L": {
+    "tier": 4,
+    "type": "Industry & Infrastructure Element",
+    "volume": 4200,
+    "outputQuantity": 1,
+    "time": 234000,
+    "byproducts": {},
+    "industry": "Assembly Line L",
+    "input": {
+      "Uncommon Fixation": 108,
+      "Advanced Fixation": 108,
+      "Rare Hydraulics": 125,
+      "Rare Ore Scanner L": 1,
+      "Rare Quantum Alignment Unit": 64,
+      "Rare Standard Frame L": 1
+    }
+  },
+  "Exotic Mining Unit L": {
+    "tier": 5,
+    "type": "Industry & Infrastructure Element",
+    "volume": 4400,
+    "outputQuantity": 1,
+    "time": 698400,
+    "byproducts": {},
+    "industry": "Assembly Line L",
+    "input": {
+      "Advanced Fixation": 216,
+      "Exotic Hydraulics": 125,
+      "Exotic Ore Scanner L": 1,
+      "Exotic Quantum Alignment Unit": 64,
+      "Exotic Standard Frame L": 1
     }
   }
 }

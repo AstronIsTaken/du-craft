@@ -106,7 +106,7 @@ function copyStringToClipboard(str) {
 var itemsAccordion, prices, recipes, german;
 
 const version = "1";
-const lastUpdateTime = "2021-08-25";
+const lastUpdateTime = "2021-10-29";
 document.getElementById("lastUpdateTime").innerHTML = lastUpdateTime;
 console.log("Crafting Calculator Updated On: " + lastUpdateTime)
 console.log("Crafting Calculator Profile Version: " + version)
