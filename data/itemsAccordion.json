@@ -1395,6 +1395,17 @@
               },
               "Transfer Unit"
             ]
+          },
+          {
+            "name": "Mining Units",
+            "data": [
+              "Basic Mining Unit S",
+              "Basic Mining Unit L",
+              "Uncommon Mining Unit L",
+              "Advanced Mining Unit L",
+              "Rare Mining Unit L",
+              "Exotic Mining Unit L",
+            ]
           }
         ]
       },
