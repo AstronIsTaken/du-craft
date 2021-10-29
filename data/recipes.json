@@ -2305,6 +2305,27 @@
       "Advanced Quantum Core": 1
     }
   },
+  "Rare Quantum Alignment Unit": {
+    "tier": 4,
+    "type": "Exceptional Part",
+    "volume": 27.5,
+    "outputQuantity": 1,
+    "time": 11820,
+    "byproducts": {},
+    "industry": "Electronics Industry M",
+    "input": {
+      "Polycarbonate Plastic": 5,
+      "Basic LED": 5,
+      "Basic Quantum Core": 2,
+      "Polycalcite Plastic": 5,
+      "Uncommon LED": 5,
+      "Uncommon Quantum Core": 1,
+      "Polysulfide Plastic": 5,
+      "Advanced Quantum Core": 1,
+      "Fluoropolymer": 5,
+      "Rare Quantum Core": 1
+    }
+  },
   "Exotic Quantum Alignment Unit": {
     "tier": 5,
     "type": "Exceptional Part",
