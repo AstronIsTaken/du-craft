@@ -179,7 +179,7 @@
     "industry": "",
     "input": {}
   },
-  "Illmenite": {
+  "Ilmenite": {
     "tier": 5,
     "type": "Ore",
     "volume": 1,
@@ -510,7 +510,7 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Illmenite": 65
+      "Ilmenite": 65
     }
   },
   "Pure Vanadium": {
