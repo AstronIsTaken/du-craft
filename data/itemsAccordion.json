@@ -1282,6 +1282,7 @@
                   {
                     "name": "Space Fuel Containers",
                     "data": [
+                      "Space Fuel Tank XS",
                       "Space Fuel Tank S",
                       "Space Fuel Tank M",
                       "Space Fuel Tank L"
