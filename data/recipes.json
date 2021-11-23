@@ -6694,6 +6694,22 @@
       "Basic Standard Frame L": 1
     }
   },
+  "Space Fuel Tank XS": {
+    "tier": 1,
+    "type": "Industry & Infrastructure Element",
+    "volume": 17.8,
+    "outputQuantity": 1,
+    "time": 120,
+    "byproducts": {},
+    "nanopack": true,
+    "industry": "Assembly Line S",
+    "input": {
+      "Basic Pipe": 6,
+      "Basic Injector": 5,
+      "Basic Chemical Container S": 1,
+      "Basic Standard Frame S": 1
+    }
+  },
   "Space Fuel Tank S": {
     "tier": 2,
     "type": "Industry & Infrastructure Element",
@@ -14832,19 +14848,18 @@
     }
   },
   "Deep Space Asteroid Tracker": {
-    "tier": 3,
+    "tier": 1,
     "type": "Systems Element",
     "volume": 20500,
     "outputQuantity": 1,
-    "time": 345600,
+    "time": 30720,
     "byproducts": {},
     "industry": "Assembly Line XL",
     "input": {
-      "Uncommon LED": 1296,
-      "Advanced Processor": 625,
-      "Advanced Antenna XL": 1,
-      "Advanced Antimatter Core": 256,
-      "Advanced Reinforced Frame XL": 1
+      "Basic LED": 1296,
+      "Basic Processor": 625,
+      "Basic Antenna XL": 1,
+      "Basic Reinforced Frame XL": 1
     }
   },
   "Resurrection Node": {
