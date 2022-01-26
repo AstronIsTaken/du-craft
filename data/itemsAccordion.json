@@ -1846,6 +1846,7 @@
             "data": [
               "Aluminium Honeycomb",
               "Calcium Honeycomb",
+              "Carbon Honeycomb",
               "Chromium Honeycomb",
               "Cobalt Honeycomb",
               "Copper Honeycomb",
@@ -1913,7 +1914,7 @@
                 "name": "Tier 5 Ores",
                 "data": [
                   "Columbite",
-                  "Illmenite",
+                  "Ilmenite",
                   "Rhodonite",
                   "Thoramine",
                   "Vanadinite"
@@ -2210,6 +2211,7 @@
             "data": [
               "Basic Antenna XS",
               "Basic Antenna S",
+              "Basic Antenna XL",
               "Uncommon Antenna S",
               "Uncommon Antenna M",
               "Uncommon Antenna L",
