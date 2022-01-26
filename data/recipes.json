@@ -2413,6 +2413,20 @@
       "Basic Screw": 5
     }
   },
+  "Basic Antenna XL": {
+    "tier": 1,
+    "type": "Functional Part",
+    "volume": 7020.8,
+    "outputQuantity": 1,
+    "time": 4860,
+    "byproducts": {},
+    "nanopack": false,
+    "industry": "Electronics Industry M",
+    "input": {
+      "Al-Fe Alloy": 2401,
+      "Basic Screw": 625
+    }
+  },
   "Uncommon Antenna XS": {
     "tier": 2,
     "type": "Functional Part",

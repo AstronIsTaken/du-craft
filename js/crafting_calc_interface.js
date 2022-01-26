@@ -9,6 +9,7 @@ class Skill {
     subject;
     class;
     amount;
+
     constructor(categoryName, groupName, skillName) {
         this.name = skillName;
         this.id = [categoryName, groupName, skillName].join(".");
@@ -19,6 +20,7 @@ class SkillGroup {
     name;
     id;
     skills = [];
+
     constructor(categoryName, groupName) {
         this.name = groupName;
         this.id = [categoryName, groupName].join(".");
@@ -29,6 +31,7 @@ class SkillCategory {
     name;
     id;
     groups = [];
+
     constructor(name) {
         this.name = name;
         this.id = name;
@@ -106,7 +109,7 @@ function copyStringToClipboard(str) {
 var itemsAccordion, prices, recipes, german;
 
 const version = "1";
-const lastUpdateTime = "2021-11-23";
+const lastUpdateTime = "2022-01-25";
 document.getElementById("lastUpdateTime").innerHTML = lastUpdateTime;
 console.log("Crafting Calculator Updated On: " + lastUpdateTime)
 console.log("Crafting Calculator Profile Version: " + version)
@@ -676,29 +679,29 @@ function updateSkillTreeDiv() {
     if (skillValues.onlyApplicableSkills) {
         skillTree.forEach(category => {
             let emptyCategory = true;
-           category.groups.forEach(group => {
-               let emptyGroup = true;
-               group.skills.forEach(skill => {
-                   if (shouldDisplaySkill(skill)) {
-                       emptyGroup = false;
-                   } else {
-                       const skillElement = skillTreeDiv.querySelector('[skill-id="'+ skill.id + '"]');
-                       if (skillElement) {
-                           skillElement.classList.add("hidden-tree-node");
-                       }
-                   }
-               });
-               if (emptyGroup) {
-                   const groupElement = skillTreeDiv.querySelector('[skill-group-id="'+ group.id + '"]');
-                   if (groupElement) {
-                       groupElement.classList.add("hidden-tree-node");
-                   }
-               } else {
-                   emptyCategory = false;
-               }
-           });
+            category.groups.forEach(group => {
+                let emptyGroup = true;
+                group.skills.forEach(skill => {
+                    if (shouldDisplaySkill(skill)) {
+                        emptyGroup = false;
+                    } else {
+                        const skillElement = skillTreeDiv.querySelector('[skill-id="' + skill.id + '"]');
+                        if (skillElement) {
+                            skillElement.classList.add("hidden-tree-node");
+                        }
+                    }
+                });
+                if (emptyGroup) {
+                    const groupElement = skillTreeDiv.querySelector('[skill-group-id="' + group.id + '"]');
+                    if (groupElement) {
+                        groupElement.classList.add("hidden-tree-node");
+                    }
+                } else {
+                    emptyCategory = false;
+                }
+            });
             if (emptyCategory) {
-                const categoryElement = skillTreeDiv.querySelector('[skill-category-id="'+ category.id + '"]');
+                const categoryElement = skillTreeDiv.querySelector('[skill-category-id="' + category.id + '"]');
                 if (categoryElement) {
                     categoryElement.classList.add("hidden-tree-node");
                 }
@@ -1399,7 +1402,7 @@ function tryRestoreState(profile) {
             updatePrices();
         } catch (e) {
             console.log("failed to load prices");
-            prices = oldPrices;
+            prices = oldState.prices;
         }
 
         try {
