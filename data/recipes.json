@@ -1,4 +1,154 @@
 {
+  "Tier 2 Pure Material Schematic Copy": {
+    "tier": 2,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 40,
+    "time": 1500,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 3 Pure Material Schematic Copy": {
+    "tier": 3,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 30,
+    "time": 3750,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 4 Pure Material Schematic Copy": {
+    "tier": 4,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 20,
+    "time": 9360,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 5 Pure Material Schematic Copy": {
+    "tier": 5,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 10,
+    "time": 23460,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 1 Product Material Schematic Copy": {
+    "tier": 1,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 50,
+    "time": 1800,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 2 Product Material Schematic Copy": {
+    "tier": 2,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 40,
+    "time": 4500,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 3 Product Material Schematic Copy": {
+    "tier": 3,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 30,
+    "time": 11280,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 4 Product Material Schematic Copy": {
+    "tier": 4,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 20,
+    "time": 28140,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 5 Product Material Schematic Copy": {
+    "tier": 5,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 10,
+    "time": 70320,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 1 L Element Schematic Copy": {
+    "tier": 1,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 2,
+    "time": 6000,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 2 L Element Schematic Copy": {
+    "tier": 2,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 2,
+    "time": 15000,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 3 L Element Schematic Copy": {
+    "tier": 3,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 2,
+    "time": 37500,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 4 L Element Schematic Copy": {
+    "tier": 4,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 2,
+    "time": 93780,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 5 L Element Schematic Copy": {
+    "tier": 5,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 2,
+    "time": 234000,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
+  "Tier 3 M Element Schematic Copy": {
+    "tier": 3,
+    "type": "Schematics",
+    "volume": 0,
+    "outputQuantity": 3,
+    "time": 18780,
+    "byproducts": {},
+    "industry": "",
+    "input": {}
+  },
   "Bauxite": {
     "tier": 1,
     "type": "Ore",
@@ -304,7 +454,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Limestone": 65
+      "Limestone": 65,
+      "Tier 2 Pure Material Schematic Copy": 1
     }
   },
   "Pure Chromium": {
@@ -319,7 +470,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Chromite": 65
+      "Chromite": 65,
+      "Tier 2 Pure Material Schematic Copy": 1
     }
   },
   "Pure Copper": {
@@ -334,7 +486,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Malachite": 65
+      "Malachite": 65,
+      "Tier 2 Pure Material Schematic Copy": 1
     }
   },
   "Pure Sodium": {
@@ -349,7 +502,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Natron": 65
+      "Natron": 65,
+      "Tier 2 Pure Material Schematic Copy": 1
     }
   },
   "Pure Lithium": {
@@ -364,7 +518,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Petalite": 65
+      "Petalite": 65,
+      "Tier 3 Pure Material Schematic Copy": 1
     }
   },
   "Pure Nickel": {
@@ -379,7 +534,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Garnierite": 65
+      "Garnierite": 65,
+      "Tier 3 Pure Material Schematic Copy": 1
     }
   },
   "Pure Silver": {
@@ -393,7 +549,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Acanthite": 65
+      "Acanthite": 65,
+      "Tier 3 Pure Material Schematic Copy": 1
     }
   },
   "Pure Sulfur": {
@@ -407,7 +564,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Pyrite": 65
+      "Pyrite": 65,
+      "Tier 3 Pure Material Schematic Copy": 1
     }
   },
   "Pure Cobalt": {
@@ -421,7 +579,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Cobaltite": 65
+      "Cobaltite": 65,
+      "Tier 4 Pure Material Schematic Copy": 1
     }
   },
   "Pure Fluorine": {
@@ -436,7 +595,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Cryolite": 65
+      "Cryolite": 65,
+      "Tier 4 Pure Material Schematic Copy": 1
     }
   },
   "Pure Gold": {
@@ -448,7 +608,8 @@
     "byproducts": {},
     "industry": "Refiner M",
     "input": {
-      "Gold Nuggets": 65
+      "Gold Nuggets": 65,
+      "Tier 4 Pure Material Schematic Copy": 1
     }
   },
   "Pure Scandium": {
@@ -463,7 +624,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Kolbeckite": 65
+      "Kolbeckite": 65,
+      "Tier 4 Pure Material Schematic Copy": 1
     }
   },
   "Pure Manganese": {
@@ -479,7 +641,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Rhodonite": 65
+      "Rhodonite": 65,
+      "Tier 5 Pure Material Schematic Copy": 1
     }
   },
   "Pure Niobium": {
@@ -495,7 +658,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Columbite": 65
+      "Columbite": 65,
+      "Tier 5 Pure Material Schematic Copy": 1
     }
   },
   "Pure Titanium": {
@@ -510,7 +674,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Ilmenite": 65
+      "Ilmenite": 65,
+      "Tier 5 Pure Material Schematic Copy": 1
     }
   },
   "Pure Vanadium": {
@@ -524,7 +689,8 @@
     },
     "industry": "Refiner M",
     "input": {
-      "Vanadinite": 65
+      "Vanadinite": 65,
+      "Tier 5 Pure Material Schematic Copy": 1
     }
   },
   "Catalyst 3": {
@@ -677,7 +843,8 @@
     "industry": "Smelter M",
     "input": {
       "Pure Aluminium": 100,
-      "Pure Iron": 50
+      "Pure Iron": 50,
+      "Tier 1 Product Material Schematic Copy": 1
     }
   },
   "Al-Li Alloy": {
@@ -693,7 +860,8 @@
     "input": {
       "Pure Lithium": 100,
       "Pure Aluminium": 50,
-      "Catalyst 3": 1
+      "Catalyst 3": 1,
+      "Tier 3 Product Material Schematic Copy": 1
     }
   },
   "Calcium Reinforced Copper": {
@@ -706,7 +874,8 @@
     "industry": "Smelter M",
     "input": {
       "Pure Copper": 100,
-      "Pure Calcium": 50
+      "Pure Calcium": 50,
+      "Tier 2 Product Material Schematic Copy": 1
     }
   },
   "Cu-Ag Alloy": {
@@ -722,7 +891,8 @@
     "input": {
       "Pure Silver": 100,
       "Pure Copper": 50,
-      "Catalyst 3": 1
+      "Catalyst 3": 1,
+      "Tier 3 Product Material Schematic Copy": 1
     }
   },
   "Duralumin": {
@@ -735,7 +905,8 @@
     "industry": "Smelter M",
     "input": {
       "Pure Copper": 100,
-      "Pure Aluminium": 50
+      "Pure Aluminium": 50,
+      "Tier 2 Product Material Schematic Copy": 1
     }
   },
   "Grade 5 Titanium Alloy": {
@@ -752,7 +923,8 @@
       "Pure Titanium": 100,
       "Pure Vanadium": 50,
       "Pure Aluminium": 50,
-      "Catalyst 5": 1
+      "Catalyst 5": 1,
+      "Tier 5 Product Material Schematic Copy": 1
     }
   },
   "Inconel": {
@@ -769,7 +941,8 @@
       "Pure Nickel": 100,
       "Pure Chromium": 50,
       "Pure Iron": 50,
-      "Catalyst 3": 1
+      "Catalyst 3": 1,
+      "Tier 3 Product Material Schematic Copy": 1
     }
   },
   "Mangalloy": {
@@ -786,7 +959,8 @@
       "Pure Manganese": 100,
       "Pure Niobium": 50,
       "Pure Iron": 50,
-      "Catalyst 5": 1
+      "Catalyst 5": 1,
+      "Tier 5 Product Material Schematic Copy": 1
     }
   },
   "Maraging Steel": {
@@ -803,7 +977,8 @@
       "Pure Cobalt": 100,
       "Pure Nickel": 50,
       "Pure Iron": 50,
-      "Catalyst 4": 1
+      "Catalyst 4": 1,
+      "Tier 4 Product Material Schematic Copy": 1
     }
   },
   "Red Gold": {
@@ -819,7 +994,8 @@
     "input": {
       "Pure Gold": 100,
       "Pure Copper": 50,
-      "Catalyst 4": 1
+      "Catalyst 4": 1,
+      "Tier 4 Product Material Schematic Copy": 1
     }
   },
   "Sc-Al Alloy": {
@@ -836,7 +1012,8 @@
       "Pure Scandium": 100,
       "Pure Aluminium": 50,
       "Pure Lithium": 50,
-      "Catalyst 4": 1
+      "Catalyst 4": 1,
+      "Tier 4 Product Material Schematic Copy": 1
     }
   },
   "Stainless Steel": {
@@ -850,7 +1027,8 @@
     "input": {
       "Pure Chromium": 100,
       "Pure Iron": 50,
-      "Pure Carbon": 50
+      "Pure Carbon": 50,
+      "Tier 2 Product Material Schematic Copy": 1
     }
   },
   "Ti-Nb Supraconductor": {
@@ -866,7 +1044,8 @@
     "input": {
       "Pure Niobium": 100,
       "Pure Titanium": 50,
-      "Catalyst 5": 1
+      "Catalyst 5": 1,
+      "Tier 5 Product Material Schematic Copy": 1
     }
   },
   "Biological Matter": {
@@ -985,7 +1164,8 @@
       "Pure Lithium": 50,
       "Pure Silicon": 50,
       "Pure Oxygen": 50,
-      "Catalyst 3": 1
+      "Catalyst 3": 1,
+      "Tier 3 Product Material Schematic Copy": 1
     }
   },
   "Gold-Coated Glass": {
@@ -1003,7 +1183,8 @@
       "Pure Silicon": 50,
       "Pure Sodium": 50,
       "Pure Oxygen": 50,
-      "Catalyst 4": 1
+      "Catalyst 4": 1,
+      "Tier 4 Product Material Schematic Copy": 1
     }
   },
   "Manganese Reinforced Glass": {
@@ -1021,7 +1202,8 @@
       "Pure Calcium": 50,
       "Pure Silicon": 50,
       "Pure Oxygen": 50,
-      "Catalyst 5": 1
+      "Catalyst 5": 1,
+      "Tier 5 Product Material Schematic Copy": 1
     }
   },
   "Polycarbonate Plastic": {
@@ -1035,7 +1217,8 @@
     "industry": "Chemical Industry M",
     "input": {
       "Pure Carbon": 100,
-      "Pure Hydrogen": 50
+      "Pure Hydrogen": 50,
+      "Tier 1 Product Material Schematic Copy": 1
     }
   },
   "Polycalcite Plastic": {
@@ -1049,7 +1232,8 @@
     "input": {
       "Pure Calcium": 100,
       "Pure Carbon": 50,
-      "Pure Hydrogen": 50
+      "Pure Hydrogen": 50,
+      "Tier 2 Product Material Schematic Copy": 1
     }
   },
   "Polysulfide Plastic": {
@@ -1066,7 +1250,8 @@
       "Pure Sulfur": 100,
       "Pure Carbon": 50,
       "Pure Hydrogen": 50,
-      "Catalyst 3": 1
+      "Catalyst 3": 1,
+      "Tier 3 Product Material Schematic Copy": 1
     }
   },
   "Fluoropolymer": {
@@ -1083,7 +1268,8 @@
       "Pure Fluorine": 100,
       "Pure Carbon": 50,
       "Pure Hydrogen": 50,
-      "Catalyst 4": 1
+      "Catalyst 4": 1,
+      "Tier 4 Product Material Schematic Copy": 1
     }
   },
   "Vanamer": {
@@ -1101,7 +1287,8 @@
       "Pure Sulfur": 50,
       "Pure Carbon": 50,
       "Pure Hydrogen": 50,
-      "Catalyst 5": 1
+      "Catalyst 5": 1,
+      "Tier 5 Product Material Schematic Copy": 1
     }
   },
   "Silumin": {
@@ -1115,7 +1302,8 @@
     "industry": "Smelter M",
     "input": {
       "Pure Aluminium": 100,
-      "Pure Silicon": 50
+      "Pure Silicon": 50,
+      "Tier 1 Product Material Schematic Copy": 1
     }
   },
   "Steel": {
@@ -1129,7 +1317,8 @@
     "industry": "Smelter M",
     "input": {
       "Pure Iron": 100,
-      "Pure Carbon": 50
+      "Pure Carbon": 50,
+      "Tier 1 Product Material Schematic Copy": 1
     }
   },
   "Wood": {
@@ -8816,7 +9005,8 @@
       "Uncommon Screw": 216,
       "Advanced Injector": 125,
       "Advanced Combustion Chamber L": 1,
-      "Advanced Reinforced Frame L": 1
+      "Advanced Reinforced Frame L": 1,
+      "Tier 3 L Element Schematic Copy": 1
     }
   },
   "Advanced Safe Atmospheric Engine L": {
@@ -10520,7 +10710,8 @@
       "Advanced Magnet": 25,
       "Advanced Ionic Chamber M": 1,
       "Advanced Anti-Gravity Core": 16,
-      "Advanced Reinforced Frame M": 1
+      "Advanced Reinforced Frame M": 1,
+      "Tier 3 M Element Schematic Copy": 1
     }
   },
   "Sliding Door S": {

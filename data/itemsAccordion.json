@@ -2624,5 +2624,50 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Schematics",
+    "data": [
+      {
+        "name": "Pure Materials",
+        "data": [
+          "Tier 2 Pure Material Schematic Copy",
+          "Tier 3 Pure Material Schematic Copy",
+          "Tier 4 Pure Material Schematic Copy",
+          "Tier 5 Pure Material Schematic Copy"
+        ]
+      },
+      {
+        "name": "Product Materials",
+        "data": [
+          "Tier 1 Product Material Schematic Copy",
+          "Tier 2 Product Material Schematic Copy",
+          "Tier 3 Product Material Schematic Copy",
+          "Tier 4 Product Material Schematic Copy",
+          "Tier 5 Product Material Schematic Copy"
+        ]
+      },
+      {
+        "name": "Elements",
+        "data": [
+          {
+            "name": "M",
+            "data": [
+              "Tier 3 M Element Schematic Copy"
+            ]
+          },
+          {
+            "name": "L",
+            "data": [
+              "Tier 1 L Element Schematic Copy",
+              "Tier 2 L Element Schematic Copy",
+              "Tier 3 L Element Schematic Copy",
+              "Tier 4 L Element Schematic Copy",
+              "Tier 5 L Element Schematic Copy"
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

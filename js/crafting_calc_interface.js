@@ -106,7 +106,7 @@ function copyStringToClipboard(str) {
     document.body.removeChild(el);
 }
 
-var itemsAccordion, prices, recipes, german;
+var itemsAccordion, prices, recipes, german, schematicsPrices;
 
 const version = "1";
 const lastUpdateTime = "2022-01-25";
@@ -130,6 +130,9 @@ loadJSON("../data/skillsAccordion.json", function (json) {
 })
 loadJSON("../data/orePrices.json", function (json) {
     prices = JSON.parse(json);
+})
+loadJSON("../data/schematicsPrices.json", function (json) {
+    schematicsPrices = JSON.parse(json);
 })
 
 loadJSON("../data/craft_trans_german.json", function (json) {
@@ -338,6 +341,34 @@ function calculate() {
             oreList.appendChild(price);
             oreList.appendChild(check);
         } else {
+            if (list[i].type === "Schematics") {
+                var item = document.createElement("div");
+                item.classList.add("ore-item");
+                item.innerHTML = cc.trans(language, list[i].name);
+                item.style.padding = "0 0 0 5px";
+                item.style["border-radius"] = "3px";
+    
+                var qty = document.createElement("div");
+                qty.classList.add("ore-quantity");
+                qty.innerHTML = formatNum(list[i].quantity, quantityFractionDigits);
+                totOre += list[i].quantity;
+    
+                var price = document.createElement("div");
+                price.classList.add("ore-quantity");
+                price.innerHTML = formatNum(Math.ceil(list[i].quantity/recipes[list[i].name].outputQuantity) * schematicsPrices[list[i].name], 0);
+                orePrice += Math.ceil(list[i].quantity/recipes[list[i].name].outputQuantity) * schematicsPrices[list[i].name];
+    
+                var check = document.createElement("button");
+                check.classList.add("ore-done");
+                check.onclick = finishOreItem;
+                check.innerHTML = "&#x2714;"
+    
+                oreList.appendChild(item);
+                oreList.appendChild(qty);
+                oreList.appendChild(price);
+                oreList.appendChild(check);  
+            }
+
             // detailed window list
             var rowClass = "details-row-1";
             if (striped) {
